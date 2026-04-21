@@ -190,6 +190,28 @@ h1, h2, h3 {
   background: linear-gradient(135deg, #145a32 0%, #1e8449 30%, #2ecc71 60%, #1e8449 100%);
 }
 
+.text-metallic-pink {
+  background: linear-gradient(135deg, #8e2a5a 0%, #d6336c 30%, #ffb6d5 50%, #e64980 70%, #6a1b40 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.bg-metallic-pink {
+  background: linear-gradient(135deg, #8e2a5a 0%, #c2185b 30%, #e64980 60%, #c2185b 100%);
+}
+
+.text-metallic-blue {
+  background: linear-gradient(135deg, #0b3d91 0%, #1e6ed8 30%, #a8d0f5 50%, #2186eb 70%, #0a2d6b 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.bg-metallic-blue {
+  background: linear-gradient(135deg, #0b3d91 0%, #1e5bb8 30%, #2186eb 60%, #1e5bb8 100%);
+}
+
 .section-line {
   display: flex;
   align-items: center;

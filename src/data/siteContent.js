@@ -78,14 +78,16 @@ export const works = [
     tags: ['ルーティン自動化', 'LINE連携', 'AI代行'],
     price: '80,000円〜',
     image: `${B}/images/works/ai-secretary-card.jpg`,
+    href: '#/ai-secretary',
   },
   {
     title: 'Webページ制作',
     description:
       'ホームページやランディングページ、公式LINEの設計まで。ブランドの魅力を最大限に伝えるWebページをトータルで制作します。',
     tags: ['HP', 'LP', '公式LINE'],
-    price: '50,000円〜',
+    price: '130,000円〜',
     video: `${B}/images/works/brand-lp-card.mp4`,
+    href: '#/web-design',
   },
   {
     title: 'ためになるノート',

@@ -1,437 +1,478 @@
-const steps = [
+import FloatingSymbols from './FloatingSymbols'
+
+const B = import.meta.env.BASE_URL
+
+const flow = [
   {
     number: '01',
-    title: '情報をコピペ',
-    description: '面談の文字起こし、顔写真、基本情報など、手元にある情報をそのまま貼り付けるだけ。整理は不要です。',
-    imageHint: '【画像】アプリの入力画面スクリーンショット（テキストをペーストしている様子）',
+    title: 'ヒアリング',
+    description:
+      'どんな業務を、どうしたいか。まずは1時間のオンライン打ち合わせで、困りごとや理想の状態を丁寧にお聞きします。',
   },
   {
     number: '02',
-    title: 'AIが自動生成',
-    description: '約1分でJIS規格に準拠した履歴書・職務経歴書をAIが自動作成。複数タブで同時処理も可能です。',
-    imageHint: '【画像】AIが処理中 → 完成した書類のプレビュー画面',
+    title: '設計・試作',
+    description:
+      'AIと人の手を組み合わせて、最短3日で試作版をお渡し。実際に触っていただきながら、ご一緒にブラッシュアップしていきます。',
   },
   {
     number: '03',
-    title: '確認・出力',
-    description: '内容を確認し、必要に応じて手動編集やAI添削で仕上げ。Excel形式でそのまま出力できます。',
-    imageHint: '【画像】完成した履歴書のプレビュー + 出力ボタン',
+    title: '本制作・導入',
+    description:
+      '仕上がった試作をもとに本番アプリを制作。使い方レクチャーと、導入後のアフターサポートまで一貫して伴走します。',
   },
 ]
 
-const comparisons = [
-  { label: '1人分', manual: '60〜90分', bakusoku: '約1分', saved: '最大89分', cost: '約¥2,700' },
-  { label: '5人分', manual: '5〜7.5時間', bakusoku: '約3分', saved: '最大7時間', cost: '約¥13,500' },
-  { label: '10人分', manual: '10〜15時間', bakusoku: '約5分', saved: '最大15時間', cost: '約¥27,000' },
-  { label: '月50人', manual: '50〜75時間', bakusoku: '約50分', saved: '最大74時間', cost: '約¥135,000' },
+const examples = [
+  {
+    title: '履歴書・職務経歴書の自動生成',
+    description: '面談メモをコピペするだけで、AIが1分でJIS規格の書類を作成（例：爆速くん）。',
+  },
+  {
+    title: '日報・報告書の自動化',
+    description: '箇条書きのメモを貼るだけで、AIが体裁の整った報告書に仕上げます。',
+  },
+  {
+    title: '議事録・面談メモの要約',
+    description: '長時間の録音・文字起こしから、要点・決定事項・次のアクションを自動抽出。',
+  },
+  {
+    title: '営業メール・提案文の下書き',
+    description: 'お客様の情報と目的を入れるだけで、トンマナに沿った営業文を生成。',
+  },
+  {
+    title: '請求書・見積書のテンプレ自動化',
+    description: '案件情報を入れると、書式の整った書類がワンクリックで完成。',
+  },
+  {
+    title: 'SNS投稿・ブログ記事の量産',
+    description: 'ネタ元の資料を渡せば、AIがSNS用・記事用の文面を一気に複数案生成。',
+  },
+  {
+    title: '顧客カルテ・要約ツール',
+    description: '過去のやり取りをまとめて、担当者が変わっても迷わないサマリーを自動作成。',
+  },
+  {
+    title: '採用応募者の一括評価',
+    description: '履歴書や面接メモから、評価基準に沿ってスコアとコメントを自動出力。',
+  },
+  {
+    title: '社内FAQ・問い合わせボット',
+    description: '社内資料やマニュアルを読み込み、従業員からの質問にAIが答える仕組みを構築。',
+  },
+  {
+    title: 'アンケート結果の分析・可視化',
+    description: '自由記述を含むアンケート回答を、AIがカテゴリ分け・ハイライト・要約。',
+  },
 ]
 
-const features = [
+const plans = [
   {
-    title: 'JIS規格準拠',
-    description: '日本標準のフォーマットで自動作成。提出先を選びません。',
+    name: 'ライト',
+    price: '¥50,000〜',
+    desc: '1機能・小規模な自動化から',
+    features: [
+      '業務を1つだけ自動化',
+      '簡易UI付き',
+      '制作期間：2週間〜',
+      '導入レクチャー1回',
+    ],
   },
   {
-    title: '複数タブ同時処理',
-    description: '5つ以上のタブを開いて並行作業。大量案件も一気に処理。',
+    name: 'スタンダード',
+    price: '¥150,000〜',
+    desc: '複数機能を備えた業務アプリに',
+    features: [
+      '複数機能を組み合わせ',
+      'ログイン・データ保存対応',
+      '制作期間：3〜5週間',
+      '導入後1ヶ月の無料サポート',
+    ],
+    popular: true,
   },
   {
-    title: 'AI添削機能',
-    description: '生成後もAIが文章を添削。より伝わる表現に自動修正。',
-  },
-  {
-    title: '手動編集も自由',
-    description: '自動生成に頼りきりにしない。いつでも手動で微調整可能。',
-  },
-  {
-    title: 'Excel出力',
-    description: '完成した書類はExcel形式でダウンロード。すぐに提出・共有できます。',
-  },
-  {
-    title: 'コピペだけで完結',
-    description: '文字起こしや基本情報をそのまま貼るだけ。整形や入力は不要です。',
+    name: 'オーダーメイド',
+    price: '要見積もり',
+    desc: '本格的な業務システムに',
+    features: [
+      '自社業務に合わせたフル設計',
+      '既存システムとの連携',
+      'チーム展開まで伴走',
+      '保守・改修プランあり',
+    ],
   },
 ]
-
-import FloatingSymbols from './FloatingSymbols'
 
 export default function BakusokuLP() {
   return (
     <div className="relative min-h-screen bg-white font-sans antialiased">
       <FloatingSymbols count={45} />
       <div className="relative z-10">
-      {/* ── Header ── */}
-      <header className="fixed top-0 left-0 right-0 z-50">
-        <div className="mx-auto max-w-5xl">
-          <div className="mx-3 mt-3 rounded-2xl glass-card px-5 py-2 md:mx-6 md:mt-4 md:px-8 md:py-3">
-            <div className="flex items-center justify-between">
-              <a href="/" className="text-base font-bold tracking-tight text-bluegray-800 no-underline md:text-lg">
-                爆速くん
-              </a>
-              <a
-                href="#pricing"
-                className="rounded-full bg-blue-600 px-5 py-2 text-xs font-semibold text-white no-underline transition-all hover:bg-blue-700 hover:shadow-lg md:text-sm"
-              >
-                料金を見る
-              </a>
-            </div>
-          </div>
-        </div>
-      </header>
-
-      <main>
-        {/* ── Hero ── */}
-        <section className="relative overflow-hidden pt-20 pb-16 md:pt-28 md:pb-24">
-          <div className="pointer-events-none absolute inset-0">
-            <div className="absolute top-10 -left-20 h-72 w-72 rounded-full bg-blue-100/40 blur-3xl" />
-            <div className="absolute -right-16 bottom-0 h-64 w-64 rounded-full bg-amber-100/30 blur-3xl" />
-          </div>
-
-          <div className="section-padding relative mx-auto max-w-4xl text-center">
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-blue-200/60 bg-blue-50/60 px-4 py-2">
-              <span className="text-xs font-semibold text-blue-600">履歴書・職務経歴書を爆速作成</span>
-            </div>
-
-            <h1 className="mb-6 text-3xl leading-tight font-bold tracking-tight text-bluegray-800 sm:text-4xl md:text-5xl">
-              <span className="block">コピペだけで、</span>
-              <span className="block text-blue-600">1分で書類が完成。</span>
-            </h1>
-
-            <p className="mx-auto mb-10 max-w-lg text-base leading-relaxed text-bluegray-600 md:text-lg">
-              面談メモや基本情報を貼り付けるだけ。
-              <br className="hidden sm:block" />
-              AIがJIS規格の履歴書・職務経歴書を自動作成します。
-            </p>
-
-            <div className="mx-auto mb-10 max-w-2xl overflow-hidden rounded-2xl border border-bluegray-100 bg-gradient-to-br from-slate-50 to-blue-50 shadow-xl">
-              <img
-                src={`${import.meta.env.BASE_URL}images/works/work-01.jpg`}
-                alt="爆速くんのメイン画面"
-                className="w-full object-contain"
-              />
-            </div>
-
-            <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center sm:gap-4">
-              <a
-                href="#pricing"
-                className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-blue-600 px-8 py-4 text-sm font-semibold text-white no-underline shadow-lg transition-all hover:bg-blue-700 hover:shadow-xl sm:w-auto"
-              >
-                料金プランを見る
-              </a>
-              <a
-                href="#how"
-                className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-bluegray-200 bg-white px-8 py-4 text-sm font-semibold text-bluegray-700 no-underline transition-all hover:bg-bluegray-50 sm:w-auto"
-              >
-                使い方を見る
-              </a>
-            </div>
-          </div>
-        </section>
-
-        {/* ── Problem ── */}
-        <section className="bg-slate-25 py-16 md:py-24">
-          <div className="section-padding mx-auto max-w-4xl text-center">
-            <span className="mb-3 inline-block text-xs font-semibold tracking-[0.15em] text-bluegray-400 uppercase">
-              Problem
-            </span>
-            <h2 className="mb-6 text-2xl font-bold text-bluegray-800 md:text-3xl">
-              書類作成に、時間を奪われていませんか？
-            </h2>
-            <p className="mx-auto mb-12 max-w-lg text-sm leading-relaxed text-bluegray-600 md:text-base">
-              履歴書・職務経歴書の作成は、1人あたり60〜90分。
-              月に何十人も対応するなら、数十時間がこの作業に消えています。
-            </p>
-
-            <div className="grid gap-4 sm:grid-cols-3">
-              {[
-                { number: '60〜90分', label: '1人あたりの作成時間' },
-                { number: '50〜75時間', label: '月50人対応した場合' },
-                { number: '年600時間↑', label: '年間の書類作成工数' },
-              ].map((stat, i) => (
-                <div key={i} className="glass-card-elevated rounded-2xl p-6">
-                  <div className="mb-2 text-2xl font-bold text-blue-600 md:text-3xl">{stat.number}</div>
-                  <div className="text-xs text-bluegray-500">{stat.label}</div>
-                </div>
-              ))}
-            </div>
-
-            {/* Cost impact */}
-            <div className="mt-10 rounded-2xl border border-amber-200 bg-gradient-to-r from-amber-50 to-orange-50 p-6 md:p-8">
-              <h3 className="mb-4 text-center text-base font-bold text-bluegray-800 md:text-lg">
-                💰 それ、人件費に換算すると…
-              </h3>
-              <p className="mb-6 text-center text-xs text-bluegray-500">
-                一般事務スタッフの時給 約1,800円（社会保険料等の会社負担込み）で算出
-              </p>
-              <div className="grid gap-4 sm:grid-cols-2">
-                <div className="rounded-xl bg-white/80 p-5 text-center">
-                  <div className="mb-1 text-xs text-bluegray-500">月間コスト</div>
-                  <div className="text-2xl font-bold text-amber-600 md:text-3xl">9万〜13.5万円</div>
-                  <div className="mt-1 text-[11px] text-bluegray-400">50〜75時間 × ¥1,800</div>
-                </div>
-                <div className="rounded-xl bg-white/80 p-5 text-center">
-                  <div className="mb-1 text-xs text-bluegray-500">年間コスト</div>
-                  <div className="text-2xl font-bold text-amber-600 md:text-3xl">108万〜162万円</div>
-                  <div className="mt-1 text-[11px] text-bluegray-400">年間600〜900時間分の人件費</div>
-                </div>
-              </div>
-              <p className="mt-5 text-center text-sm font-semibold text-bluegray-700">
-                この作業コストが、爆速くんでほぼゼロになります。
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* ── How it works ── */}
-        <section id="how" className="py-16 md:py-24">
-          <div className="section-padding mx-auto max-w-4xl">
-            <div className="mb-14 text-center">
-              <span className="mb-3 inline-block text-xs font-semibold tracking-[0.15em] text-blue-500 uppercase">
-                How it works
-              </span>
-              <h2 className="mb-4 text-2xl font-bold text-bluegray-800 md:text-3xl">
-                3ステップで完了
-              </h2>
-            </div>
-
-            <div className="space-y-8 md:space-y-12">
-              {steps.map((step, i) => (
-                <div key={i} className="flex flex-col gap-5 md:flex-row md:items-center md:gap-10">
-                  {/* Image placeholder */}
-                  <div className="w-full overflow-hidden rounded-2xl border border-bluegray-100 bg-gradient-to-br from-slate-50 to-blue-50 md:w-1/2">
-                    <div className="flex aspect-[4/3] items-center justify-center p-6">
-                      <p className="text-center text-xs text-bluegray-400">{step.imageHint}</p>
-                    </div>
-                  </div>
-                  {/* Text */}
-                  <div className="md:w-1/2">
-                    <div className="mb-2 flex items-center gap-3">
-                      <span className="flex h-8 w-8 items-center justify-center rounded-full bg-blue-600 text-xs font-bold text-white">
-                        {step.number}
-                      </span>
-                      <h3 className="text-lg font-bold text-bluegray-800">{step.title}</h3>
-                    </div>
-                    <p className="text-sm leading-relaxed text-bluegray-600">{step.description}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ── Time comparison ── */}
-        <section className="bg-slate-25 py-16 md:py-24">
-          <div className="section-padding mx-auto max-w-4xl">
-            <div className="mb-14 text-center">
-              <span className="mb-3 inline-block text-xs font-semibold tracking-[0.15em] text-blue-500 uppercase">
-                Comparison
-              </span>
-              <h2 className="mb-4 text-2xl font-bold text-bluegray-800 md:text-3xl">
-                どれだけ時短できる？
-              </h2>
-              <p className="mx-auto max-w-md text-sm text-bluegray-600">
-                手作業と爆速くんの所要時間を比較
-              </p>
-            </div>
-
-            {/* Mobile: card layout / Desktop: table */}
-            <div className="overflow-hidden rounded-2xl border border-bluegray-100 bg-white">
-              {/* Table header */}
-              <div className="hidden grid-cols-5 border-b border-bluegray-100 bg-bluegray-50 px-6 py-3 sm:grid">
-                <div className="text-xs font-semibold text-bluegray-500">対象</div>
-                <div className="text-xs font-semibold text-bluegray-500">手作業</div>
-                <div className="text-xs font-semibold text-blue-600">爆速くん</div>
-                <div className="text-xs font-semibold text-green-600">削減時間</div>
-                <div className="text-xs font-semibold text-amber-600">削減コスト</div>
-              </div>
-              {comparisons.map((row, i) => (
-                <div key={i} className={`border-b border-bluegray-50 last:border-0`}>
-                  {/* Mobile */}
-                  <div className="grid grid-cols-2 gap-3 p-5 sm:hidden">
-                    <div className="col-span-2 text-sm font-bold text-bluegray-800">{row.label}</div>
-                    <div>
-                      <div className="text-[10px] text-bluegray-400">手作業</div>
-                      <div className="text-sm text-bluegray-600">{row.manual}</div>
-                    </div>
-                    <div>
-                      <div className="text-[10px] text-blue-500">爆速くん</div>
-                      <div className="text-sm font-bold text-blue-600">{row.bakusoku}</div>
-                    </div>
-                    <div className="rounded-lg bg-green-50 px-3 py-1.5 text-center text-xs font-bold text-green-600">
-                      {row.saved} 削減
-                    </div>
-                    <div className="rounded-lg bg-amber-50 px-3 py-1.5 text-center text-xs font-bold text-amber-600">
-                      {row.cost} 削減
-                    </div>
-                  </div>
-                  {/* Desktop */}
-                  <div className="hidden grid-cols-5 items-center px-6 py-4 sm:grid">
-                    <div className="text-sm font-semibold text-bluegray-800">{row.label}</div>
-                    <div className="text-sm text-bluegray-600">{row.manual}</div>
-                    <div className="text-sm font-bold text-blue-600">{row.bakusoku}</div>
-                    <div className="inline-flex">
-                      <span className="rounded-full bg-green-50 px-3 py-1 text-xs font-bold text-green-600">
-                        {row.saved}
-                      </span>
-                    </div>
-                    <div className="inline-flex">
-                      <span className="rounded-full bg-amber-50 px-3 py-1 text-xs font-bold text-amber-600">
-                        {row.cost}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <p className="mt-6 text-center text-xs text-bluegray-400">
-              ※ 手作業時間は業界平均値に基づく目安です
-            </p>
-          </div>
-        </section>
-
-        {/* ── Features ── */}
-        <section className="py-16 md:py-24">
-          <div className="section-padding mx-auto max-w-4xl">
-            <div className="mb-14 text-center">
-              <span className="mb-3 inline-block text-xs font-semibold tracking-[0.15em] text-blue-500 uppercase">
-                Features
-              </span>
-              <h2 className="mb-4 text-2xl font-bold text-bluegray-800 md:text-3xl">
-                爆速くんの特長
-              </h2>
-            </div>
-
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {features.map((f, i) => (
-                <div key={i} className="glass-card-elevated rounded-2xl p-6">
-                  <h3 className="mb-2 text-base font-bold text-bluegray-800">{f.title}</h3>
-                  <p className="text-sm leading-relaxed text-bluegray-600">{f.description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ── Pricing ── */}
-        <section id="pricing" className="bg-slate-25 py-16 md:py-24">
-          <div className="section-padding mx-auto max-w-4xl">
-            <div className="mb-14 text-center">
-              <span className="mb-3 inline-block text-xs font-semibold tracking-[0.15em] text-blue-500 uppercase">
-                Pricing
-              </span>
-              <h2 className="mb-4 text-2xl font-bold text-bluegray-800 md:text-3xl">
-                料金プラン
-              </h2>
-              <p className="mx-auto max-w-md text-sm text-bluegray-600">
-                削減できる時間と人件費を考えれば、すぐに元が取れます
-              </p>
-            </div>
-
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {[
-                {
-                  name: 'スタート',
-                  price: '準備中',
-                  desc: '少人数対応の方に',
-                  features: ['月○人まで', '基本機能すべて', 'Excel出力', 'メールサポート'],
-                },
-                {
-                  name: 'スタンダード',
-                  price: '準備中',
-                  desc: '中規模チームに最適',
-                  features: ['月○人まで', '基本機能すべて', 'AI添削', '優先サポート'],
-                  popular: true,
-                },
-                {
-                  name: 'プロ',
-                  price: '準備中',
-                  desc: '大量処理が必要な方に',
-                  features: ['無制限', '全機能', 'AI添削', '専任サポート'],
-                },
-              ].map((plan, i) => (
-                <div
-                  key={i}
-                  className={`relative overflow-hidden rounded-2xl border p-6 md:p-8 ${
-                    plan.popular
-                      ? 'border-blue-300 bg-white shadow-xl'
-                      : 'border-bluegray-100 bg-white'
-                  }`}
+        {/* ── Header ── */}
+        <header className="fixed top-0 right-0 left-0 z-50">
+          <div className="mx-auto max-w-5xl">
+            <div className="glass-card mx-3 mt-3 rounded-2xl px-5 py-2 md:mx-6 md:mt-4 md:px-8 md:py-3">
+              <div className="flex items-center justify-between">
+                <a
+                  href="/"
+                  className="text-base font-bold tracking-tight text-bluegray-800 no-underline md:text-lg"
                 >
-                  {plan.popular && (
-                    <div className="absolute top-0 right-0 rounded-bl-xl bg-blue-600 px-3 py-1 text-[10px] font-bold text-white">
-                      おすすめ
+                  オリジナルアプリ制作
+                </a>
+                <a
+                  href="#pricing"
+                  className="rounded-full bg-metallic-green px-5 py-2 text-xs font-semibold text-white no-underline transition-all hover:shadow-lg md:text-sm"
+                >
+                  料金を見る
+                </a>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <main>
+          {/* ── Hero ── */}
+          <section className="relative overflow-hidden pt-28 pb-16 md:pt-36 md:pb-24">
+            <div className="section-padding relative mx-auto max-w-4xl text-center">
+              <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-bluegray-100 bg-white px-4 py-2 shadow-sm">
+                <span className="h-2 w-2 rounded-full bg-metallic-green" />
+                <span className="text-xs font-semibold text-bluegray-600">
+                  あなた専用のアプリを、5万円から
+                </span>
+              </div>
+
+              <h1 className="mb-6 text-2xl leading-tight font-bold tracking-tight text-bluegray-800 sm:text-3xl md:text-4xl lg:text-5xl">
+                <span className="block">その「めんどくさい」、</span>
+                <span className="text-metallic block">アプリで一気に片づけませんか？</span>
+              </h1>
+
+              <p className="mx-auto mb-10 max-w-xl text-sm leading-relaxed text-bluegray-600 md:text-base">
+                毎月繰り返す事務作業、書類作成、報告書。
+                <br className="hidden sm:block" />
+                AIと組み合わせた<strong className="font-bold">オリジナルアプリ</strong>で、
+                時間もコストも一気に圧縮できます。
+              </p>
+
+              <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center sm:gap-4">
+                <a
+                  href="#pricing"
+                  className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-metallic-green px-8 py-4 text-sm font-semibold text-white no-underline shadow-lg transition-all hover:shadow-xl sm:w-auto"
+                >
+                  料金プランを見る
+                </a>
+                <a
+                  href="#examples"
+                  className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-bluegray-200 bg-white px-8 py-4 text-sm font-semibold text-bluegray-700 no-underline transition-all hover:bg-bluegray-50 sm:w-auto"
+                >
+                  活用例を見る
+                </a>
+              </div>
+            </div>
+          </section>
+
+          {/* ── Problem ── */}
+          <section className="bg-slate-25 py-16 md:py-24">
+            <div className="section-padding mx-auto max-w-4xl text-center">
+              <span className="mb-3 inline-block text-xs font-semibold tracking-[0.15em] text-bluegray-400 uppercase">
+                Problem
+              </span>
+              <h2 className="mb-6 text-2xl font-bold text-bluegray-800 md:text-3xl">
+                その業務、まだ人の手でやっていませんか？
+              </h2>
+              <p className="mx-auto mb-12 max-w-xl text-sm leading-relaxed text-bluegray-600 md:text-base">
+                「毎月、同じ書類を何十件も作っている」
+                <br className="hidden sm:block" />
+                「業務の8割はコピペと微調整で終わっている」
+                <br className="hidden sm:block" />
+                そんな仕事こそ、アプリにしてしまえば人がやる必要はありません。
+              </p>
+
+              <div className="grid grid-cols-3 gap-2 sm:gap-4">
+                {[
+                  { number: '60〜90分', label: '書類1件あたりの作業時間' },
+                  { number: '50〜75時間', label: '月50件対応した場合の工数' },
+                  { number: '年100万円超', label: '年間の人件費換算' },
+                ].map((stat, i) => (
+                  <div key={i} className="glass-card-elevated rounded-xl p-3 sm:p-5 md:p-6">
+                    <div className="text-metallic mb-1 text-sm font-bold sm:mb-2 sm:text-xl md:text-3xl">
+                      {stat.number}
                     </div>
-                  )}
-                  <h3 className="mb-1 text-lg font-bold text-bluegray-800">{plan.name}</h3>
-                  <p className="mb-4 text-xs text-bluegray-500">{plan.desc}</p>
-                  <div className="mb-6 text-2xl font-bold text-blue-600">{plan.price}</div>
-                  <ul className="mb-6 space-y-2">
-                    {plan.features.map((f, j) => (
-                      <li key={j} className="flex items-center gap-2 text-sm text-bluegray-600">
-                        <svg className="h-4 w-4 shrink-0 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                        </svg>
-                        {f}
-                      </li>
-                    ))}
-                  </ul>
-                  <a
-                    href="mailto:hello@example.com"
-                    className={`block rounded-full py-3 text-center text-sm font-semibold no-underline transition-all ${
+                    <div className="text-[10px] leading-snug text-bluegray-500 sm:text-xs">
+                      {stat.label}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* ── Case study: 爆速くん ── */}
+          <section className="py-16 md:py-24">
+            <div className="section-padding mx-auto max-w-4xl">
+              <div className="mb-12 text-center">
+                <span className="mb-3 inline-block text-xs font-semibold tracking-[0.15em] text-bluegray-400 uppercase">
+                  Case Study
+                </span>
+                <h2 className="mb-4 text-2xl font-bold text-bluegray-800 md:text-3xl">
+                  たとえば、こんな効果が出ています
+                </h2>
+                <p className="mx-auto max-w-xl text-sm text-bluegray-600">
+                  書類作成アプリ「<strong>爆速くん</strong>」を導入した現場での実例です。
+                </p>
+              </div>
+
+              <div className="mx-auto mb-10 max-w-2xl overflow-hidden rounded-2xl border border-bluegray-100 bg-gradient-to-br from-slate-50 to-green-50 shadow-xl">
+                <img
+                  src={`${B}images/works/work-01.jpg`}
+                  alt="爆速くんの画面"
+                  className="w-full object-contain"
+                />
+              </div>
+
+              <div className="grid grid-cols-2 gap-3 sm:gap-4">
+                <div className="glass-card-elevated rounded-xl p-4 sm:p-6 md:p-8">
+                  <div className="mb-1 text-[10px] font-semibold tracking-widest text-bluegray-400 uppercase sm:text-xs">
+                    作業時間
+                  </div>
+                  <div className="flex flex-wrap items-baseline gap-1 sm:gap-2">
+                    <span className="text-xs text-bluegray-500 line-through sm:text-sm">
+                      60〜90分
+                    </span>
+                    <span className="text-metallic text-xl font-bold sm:text-3xl md:text-4xl">
+                      約1分
+                    </span>
+                  </div>
+                  <p className="mt-2 text-[11px] leading-snug text-bluegray-500 sm:mt-3 sm:text-xs">
+                    1件あたりの書類作成が、手作業から約60倍のスピードに。
+                  </p>
+                </div>
+                <div className="glass-card-elevated rounded-xl p-4 sm:p-6 md:p-8">
+                  <div className="mb-1 text-[10px] font-semibold tracking-widest text-bluegray-400 uppercase sm:text-xs">
+                    月間コスト
+                  </div>
+                  <div className="flex flex-wrap items-baseline gap-1 sm:gap-2">
+                    <span className="text-xs text-bluegray-500 line-through sm:text-sm">
+                      13万円
+                    </span>
+                    <span className="text-metallic text-xl font-bold sm:text-3xl md:text-4xl">
+                      ほぼ¥0
+                    </span>
+                  </div>
+                  <p className="mt-2 text-[11px] leading-snug text-bluegray-500 sm:mt-3 sm:text-xs">
+                    月50件×1,800円で試算した人件費が、ほぼゼロに圧縮。
+                  </p>
+                </div>
+              </div>
+
+              <p className="mt-8 text-center text-xs text-bluegray-400">
+                ※ 爆速くんはあくまで一例。あなたの業務に合わせて、同じようなアプリをオリジナルで制作します。
+              </p>
+            </div>
+          </section>
+
+          {/* ── 10 Examples ── */}
+          <section id="examples" className="bg-slate-25 py-16 md:py-24">
+            <div className="section-padding mx-auto max-w-5xl">
+              <div className="mb-14 text-center">
+                <span className="mb-3 inline-block text-xs font-semibold tracking-[0.15em] text-bluegray-400 uppercase">
+                  Examples
+                </span>
+                <h2 className="mb-4 text-2xl font-bold text-bluegray-800 md:text-3xl">
+                  こんなアプリも、作れます
+                </h2>
+                <p className="mx-auto max-w-xl text-sm text-bluegray-600">
+                  書類作成だけじゃない。こんな活用例が10個あります。
+                </p>
+              </div>
+
+              <div className="grid grid-cols-2 gap-3 sm:gap-4">
+                {examples.map((ex, i) => (
+                  <div
+                    key={i}
+                    className="glass-card-elevated flex items-start gap-2 rounded-xl p-3 sm:gap-3 sm:p-5 md:p-6"
+                  >
+                    <div className="bg-metallic-green flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-[10px] font-bold text-white sm:h-8 sm:w-8 sm:text-xs md:h-9 md:w-9">
+                      {String(i + 1).padStart(2, '0')}
+                    </div>
+                    <div>
+                      <h3 className="mb-1 text-[11px] leading-tight font-bold text-bluegray-800 sm:text-sm md:text-base">
+                        {ex.title}
+                      </h3>
+                      <p className="text-[10px] leading-snug text-bluegray-600 sm:text-xs md:text-sm md:leading-relaxed">
+                        {ex.description}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <p className="mt-10 text-center text-sm text-bluegray-600">
+                上記はほんの一例です。「これもできる？」というご相談、お気軽にどうぞ。
+              </p>
+
+              <div className="mx-auto mt-10 max-w-3xl overflow-hidden rounded-2xl border border-bluegray-100 bg-white shadow-xl md:mt-14">
+                <img
+                  src={`${B}images/works/business-improvement.png`}
+                  alt="1日30分の積み重ねが生む、年間・人数別の時間換算"
+                  className="w-full object-contain"
+                />
+              </div>
+            </div>
+          </section>
+
+          {/* ── Flow ── */}
+          <section className="py-16 md:py-24">
+            <div className="section-padding mx-auto max-w-4xl">
+              <div className="mb-14 text-center">
+                <span className="mb-3 inline-block text-xs font-semibold tracking-[0.15em] text-bluegray-400 uppercase">
+                  Flow
+                </span>
+                <h2 className="mb-4 text-2xl font-bold text-bluegray-800 md:text-3xl">
+                  制作の流れ
+                </h2>
+              </div>
+
+              <div className="space-y-5 md:space-y-6">
+                {flow.map((step, i) => (
+                  <div
+                    key={i}
+                    className="glass-card-elevated flex flex-col gap-4 rounded-2xl p-6 md:flex-row md:items-start md:gap-8 md:p-8"
+                  >
+                    <div className="bg-metallic-green flex h-12 w-12 shrink-0 items-center justify-center rounded-full text-sm font-bold text-white">
+                      {step.number}
+                    </div>
+                    <div>
+                      <h3 className="mb-2 text-lg font-bold text-bluegray-800">
+                        {step.title}
+                      </h3>
+                      <p className="text-sm leading-relaxed text-bluegray-600">
+                        {step.description}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* ── Pricing ── */}
+          <section id="pricing" className="bg-slate-25 py-16 md:py-24">
+            <div className="section-padding mx-auto max-w-5xl">
+              <div className="mb-14 text-center">
+                <span className="mb-3 inline-block text-xs font-semibold tracking-[0.15em] text-bluegray-400 uppercase">
+                  Pricing
+                </span>
+                <h2 className="mb-4 text-2xl font-bold text-bluegray-800 md:text-3xl">
+                  料金プラン
+                </h2>
+                <p className="mx-auto max-w-lg text-sm text-bluegray-600">
+                  まずは<strong className="font-bold">5万円から</strong>。
+                  小さく始めて、効果を見ながら拡張していけます。
+                </p>
+              </div>
+
+              <div className="grid grid-cols-3 gap-2 sm:gap-4 md:gap-6">
+                {plans.map((plan, i) => (
+                  <div
+                    key={i}
+                    className={`relative overflow-hidden rounded-xl border p-3 sm:p-5 md:p-8 ${
                       plan.popular
-                        ? 'bg-blue-600 text-white hover:bg-blue-700'
-                        : 'bg-bluegray-50 text-bluegray-700 hover:bg-bluegray-100'
+                        ? 'border-green-300 bg-white shadow-xl'
+                        : 'border-bluegray-100 bg-white'
                     }`}
                   >
-                    お問い合わせ
-                  </a>
-                </div>
-              ))}
-            </div>
+                    {plan.popular && (
+                      <div className="bg-metallic-green absolute top-0 right-0 rounded-bl-lg px-1.5 py-0.5 text-[8px] font-bold text-white sm:px-3 sm:py-1 sm:text-[10px]">
+                        おすすめ
+                      </div>
+                    )}
+                    <h3 className="mb-1 text-xs font-bold text-bluegray-800 sm:text-base md:text-lg">
+                      {plan.name}
+                    </h3>
+                    <p className="mb-2 text-[10px] leading-snug text-bluegray-500 sm:mb-4 sm:text-xs">
+                      {plan.desc}
+                    </p>
+                    <div className="text-metallic mb-3 text-sm font-bold sm:mb-6 sm:text-xl md:text-2xl">
+                      {plan.price}
+                    </div>
+                    <ul className="mb-3 space-y-1 sm:mb-6 sm:space-y-2">
+                      {plan.features.map((f, j) => (
+                        <li
+                          key={j}
+                          className="flex items-start gap-1 text-[10px] leading-snug text-bluegray-600 sm:items-center sm:gap-2 sm:text-sm"
+                        >
+                          <svg
+                            className="mt-0.5 h-2.5 w-2.5 shrink-0 text-green-500 sm:mt-0 sm:h-4 sm:w-4"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            strokeWidth={2}
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              d="M5 13l4 4L19 7"
+                            />
+                          </svg>
+                          {f}
+                        </li>
+                      ))}
+                    </ul>
+                    <a
+                      href="mailto:hello@example.com"
+                      className={`block rounded-full py-1.5 text-center text-[10px] font-semibold no-underline transition-all sm:py-2.5 sm:text-xs md:py-3 md:text-sm ${
+                        plan.popular
+                          ? 'bg-metallic-green text-white hover:shadow-lg'
+                          : 'bg-bluegray-50 text-bluegray-700 hover:bg-bluegray-100'
+                      }`}
+                    >
+                      お問い合わせ
+                    </a>
+                  </div>
+                ))}
+              </div>
 
-            <p className="mt-8 text-center text-xs text-bluegray-400">
-              ※ 料金は近日公開予定です。お問い合わせいただければ先行案内いたします。
+              <p className="mt-8 text-center text-xs text-bluegray-400">
+                ※ 機能や要件によって金額は前後します。まずは無料相談でお見積もりをご案内します。
+              </p>
+            </div>
+          </section>
+
+          {/* ── Final CTA ── */}
+          <section className="py-16 md:py-24">
+            <div className="section-padding mx-auto max-w-3xl text-center">
+              <h2 className="mb-4 text-2xl font-bold text-bluegray-800 md:text-3xl">
+                あなたの業務にも、専用アプリを。
+              </h2>
+              <p className="mx-auto mb-10 max-w-md text-sm leading-relaxed text-bluegray-600">
+                「うちのこの業務もアプリにできる？」そんな小さな疑問から、お気軽にご相談ください。
+              </p>
+              <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center sm:gap-4">
+                <a
+                  href="mailto:hello@example.com"
+                  className="bg-metallic-green inline-flex w-full items-center justify-center gap-2 rounded-full px-8 py-4 text-sm font-semibold text-white no-underline shadow-lg transition-all hover:shadow-xl sm:w-auto"
+                >
+                  無料で相談する
+                </a>
+                <a
+                  href="/"
+                  className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-bluegray-200 bg-white px-8 py-4 text-sm font-semibold text-bluegray-700 no-underline transition-all hover:bg-bluegray-50 sm:w-auto"
+                >
+                  杜の都工房トップへ
+                </a>
+              </div>
+            </div>
+          </section>
+        </main>
+
+        {/* ── Footer ── */}
+        <footer className="border-t border-bluegray-100/50 py-8">
+          <div className="section-padding mx-auto max-w-5xl text-center">
+            <p className="text-[11px] text-bluegray-400">
+              &copy; {new Date().getFullYear()} 杜の都工房 — オリジナルアプリ制作
             </p>
           </div>
-        </section>
-
-        {/* ── Final CTA ── */}
-        <section className="py-16 md:py-24">
-          <div className="section-padding mx-auto max-w-3xl text-center">
-            <h2 className="mb-4 text-2xl font-bold text-bluegray-800 md:text-3xl">
-              書類作成の時間を、本来の仕事に。
-            </h2>
-            <p className="mx-auto mb-10 max-w-md text-sm leading-relaxed text-bluegray-600">
-              まずはお気軽にお問い合わせください。
-              デモのご案内も可能です。
-            </p>
-            <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center sm:gap-4">
-              <a
-                href="mailto:hello@example.com"
-                className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-blue-600 px-8 py-4 text-sm font-semibold text-white no-underline shadow-lg transition-all hover:bg-blue-700 hover:shadow-xl sm:w-auto"
-              >
-                お問い合わせ
-              </a>
-              <a
-                href="/"
-                className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-bluegray-200 bg-white px-8 py-4 text-sm font-semibold text-bluegray-700 no-underline transition-all hover:bg-bluegray-50 sm:w-auto"
-              >
-                杜の都工房トップへ
-              </a>
-            </div>
-          </div>
-        </section>
-      </main>
-
-      {/* ── Footer ── */}
-      <footer className="border-t border-bluegray-100/50 py-8">
-        <div className="section-padding mx-auto max-w-5xl text-center">
-          <p className="text-[11px] text-bluegray-400">
-            &copy; {new Date().getFullYear()} 杜の都工房 — 爆速くん
-          </p>
-        </div>
-      </footer>
+        </footer>
       </div>
     </div>
   )

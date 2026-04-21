@@ -10,6 +10,8 @@ import Links from './components/Links'
 import Footer from './components/Footer'
 import BakusokuLP from './components/BakusokuLP'
 import AiUpdateLP from './components/AiUpdateLP'
+import AiSecretaryLP from './components/AiSecretaryLP'
+import WebDesignLP from './components/WebDesignLP'
 import FloatingSymbols from './components/FloatingSymbols'
 
 function App() {
@@ -64,6 +66,14 @@ function App() {
     return <AiUpdateLP />
   }
 
+  if (page === 'ai-secretary') {
+    return <AiSecretaryLP />
+  }
+
+  if (page === 'web-design') {
+    return <WebDesignLP />
+  }
+
   return (
     <div className="relative min-h-screen bg-white font-sans antialiased">
       <FloatingSymbols count={45} />
@@ -88,6 +98,8 @@ function getPage() {
   const hash = window.location.hash
   if (hash === '#/bakusoku') return 'bakusoku'
   if (hash === '#/ai-update') return 'ai-update'
+  if (hash === '#/ai-secretary') return 'ai-secretary'
+  if (hash === '#/web-design') return 'web-design'
   return 'home'
 }
 
