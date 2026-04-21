@@ -45,7 +45,7 @@ export default function Hero() {
               <br />
               {hero.subText[1].split('').map((char, i) =>
                 ['共', '育', '創', '助'].includes(char) ? (
-                  <span key={i} className="text-metallic font-semibold">{char}</span>
+                  <span key={i} className="font-bold text-bluegray-800">{char}</span>
                 ) : (
                   char
                 ),
