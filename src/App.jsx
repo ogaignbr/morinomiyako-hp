@@ -24,8 +24,17 @@ function App() {
   useEffect(() => {
     if (page !== 'home') return
 
-    const targets = document.querySelectorAll('main > section:not(:first-child), footer')
-    targets.forEach((el) => el.classList.add('scroll-reveal'))
+    const sections = document.querySelectorAll('main > section:not(:first-child), footer')
+    sections.forEach((el) => el.classList.add('scroll-reveal'))
+
+    const childSelectors = [
+      'main > section:not(:first-child) > div > div > h2',
+      'main > section:not(:first-child) > div > div > h3',
+      'main > section:not(:first-child) .glass-card',
+      'main > section:not(:first-child) .glass-card-elevated',
+    ].join(', ')
+    const children = document.querySelectorAll(childSelectors)
+    children.forEach((el) => el.classList.add('scroll-reveal-child'))
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -36,10 +45,11 @@ function App() {
           }
         })
       },
-      { threshold: 0.08 },
+      { threshold: 0.12 },
     )
 
-    targets.forEach((el) => observer.observe(el))
+    sections.forEach((el) => observer.observe(el))
+    children.forEach((el) => observer.observe(el))
     return () => observer.disconnect()
   }, [page])
 
