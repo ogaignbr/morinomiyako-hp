@@ -291,6 +291,35 @@ h1, h2, h3 {
   margin: 0;
 }
 
+/* Service card icon motion animations */
+@keyframes service-icon-grow {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.18); }
+}
+
+@keyframes service-icon-bounce {
+  0%, 100% { transform: translateY(0); }
+  25% { transform: translateY(-14px); }
+  50% { transform: translateY(0); }
+  75% { transform: translateY(-6px); }
+}
+
+@keyframes service-icon-dive {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(12px) scaleY(0.92); }
+}
+
+@keyframes service-icon-slide {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-10px) rotate(-4deg); }
+  75% { transform: translateX(10px) rotate(4deg); }
+}
+
+.service-icon-anim-0 { animation: service-icon-grow 3.2s ease-in-out infinite; }
+.service-icon-anim-1 { animation: service-icon-bounce 2.4s ease-in-out infinite; }
+.service-icon-anim-2 { animation: service-icon-dive 2.8s ease-in-out infinite; }
+.service-icon-anim-3 { animation: service-icon-slide 3s ease-in-out infinite; }
+
 @media (min-width: 768px) {
   .section-padding {
     padding-left: 2.5rem;

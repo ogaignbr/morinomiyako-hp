@@ -30,32 +30,32 @@ export const services = [
     iconKey: 'webDesign',
     title: 'Webデザイン',
     description:
-      'ブランドの世界観を大切にした、美しく使いやすいWebサイトをデザイン・制作します。',
-    tags: ['LP', 'コーポレート', 'ポートフォリオ'],
+      '見やすい、伝わりやすいWebページを制作します。シンプルなものから派手なものも。目的に合わせて制作します。',
+    tags: ['LP', 'ポートフォリオ', 'HP'],
     video: `${B}/images/services/service-01.mp4`,
   },
   {
     iconKey: 'aiAutomation',
     title: 'AI活用・業務改善',
     description:
-      'ChatGPTやClaudeなどのAIツールを活用した、業務効率化の仕組みづくりを支援します。',
-    tags: ['ChatGPT', 'Claude', '自動化'],
+      '既存システムやSNSの導線を整えます。簡易的なアプリ導入や自動化など用途にあわせてサポートします。',
+    tags: ['Webアプリ', '自動化', 'AI秘書'],
     video: `${B}/images/services/service-02.mp4`,
   },
   {
     iconKey: 'content',
     title: 'コンテンツ制作',
     description:
-      'note記事、SNS運用、プレゼン資料など、伝わるコンテンツを制作します。',
-    tags: ['note', 'SNS', '資料制作'],
+      'note記事、SNS運用、プレゼン資料、研修資料など、目線を合わせたコンテンツを制作します。',
+    tags: ['ブログ', '記事', 'SNS投稿'],
     video: `${B}/images/services/service-03.mp4`,
   },
   {
     iconKey: 'consulting',
     title: 'AI搭載サポート',
     description:
-      'AIを学ぶのではなく、自分をアップデートする。音声入力やAI対話を活用し、あなたの仕事にAIを実装する伴走支援です。',
-    tags: ['AI実装', 'アップデート', '伴走'],
+      'AIを学ぶよりも、自分にAIを搭載しアップデートする。AIを相棒と呼べるまで、伴走します。',
+    tags: ['AI実装', '情報共有', '案件共有'],
     video: `${B}/images/services/service-04.mp4`,
     href: '#/ai-update',
   },
