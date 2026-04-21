@@ -29,7 +29,7 @@ export default function Hero() {
             </div>
 
             {/* Main heading */}
-            <h1 className="mb-5 text-3xl leading-tight font-bold tracking-tight text-bluegray-800 sm:text-4xl md:text-5xl lg:text-6xl">
+            <h1 className="mb-5 text-2xl leading-tight font-bold tracking-tight text-bluegray-800 sm:text-3xl md:text-4xl lg:text-5xl">
               {hero.heading.filter(Boolean).map((line, i) => (
                 <span key={i} className="block">
                   <span className={`title-reveal is-visible ${i === 0 ? 'text-gradient' : ''}`}>
@@ -40,10 +40,16 @@ export default function Hero() {
             </h1>
 
             {/* Sub text */}
-            <p className="animate-fade-in-up animation-delay-400 mb-9 max-w-lg text-base leading-relaxed font-light text-bluegray-600 md:text-lg">
+            <p className="animate-fade-in-up animation-delay-400 mb-9 max-w-xl text-sm leading-relaxed font-light text-bluegray-600 md:text-base">
               {hero.subText[0]}
-              <br className="hidden sm:block" />
-              {hero.subText[1]}
+              <br />
+              {hero.subText[1].split('').map((char, i) =>
+                ['共', '育', '創', '助'].includes(char) ? (
+                  <span key={i} className="text-metallic font-semibold">{char}</span>
+                ) : (
+                  char
+                ),
+              )}
             </p>
 
             {/* CTA buttons */}
