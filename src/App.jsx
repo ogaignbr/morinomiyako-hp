@@ -5,7 +5,6 @@ import Services from './components/Services'
 import Works from './components/Works'
 import About from './components/About'
 import Representative from './components/Representative'
-import Story from './components/Story'
 import Note from './components/Note'
 import Links from './components/Links'
 import Footer from './components/Footer'
@@ -22,6 +21,28 @@ function App() {
     return () => window.removeEventListener('hashchange', onHash)
   }, [])
 
+  useEffect(() => {
+    if (page !== 'home') return
+
+    const targets = document.querySelectorAll('main > section:not(:first-child), footer')
+    targets.forEach((el) => el.classList.add('scroll-reveal'))
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible')
+            observer.unobserve(entry.target)
+          }
+        })
+      },
+      { threshold: 0.08 },
+    )
+
+    targets.forEach((el) => observer.observe(el))
+    return () => observer.disconnect()
+  }, [page])
+
   if (page === 'bakusoku') {
     return <BakusokuLP />
   }
@@ -37,11 +58,10 @@ function App() {
         <Header />
         <main>
           <Hero />
-          <Services />
-          <Works />
           <About />
           <Representative />
-          <Story />
+          <Services />
+          <Works />
           <Note />
           <Links />
         </main>

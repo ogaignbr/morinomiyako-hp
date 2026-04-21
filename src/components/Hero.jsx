@@ -10,7 +10,7 @@ export default function Hero() {
           <img
             src={hero.backgroundImage}
             alt="杜の都工房"
-            className="w-full object-cover"
+            className="animate-gentle-fade-slow w-full object-cover"
           />
         </div>
       )}

@@ -3,6 +3,8 @@
 // 文章を差し替えたいときは、このファイルだけ編集すればOKです
 // ============================================================
 
+const B = import.meta.env.BASE_URL.replace(/\/$/, '')
+
 export const site = {
   name: '杜の都工房',
   tagline: '古き良き × 最先端',
@@ -20,7 +22,7 @@ export const hero = {
     { label: '実績を見る', href: '#works', style: 'primary' },
     { label: 'noteを読む', href: '#note', style: 'secondary' },
   ],
-  backgroundImage: '/images/hero/bg.jpg',
+  backgroundImage: `${B}/images/hero/bg.jpg`,
 }
 
 export const services = [
@@ -30,7 +32,7 @@ export const services = [
     description:
       'ブランドの世界観を大切にした、美しく使いやすいWebサイトをデザイン・制作します。',
     tags: ['LP', 'コーポレート', 'ポートフォリオ'],
-    video: '/images/services/service-01.mp4',
+    video: `${B}/images/services/service-01.mp4`,
   },
   {
     iconKey: 'aiAutomation',
@@ -38,7 +40,7 @@ export const services = [
     description:
       'ChatGPTやClaudeなどのAIツールを活用した、業務効率化の仕組みづくりを支援します。',
     tags: ['ChatGPT', 'Claude', '自動化'],
-    video: '/images/services/service-02.mp4',
+    video: `${B}/images/services/service-02.mp4`,
   },
   {
     iconKey: 'content',
@@ -46,7 +48,7 @@ export const services = [
     description:
       'note記事、SNS運用、プレゼン資料など、伝わるコンテンツを制作します。',
     tags: ['note', 'SNS', '資料制作'],
-    video: '/images/services/service-03.mp4',
+    video: `${B}/images/services/service-03.mp4`,
   },
   {
     iconKey: 'consulting',
@@ -54,7 +56,7 @@ export const services = [
     description:
       'AIを学ぶのではなく、自分をアップデートする。音声入力やAI対話を活用し、あなたの仕事にAIを実装する伴走支援です。',
     tags: ['AI実装', 'アップデート', '伴走'],
-    video: '/images/services/service-04.mp4',
+    video: `${B}/images/services/service-04.mp4`,
     href: '#/ai-update',
   },
 ]
@@ -66,7 +68,7 @@ export const works = [
       'あなたの業務や課題に合わせた、世界にひとつだけのオリジナルアプリを制作します。既製品では解決できない「あったらいいな」を、AIとともに形にします。',
     tags: ['オーダーメイド', '業務効率化', 'AI搭載'],
     price: '50,000円〜',
-    image: '/images/works/bakusoku-card.jpg',
+    image: `${B}/images/works/bakusoku-card.jpg`,
     href: '#/bakusoku',
   },
   {
@@ -75,7 +77,7 @@ export const works = [
       '毎日の小さな「めんどくさい」をAIが代行。通知の確認やルーティンワークなど、繰り返しの作業をAIに任せることで、あなたは本当に大切な仕事に集中できます。',
     tags: ['ルーティン自動化', 'LINE連携', 'AI代行'],
     price: '80,000円〜',
-    image: '/images/works/ai-secretary-card.jpg',
+    image: `${B}/images/works/ai-secretary-card.jpg`,
   },
   {
     title: 'Webページ制作',
@@ -83,7 +85,7 @@ export const works = [
       'ホームページやランディングページ、公式LINEの設計まで。ブランドの魅力を最大限に伝えるWebページをトータルで制作します。',
     tags: ['HP', 'LP', '公式LINE'],
     price: '50,000円〜',
-    video: '/images/works/brand-lp-card.mp4',
+    video: `${B}/images/works/brand-lp-card.mp4`,
   },
   {
     title: 'ためになるノート',
@@ -91,7 +93,7 @@ export const works = [
       '日常の考え方やAI活用術、アプリの作り方、プロンプトのコツなど、すぐに使える知識をどんどん公開しています。',
     tags: ['AI活用', 'プロンプト', 'アプリ開発'],
     price: '1,000円〜',
-    image: '/images/works/note-card.jpg',
+    image: `${B}/images/works/note-card.jpg`,
   },
 ]
 
@@ -120,24 +122,18 @@ export const about = {
   name: '杜の都工房',
   title: '古き良き × 最先端',
   bio: [
-    '仙台をきっかけに、「古き良き×最先端」というテーマで新しいものづくりを実践しています。世の中にAIが浸透し始め、今までのさまざまな常識が進化しています。人間とAIがやるべきことの棲み分けをしっかりすることで、より人間らしい生活ができると考えています。',
-    'こうした技術を学び、実践するきっかけに少しでもなれたら、地域格差などさまざまな問題の解決にもつながるはずです。競争ではなく、共創の社会。こどもたちが夢を見られる明るい未来を一緒に創っていきたい——その思いから、杜の都工房を設立しました。',
+    '仙台を拠点に活動しています。私自身、地方にものすごく可能性を感じています。コロナ以降、オンライン化やリモートワークが急速に広まりましたが、都心部ほどその恩恵を受けやすく、地方ではまだまだ対面・オフラインが中心という現状もあります。',
+    'しかしだからこそ、地方がオンラインや新しい技術をしっかり身につけることで、可能性は大きく広がると思っています。地方は生活コストを抑えやすい分、収入と幸福度のバランスを自分でデザインできる。そんな生き方が、これからの時代にはもっと増えていいはずです。',
+    'そういう未来のきっかけに少しでもなれるように、また新しいものを一緒に作っていけるように——「工房」という名前には、そんな思いを込めています。',
   ],
-  skills: [
-    'AI活用',
-    'Webデザイン',
-    'React',
-    'ライティング',
-    'ブランディング',
-    'コンサルティング',
-  ],
-  avatar: '/images/profile/avatar.jpg',
+  skills: [],
+  avatar: `${B}/images/profile/avatar.jpg`,
 }
 
 export const representative = {
   name: 'おがさわら ともひろ',
   role: '代表',
-  photo: '/images/profile/representative-face.jpg',
+  photo: `${B}/images/profile/representative-face.jpg`,
   location: '仙台市在住（秋田県出身 → 東京 → 仙台）',
   family: '妻・息子・愛犬コーギー',
   career: [
@@ -149,12 +145,29 @@ export const representative = {
 
 export const story = {
   heading: 'なぜ、これをやるのか',
-  paragraphs: [
-    'AIの出現は、インターネットの登場に匹敵する——いや、それを超える変化だと思っています。数年後には全員がAIに触れる時代が来ます。「使う・使わない」ではなく、自分のAIと共に生きていく。勉強や資格取得といったレベルではなく、まるでインストールするように自分自身をアップデートしていく感覚が、これからの当たり前になると考えています。',
-    '変化の中で奪われるものもあるかもしれません。でも、歴史が証明しているように、新しい仕事や価値観は必ず生まれます。大切なのは、その時代が来ることへの心構えと、AIを道具として使いこなすのではなく、共生していくという姿勢だと思っています。',
-    '地方に住んでいること、島国であること、日本語しか話せないこと——今まで壁だったものを、AIは一気に埋めてくれる存在になります。だからこそ、これは大きなチャンスです。この変化を一人でも多くの人と共有し、競争ではなく共創の社会を一緒につくっていきたい。それが杜の都工房の原点です。',
+  steps: [
+    {
+      number: '01',
+      title: 'まず、動いてみる',
+      body: '難しく考えなくていい。今の仕事や日常で「ここ、もっと楽にできそう」と感じた部分をAIで試してみる。東京でも東北でも、その一歩は今すぐ踏み出せる。',
+    },
+    {
+      number: '02',
+      title: 'AIを自分にインストールする',
+      body: 'AIは道具として"使う"ものじゃなく、自分自身に"搭載する"もの。使い続けることで思考と行動がアップデートされていく。場所も、学歴も、関係ない。',
+    },
+    {
+      number: '03',
+      title: '作って、試して、仲間とシェアする',
+      body: '何でもいいから作ってみる、試してみる。その体験を地元の仲間と共有することで、一人の気づきがまわりの10人を動かす。地方にいることは、もう言い訳にならない。',
+    },
+    {
+      number: '04',
+      title: '地方から、共創の社会をつくる',
+      body: '好きな場所で、好きな人と、好きなことを。AIがあれば東北からでもそれは本気で実現できる。東京との格差を埋めるのではなく、地方が誇れる新しいあたり前をみんなでつくっていく。競争ではなく、共創の時代へ。',
+    },
   ],
-  quote: ['競争ではなく、共創を。', 'AIと共に生きる社会をつくる。'],
+  quote: ['AIと一緒に仕事をする時代は、もうすぐそこまで来ていると思っています。', 'せっかくなので、一緒に面白がっていきませんか。'],
 }
 
 export const noteArticles = [
@@ -182,10 +195,9 @@ export const noteArticles = [
 ]
 
 export const socialLinks = [
-  { name: 'X (Twitter)', url: 'https://x.com/', iconKey: 'x' },
-  { name: 'note', url: 'https://note.com/', iconKey: 'note' },
-  { name: 'Threads', url: 'https://threads.net/', iconKey: 'threads' },
-  { name: 'GitHub', url: 'https://github.com/', iconKey: 'github' },
+  { name: 'note', url: 'https://note.com/', iconKey: 'note', image: `${B}/images/social/note-card.png` },
+  { name: 'Threads', url: 'https://threads.net/', iconKey: 'threads', image: `${B}/images/social/threads-card.png` },
+  { name: 'YouTube', url: 'https://youtube.com/', iconKey: 'youtube', image: `${B}/images/social/youtube-card.png` },
 ]
 
 export const navItems = [

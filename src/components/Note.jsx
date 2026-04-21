@@ -13,7 +13,8 @@ export default function Note() {
             noteで発信中
           </h2>
           <p className="mx-auto max-w-md text-sm leading-relaxed text-bluegray-600">
-            AI活用やものづくりの裏側を、noteで発信しています
+            AIツールの使い方・実際に作ったものの裏側を公開中。<br className="hidden sm:inline" />
+            1,000円から学べるコンテンツも揃えています。
           </p>
         </div>
 

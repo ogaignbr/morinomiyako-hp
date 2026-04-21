@@ -105,7 +105,7 @@ export default function BakusokuLP() {
 
             <div className="mx-auto mb-10 max-w-2xl overflow-hidden rounded-2xl border border-bluegray-100 bg-gradient-to-br from-slate-50 to-blue-50 shadow-xl">
               <img
-                src="/images/works/work-01.jpg"
+                src={`${import.meta.env.BASE_URL}images/works/work-01.jpg`}
                 alt="爆速くんのメイン画面"
                 className="w-full object-contain"
               />

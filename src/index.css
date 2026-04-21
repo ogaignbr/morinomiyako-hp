@@ -128,6 +128,27 @@ h1, h2, h3 {
 .animation-delay-400 { animation-delay: 0.4s; }
 .animation-delay-600 { animation-delay: 0.6s; }
 
+@keyframes gentle-fade-in {
+  0% {
+    opacity: 0;
+    transform: scale(1.04);
+    filter: blur(12px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0);
+  }
+}
+
+.animate-gentle-fade {
+  animation: gentle-fade-in 2.8s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+
+.animate-gentle-fade-slow {
+  animation: gentle-fade-in 3.8s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+
 .glass-card {
   background: #ffffff;
   border: 1px solid #e5e5e5;
@@ -194,6 +215,18 @@ h1, h2, h3 {
 .section-padding {
   padding-left: 1.25rem;
   padding-right: 1.25rem;
+}
+
+/* Scroll reveal animation */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(48px);
+  transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.scroll-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 @media (min-width: 768px) {

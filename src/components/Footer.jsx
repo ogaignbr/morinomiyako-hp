@@ -28,7 +28,7 @@ export default function Footer() {
         <div className="section-padding mx-auto max-w-5xl">
           <div className="flex flex-col items-center gap-6 md:flex-row md:justify-between">
             <a href="#" className="flex items-center gap-2 no-underline">
-              <img src="/images/logo-stamp.png" alt="杜の都工房" className="h-[120px] w-[120px] object-contain" />
+              <img src={`${import.meta.env.BASE_URL}images/logo-stamp.png`} alt="杜の都工房" className="h-[120px] w-[120px] object-contain" />
               <div>
                 <span className="block text-sm font-semibold text-white">{site.name}</span>
                 <span className="block text-[11px] text-white/70">宮城県仙台市泉区</span>

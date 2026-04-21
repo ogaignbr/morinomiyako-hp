@@ -10,7 +10,7 @@ export default function Header() {
         <div className="mx-3 mt-3 rounded-2xl glass-card px-5 py-2 md:mx-6 md:mt-4 md:px-8 md:py-2">
           <div className="flex items-center justify-between">
             <a href="#" className="-my-4 flex items-center gap-2.5 no-underline">
-              <img src="/images/logo-stamp.png" alt="杜の都工房" className="h-[88px] w-[88px] object-contain mix-blend-multiply" />
+              <img src={`${import.meta.env.BASE_URL}images/logo-stamp.png`} alt="杜の都工房" className="h-[88px] w-[88px] object-contain mix-blend-multiply" />
               <span className="text-sm font-semibold tracking-tight text-bluegray-800 md:text-base">
                 {site.name}
               </span>
