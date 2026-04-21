@@ -46,21 +46,19 @@ export default function About() {
             About
           </span>
           <h2 className="section-line mb-4 text-2xl font-bold tracking-tight text-bluegray-800 md:text-3xl">
-            自己紹介
+            {about.name}
           </h2>
         </div>
 
-        <h3 className="mb-1 text-base font-bold text-bluegray-800 md:text-xl">
-          {about.name}
-        </h3>
-        <p className="mb-4 text-[11px] font-medium text-bluegray-400 md:mb-6 md:text-sm">
+        <p className="mb-8 text-center text-xs leading-relaxed text-bluegray-600 md:mb-12 md:text-sm md:leading-loose">
           {about.title}
         </p>
 
         <div className="flex flex-col gap-5 md:gap-8">
+          {/* Row 1: Text (left) + Video (right) */}
           <div className="flex flex-row items-start gap-4 md:gap-10">
             <div className="w-1/2">
-              <p className="text-[11px] leading-relaxed text-bluegray-600 md:text-sm md:leading-loose">
+              <p className="whitespace-pre-line text-[11px] leading-relaxed text-bluegray-600 md:text-sm md:leading-loose">
                 {about.bio[0]}
               </p>
             </div>
@@ -69,18 +67,26 @@ export default function About() {
             </div>
           </div>
 
+          {/* Row 2: Video (left) + Text (right) */}
           <div className="flex flex-row items-start gap-4 md:gap-10">
             <div className="w-1/2">
               <GentleVideo src={`${B}images/profile/intro-video.mov`} />
             </div>
             <div className="w-1/2">
-              <p className="mb-2 text-[11px] leading-relaxed text-bluegray-600 md:mb-4 md:text-sm md:leading-loose">
+              <p className="whitespace-pre-line text-[11px] leading-relaxed text-bluegray-600 md:text-sm md:leading-loose">
                 {about.bio[1]}
               </p>
-              <p className="text-[11px] leading-relaxed text-bluegray-600 md:text-sm md:leading-loose">
+            </div>
+          </div>
+
+          {/* Row 3: Text on left bottom */}
+          <div className="flex flex-row items-start gap-4 md:gap-10">
+            <div className="w-1/2">
+              <p className="whitespace-pre-line text-[11px] leading-relaxed text-bluegray-600 md:text-sm md:leading-loose">
                 {about.bio[2]}
               </p>
             </div>
+            <div className="w-1/2" aria-hidden="true" />
           </div>
         </div>
       </div>

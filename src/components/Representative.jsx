@@ -14,7 +14,6 @@ export default function Representative() {
         </div>
 
         <div className="flex flex-col items-center gap-10 md:flex-row md:items-start md:gap-12">
-          {/* Photo - circle, side-aligned */}
           <div className="shrink-0">
             <div className="h-40 w-40 overflow-hidden rounded-full border-4 border-white shadow-lg md:h-48 md:w-48">
               <img
@@ -26,7 +25,6 @@ export default function Representative() {
             </div>
           </div>
 
-          {/* Text content */}
           <div className="flex-1 text-center md:text-left">
             <div className="mb-1">
               <span className="text-xs font-semibold text-bluegray-400">{representative.role}</span>
@@ -34,17 +32,17 @@ export default function Representative() {
                 {representative.name}
               </h3>
             </div>
-            <p className="mb-5 text-xs text-bluegray-400">{representative.location}　家族：{representative.family}</p>
+            <p className="text-xs text-bluegray-400">{representative.location}</p>
+            <p className="mb-6 text-xs text-bluegray-400">家族：{representative.family}</p>
 
-            <p className="mb-1 text-[10px] font-semibold tracking-widest text-bluegray-400 uppercase">Career</p>
-            {representative.career.map((paragraph, i) => (
-              <p key={i} className="mb-4 text-sm leading-loose text-bluegray-600 last:mb-0">
+            {representative.greeting.map((paragraph, i) => (
+              <p
+                key={i}
+                className="mb-4 whitespace-pre-line text-sm leading-loose text-bluegray-600 last:mb-0"
+              >
                 {paragraph}
               </p>
             ))}
-
-            <p className="mt-6 mb-1 text-[10px] font-semibold tracking-widest text-bluegray-400 uppercase">Hobbies</p>
-            <p className="text-sm leading-loose text-bluegray-600">{representative.hobbies}</p>
           </div>
         </div>
       </div>
