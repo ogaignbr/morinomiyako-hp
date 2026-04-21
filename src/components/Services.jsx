@@ -10,7 +10,7 @@ export default function Services() {
             Services
           </span>
           <h2 className="section-line mb-4 text-2xl font-bold tracking-tight text-bluegray-800 md:text-3xl">
-            できること
+            <span className="title-reveal"><span className="title-reveal-inner">できること</span></span>
           </h2>
           <p className="mx-auto max-w-md text-sm leading-relaxed text-bluegray-600">
             AIとデザインの力で、あなたのアイデアを形にします
@@ -45,7 +45,9 @@ export default function Services() {
                   )}
                 </div>
                 <h3 className="mb-1 text-sm font-semibold md:mb-2 md:text-lg">
-                  <span className="inline rounded bg-mint-400 px-1.5 py-0.5 text-[11px] text-white md:px-2 md:text-base">{service.title}</span>
+                  <span className="title-reveal title-reveal-tight">
+                    <span className="title-reveal-inner inline rounded bg-mint-400 px-1.5 py-0.5 text-[11px] text-white md:px-2 md:text-base">{service.title}</span>
+                  </span>
                 </h3>
                 <p className="mb-2 text-[10px] leading-relaxed text-bluegray-600 md:mb-4 md:text-sm">
                   {service.description}

@@ -10,7 +10,7 @@ export default function Note() {
             Note
           </span>
           <h2 className="section-line mb-4 text-2xl font-bold tracking-tight text-bluegray-800 md:text-3xl">
-            noteで発信中
+            <span className="title-reveal"><span className="title-reveal-inner">noteで発信中</span></span>
           </h2>
           <p className="mx-auto max-w-md text-sm leading-relaxed text-bluegray-600">
             AIツールの使い方・実際に作ったものの裏側を公開中。<br className="hidden sm:inline" />

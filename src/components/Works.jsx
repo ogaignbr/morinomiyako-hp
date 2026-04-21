@@ -17,7 +17,7 @@ export default function Works() {
             Works
           </span>
           <h2 className="section-line mb-4 text-2xl font-bold tracking-tight text-bluegray-800 md:text-3xl">
-            制作実績
+            <span className="title-reveal"><span className="title-reveal-inner">制作実績</span></span>
           </h2>
           <p className="mx-auto max-w-md text-sm leading-relaxed text-bluegray-600">
             AIとデザインで形にしてきた、これまでの仕事

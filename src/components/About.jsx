@@ -46,7 +46,7 @@ export default function About() {
             About
           </span>
           <h2 className="section-line mb-4 text-2xl font-bold tracking-tight text-bluegray-800 md:text-3xl">
-            {about.name}
+            <span className="title-reveal"><span className="title-reveal-inner">{about.name}</span></span>
           </h2>
         </div>
 

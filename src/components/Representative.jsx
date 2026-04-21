@@ -9,7 +9,7 @@ export default function Representative() {
             Message
           </span>
           <h2 className="section-line mb-4 text-2xl font-bold tracking-tight text-bluegray-800 md:text-3xl">
-            代表挨拶
+            <span className="title-reveal"><span className="title-reveal-inner">代表挨拶</span></span>
           </h2>
         </div>
 

@@ -29,9 +29,13 @@ export default function Hero() {
             </div>
 
             {/* Main heading */}
-            <h1 className="animate-fade-in-up animation-delay-200 mb-5 text-3xl leading-tight font-bold tracking-tight text-bluegray-800 sm:text-4xl md:text-5xl lg:text-6xl">
+            <h1 className="mb-5 text-3xl leading-tight font-bold tracking-tight text-bluegray-800 sm:text-4xl md:text-5xl lg:text-6xl">
               {hero.heading.filter(Boolean).map((line, i) => (
-                <span key={i} className={`block ${i === 0 ? 'text-gradient' : ''}`}>{line}</span>
+                <span key={i} className="block">
+                  <span className={`title-reveal is-visible ${i === 0 ? 'text-gradient' : ''}`}>
+                    <span className="title-reveal-inner">{line}</span>
+                  </span>
+                </span>
               ))}
             </h1>
 

@@ -9,7 +9,7 @@ export default function Links() {
             Links
           </span>
           <h2 className="section-line mb-4 text-2xl font-bold tracking-tight text-bluegray-800 md:text-3xl">
-            つながる
+            <span className="title-reveal"><span className="title-reveal-inner">つながる</span></span>
           </h2>
         </div>
 

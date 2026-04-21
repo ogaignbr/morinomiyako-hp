@@ -48,8 +48,11 @@ function App() {
       { threshold: 0.12 },
     )
 
+    const titles = document.querySelectorAll('.title-reveal')
+
     sections.forEach((el) => observer.observe(el))
     children.forEach((el) => observer.observe(el))
+    titles.forEach((el) => observer.observe(el))
     return () => observer.disconnect()
   }, [page])
 
