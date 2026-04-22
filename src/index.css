@@ -342,6 +342,39 @@ h1, h2, h3 {
 .service-icon-anim-2 { animation: service-icon-dive 2.8s ease-in-out infinite; }
 .service-icon-anim-3 { animation: service-icon-slide 3s ease-in-out infinite; }
 
+/* Service title pop-in animation (別ページと重複しないよう独立設計) */
+@keyframes service-title-pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.6) translateY(8px);
+    letter-spacing: 0.05em;
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.06) translateY(0);
+    letter-spacing: 0;
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    letter-spacing: 0;
+  }
+}
+
+.service-title-reveal {
+  display: inline-block;
+  opacity: 0;
+  transform-origin: left center;
+}
+
+.service-title-reveal.is-visible {
+  animation: service-title-pop 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.service-title-reveal.is-visible.delay-1 { animation-delay: 0.1s; }
+.service-title-reveal.is-visible.delay-2 { animation-delay: 0.2s; }
+.service-title-reveal.is-visible.delay-3 { animation-delay: 0.3s; }
+
 @media (min-width: 768px) {
   .section-padding {
     padding-left: 2.5rem;

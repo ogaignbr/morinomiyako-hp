@@ -13,7 +13,7 @@ export default function Note() {
             <span className="title-reveal"><span className="title-reveal-inner">noteで発信中</span></span>
           </h2>
           <p className="mx-auto max-w-md text-sm leading-relaxed text-bluegray-600">
-            AIツールの使い方・実際に作ったものの裏側を公開中。<br className="hidden sm:inline" />
+            AIツールの使い方・実際に作ったものの裏側を公開中。<br />
             1,000円から学べるコンテンツも揃えています。
           </p>
         </div>
@@ -54,7 +54,7 @@ export default function Note() {
 
         <div className="mt-10 text-center">
           <a
-            href="https://note.com/"
+            href="https://note.com/gaogao_note/portal"
             target="_blank"
             rel="noopener noreferrer"
             className="group inline-flex items-center gap-2 rounded-full bg-bluegray-800 px-7 py-3.5 text-sm font-medium text-white no-underline shadow-lg transition-all hover:bg-bluegray-900 hover:shadow-xl"

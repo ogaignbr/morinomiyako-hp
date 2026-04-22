@@ -19,7 +19,7 @@ export const hero = {
     '共に育ち、共に創り、共に助け合う社会を目指します。',
   ],
   cta: [
-    { label: '実績を見る', href: '#works', style: 'primary' },
+    { label: 'お仕事はこちら', href: '#works', style: 'primary' },
     { label: 'noteを読む', href: '#note', style: 'secondary' },
   ],
   backgroundImage: `${B}/images/hero/bg.jpg`,
@@ -122,7 +122,7 @@ export const features = [
 
 export const about = {
   name: '杜の都工房について',
-  title: '杜の都工房は、Web制作とAI活用支援を通じて、企業や地域の課題解決をサポートする工房です。',
+  title: '杜の都工房は、Web制作とAI活用支援を通じて、\n企業や地域の課題解決をサポートする工房です。',
   bio: [
     '「新しい技術を取り入れたいけれど、何から始めればいいのかわからない」\n「外注したいけれど、思いや考えをうまく伝えられない」\nそんな声に応えたいという想いから、この工房を立ち上げました。',
     '私たちは、単にAIを使って業務を効率化することだけを目的にはしていません。AIにはAIの得意なことがあり、人には人の得意なことがあります。だからこそ、お客様のサービスや事業、その背景にある想いを丁寧に理解したうえで、それぞれに合った正しい方法で課題解決を行うことを大切にしています。',
@@ -199,9 +199,24 @@ export const noteArticles = [
 ]
 
 export const socialLinks = [
-  { name: 'note', url: 'https://note.com/', iconKey: 'note', image: `${B}/images/social/note-card.png` },
-  { name: 'Threads', url: 'https://threads.net/', iconKey: 'threads', image: `${B}/images/social/threads-card.png` },
-  { name: 'YouTube', url: 'https://youtube.com/', iconKey: 'youtube', image: `${B}/images/social/youtube-card.png` },
+  {
+    name: 'note',
+    url: 'https://note.com/gaogao_note/portal',
+    iconKey: 'note',
+    image: `${B}/images/social/note-card.png`,
+  },
+  {
+    name: 'Threads',
+    url: 'https://www.threads.com/@ogawa_iju?igshid=NTc4MTIwNjQ2YQ==',
+    iconKey: 'threads',
+    image: `${B}/images/social/threads-card.png`,
+  },
+  {
+    name: 'YouTube',
+    url: 'https://youtube.com/',
+    iconKey: 'youtube',
+    image: `${B}/images/social/youtube-card.png`,
+  },
 ]
 
 export const navItems = [

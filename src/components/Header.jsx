@@ -36,18 +36,24 @@ export default function Header() {
 
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="flex h-10 w-10 items-center justify-center rounded-xl bg-transparent transition-colors hover:bg-bluegray-50 md:hidden"
+              className="group flex h-11 w-11 items-center justify-center rounded-full border border-bluegray-200/70 bg-white/60 backdrop-blur-md transition-all duration-300 hover:border-mint-400/70 hover:shadow-[0_4px_20px_-6px_rgba(16,185,129,0.35)] md:hidden"
               aria-label="メニュー"
             >
-              <div className="flex flex-col gap-1.5">
+              <div className="relative h-[18px] w-6">
                 <span
-                  className={`block h-0.5 w-5 rounded-full bg-bluegray-700 transition-all duration-300 ${isOpen ? 'translate-y-2 rotate-45' : ''}`}
+                  className={`absolute left-0 top-0 h-[1.5px] w-6 origin-center rounded-full bg-gradient-to-r from-bluegray-700 via-mint-500 to-bluegray-700 transition-transform duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] ${
+                    isOpen ? 'translate-y-2 rotate-45' : ''
+                  }`}
                 />
                 <span
-                  className={`block h-0.5 w-5 rounded-full bg-bluegray-700 transition-all duration-300 ${isOpen ? 'opacity-0' : ''}`}
+                  className={`absolute right-0 top-1/2 h-[1.5px] -translate-y-1/2 rounded-full bg-bluegray-600 transition-all duration-300 ${
+                    isOpen ? 'w-0 opacity-0' : 'w-3.5 group-hover:w-5'
+                  }`}
                 />
                 <span
-                  className={`block h-0.5 w-5 rounded-full bg-bluegray-700 transition-all duration-300 ${isOpen ? '-translate-y-2 -rotate-45' : ''}`}
+                  className={`absolute left-0 bottom-0 h-[1.5px] w-6 origin-center rounded-full bg-gradient-to-r from-bluegray-700 via-mint-500 to-bluegray-700 transition-transform duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] ${
+                    isOpen ? '-translate-y-2 -rotate-45' : ''
+                  }`}
                 />
               </div>
             </button>

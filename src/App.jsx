@@ -51,10 +51,12 @@ function App() {
     )
 
     const titles = document.querySelectorAll('.title-reveal')
+    const serviceTitles = document.querySelectorAll('.service-title-reveal')
 
     sections.forEach((el) => observer.observe(el))
     children.forEach((el) => observer.observe(el))
     titles.forEach((el) => observer.observe(el))
+    serviceTitles.forEach((el) => observer.observe(el))
     return () => observer.disconnect()
   }, [page])
 

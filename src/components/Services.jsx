@@ -45,8 +45,10 @@ export default function Services() {
                   )}
                 </div>
                 <h3 className="mb-1 text-sm font-semibold md:mb-2 md:text-lg">
-                  <span className="title-reveal title-reveal-tight">
-                    <span className="title-reveal-inner inline rounded bg-mint-400 px-1.5 py-0.5 text-[11px] text-white md:px-2 md:text-base">{service.title}</span>
+                  <span
+                    className={`service-title-reveal inline rounded bg-mint-400 px-1.5 py-0.5 text-[11px] text-white md:px-2 md:text-base delay-${i % 4}`}
+                  >
+                    {service.title}
                   </span>
                 </h3>
                 <p className="mb-2 text-[10px] leading-relaxed text-bluegray-600 md:mb-4 md:text-sm">

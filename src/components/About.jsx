@@ -50,7 +50,7 @@ export default function About() {
           </h2>
         </div>
 
-        <p className="mb-8 text-center text-xs leading-relaxed text-bluegray-600 md:mb-12 md:text-sm md:leading-loose">
+        <p className="mb-8 whitespace-pre-line text-center text-xs leading-relaxed text-bluegray-600 md:mb-12 md:text-sm md:leading-loose">
           {about.title}
         </p>
 
@@ -79,14 +79,16 @@ export default function About() {
             </div>
           </div>
 
-          {/* Row 3: Text on left bottom */}
+          {/* Row 3: Text (left) + Video (right) */}
           <div className="flex flex-row items-start gap-4 md:gap-10">
             <div className="w-1/2">
               <p className="whitespace-pre-line text-[11px] leading-relaxed text-bluegray-600 md:text-sm md:leading-loose">
                 {about.bio[2]}
               </p>
             </div>
-            <div className="w-1/2" aria-hidden="true" />
+            <div className="w-1/2">
+              <GentleVideo src={`${B}images/profile/workshop-row3.mov`} />
+            </div>
           </div>
         </div>
       </div>

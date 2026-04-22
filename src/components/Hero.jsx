@@ -43,13 +43,7 @@ export default function Hero() {
             <p className="animate-fade-in-up animation-delay-400 mb-9 max-w-xl text-sm leading-relaxed font-light text-bluegray-600 md:text-base">
               {hero.subText[0]}
               <br />
-              {hero.subText[1].split('').map((char, i) =>
-                ['共', '育', '創', '助'].includes(char) ? (
-                  <span key={i} className="font-bold text-bluegray-800">{char}</span>
-                ) : (
-                  char
-                ),
-              )}
+              {hero.subText[1]}
             </p>
 
             {/* CTA buttons */}
