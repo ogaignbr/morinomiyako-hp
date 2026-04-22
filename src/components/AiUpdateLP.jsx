@@ -34,21 +34,11 @@ export default function AiUpdateLP() {
             1. ファーストビュー
         ════════════════════════════════════════════════ */}
         <section className="relative overflow-hidden pt-24 pb-20 md:pt-36 md:pb-32">
-          {/* Background image */}
+          {/* Background image (no blur, full visibility) */}
           <div
             className="pointer-events-none absolute inset-0 bg-cover bg-center bg-no-repeat"
             style={{ backgroundImage: `url('${import.meta.env.BASE_URL}images/services/ai-equipped-hero-bg.png')` }}
           />
-          {/* White overlay for text readability */}
-          <div className="pointer-events-none absolute inset-0 bg-white/70 backdrop-blur-[2px]" />
-          {/* Decorative background blurs (subtle on top of image) */}
-          <div className="pointer-events-none absolute inset-0">
-            <div className="absolute -top-20 -left-32 h-96 w-96 rounded-full bg-cyan-100/40 blur-3xl" />
-            <div className="absolute top-1/3 -right-24 h-80 w-80 rounded-full bg-blue-100/30 blur-3xl" />
-            <div className="absolute bottom-0 left-1/3 h-60 w-60 rounded-full bg-teal-50/50 blur-3xl" />
-          </div>
-          {/* Grid pattern */}
-          <div className="pointer-events-none absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'linear-gradient(#0891b2 1px, transparent 1px), linear-gradient(90deg, #0891b2 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
 
           <div className="relative mx-auto max-w-4xl px-5 text-center md:px-8">
             <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-cyan-200/60 bg-cyan-50/60 px-4 py-2 backdrop-blur-sm">
@@ -93,46 +83,6 @@ export default function AiUpdateLP() {
               <span className="text-[10px] tracking-widest uppercase">Scroll</span>
               <div className="h-8 w-px bg-gradient-to-b from-[#a0aec0] to-transparent" />
             </div>
-          </div>
-        </section>
-
-        {/* ════════════════════════════════════════════════
-            2. 共感セクション
-        ════════════════════════════════════════════════ */}
-        <section className="bg-[#f7fafc] py-16 md:py-24">
-          <div className="mx-auto max-w-4xl px-5 md:px-8">
-            <div className="mb-12 text-center">
-              <span className="mb-3 inline-block text-xs font-semibold tracking-[0.15em] text-cyan-600 uppercase">
-                Empathy
-              </span>
-              <h2 className="mb-4 text-2xl font-bold text-[#2d3748] md:text-3xl">
-                AI、気になる。<br className="sm:hidden" />でも難しそうで<br className="sm:hidden" />止まっていませんか？
-              </h2>
-            </div>
-
-            <div className="grid grid-cols-3 gap-2 sm:gap-3 md:gap-4">
-              {[
-                { icon: '🤔', text: '興味はあるけど、\n何から始めればいいかわからない' },
-                { icon: '📚', text: '学ばないといけない\n気がして、腰が重い' },
-                { icon: '⌨️', text: 'タイピングが遅くて、\nアウトプットに時間がかかる' },
-                { icon: '😶', text: '自分の考えを\nうまく言語化できない' },
-                { icon: '💭', text: 'ChatGPTを触ったけど、\n仕事に落とし込めていない' },
-                { icon: '😩', text: '結局ひとりで抱え込んで、\n手が止まってしまう' },
-              ].map((item, i) => (
-                <div key={i} className="rounded-xl border border-[#e2e8f0] bg-white p-3 transition-all hover:shadow-md sm:rounded-2xl sm:p-4 md:p-5">
-                  <span className="mb-1 block text-lg sm:mb-2 sm:text-xl md:mb-3 md:text-2xl">{item.icon}</span>
-                  <p className="text-[10px] leading-snug whitespace-pre-line text-[#4a5568] sm:text-xs md:text-sm md:leading-relaxed">
-                    {item.text}
-                  </p>
-                </div>
-              ))}
-            </div>
-
-            <p className="mt-10 text-center text-sm leading-relaxed text-[#718096] md:text-base">
-              もし一つでも当てはまるなら、<br className="sm:hidden" />
-              それは<span className="font-semibold text-cyan-600">「学びが足りない」のではなく</span>、<br className="sm:hidden" />
-              <span className="font-semibold text-cyan-600">「アップデートの仕方を知らないだけ」</span>かもしれません。
-            </p>
           </div>
         </section>
 
