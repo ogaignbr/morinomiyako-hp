@@ -139,7 +139,7 @@ export default function AiUpdateLP() {
                   全部を理解してから始める必要はありません。まずは、自分の働き方に取り入れてみること。自分自身を更新していくこと。
                 </p>
                 <p className="font-semibold text-cyan-700">
-                  それが「AIを学ぶ」のではなく、「AIを搭載することで、AIの進化と一緒に、自分もアップデートされる」ということです。
+                  それが「AIを学ぶ」のではなく、「AIで自分をアップデートする」ということです。
                 </p>
               </div>
             </div>
@@ -511,23 +511,25 @@ export default function AiUpdateLP() {
             12. Final CTA
         ════════════════════════════════════════════════ */}
         <section id="final-cta" className="relative overflow-hidden py-20 md:py-28">
-          {/* Background */}
-          <div className="pointer-events-none absolute inset-0">
-            <div className="absolute inset-0 bg-gradient-to-br from-[#0e1a2e] to-[#1a2744]" />
-            <div className="absolute top-10 -left-20 h-72 w-72 rounded-full bg-cyan-500/10 blur-3xl" />
-            <div className="absolute -right-16 bottom-10 h-64 w-64 rounded-full bg-blue-500/10 blur-3xl" />
-            <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: 'linear-gradient(#06b6d4 1px, transparent 1px), linear-gradient(90deg, #06b6d4 1px, transparent 1px)', backgroundSize: '32px 32px' }} />
-          </div>
+          {/* Background video (no blur, as-is) */}
+          <video
+            src={`${import.meta.env.BASE_URL}images/services/footer-bg.mp4`}
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="pointer-events-none absolute inset-0 h-full w-full object-cover"
+          />
 
-          <div className="relative mx-auto max-w-3xl px-5 text-center md:px-8">
+          <div className="relative mx-auto max-w-3xl px-5 text-center md:px-8" style={{ textShadow: '0 2px 18px rgba(0,0,0,0.65)' }}>
             <h2 className="mb-4 text-2xl font-bold text-white md:text-3xl lg:text-4xl">
               AIを学ぶ前に、<br className="sm:hidden" />
               自分をアップデート<br className="sm:hidden" />しませんか？
             </h2>
-            <p className="mb-3 text-base font-medium text-cyan-300 md:text-lg">
+            <p className="mb-3 text-base font-medium text-cyan-200 md:text-lg">
               あなたにAIを搭載する第一歩を、ここから。
             </p>
-            <p className="mx-auto mb-10 max-w-md text-sm leading-relaxed text-[#94a3b8]">
+            <p className="mx-auto mb-10 max-w-md text-sm leading-relaxed text-white">
               無理に学ぶ必要はありません。<br />
               まずはお話を聞かせてください。<br />
               あなたの仕事のどこにAIを搭載できるか、一緒に考えましょう。
@@ -535,13 +537,13 @@ export default function AiUpdateLP() {
             <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center sm:gap-4">
               <a
                 href="mailto:hello@example.com"
-                className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-cyan-400 to-blue-500 px-10 py-4 text-sm font-semibold text-white no-underline shadow-lg shadow-cyan-500/30 transition-all hover:shadow-xl hover:brightness-110 sm:w-auto md:text-base"
+                className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-cyan-400 to-blue-500 px-10 py-4 text-sm font-semibold text-white no-underline shadow-lg shadow-cyan-500/40 transition-all hover:shadow-xl hover:brightness-110 sm:w-auto md:text-base"
               >
                 相談してみる
               </a>
               <a
                 href="/"
-                className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-[#475569] px-10 py-4 text-sm font-semibold text-[#94a3b8] no-underline transition-all hover:border-[#64748b] hover:text-white sm:w-auto"
+                className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-white/50 bg-white/10 px-10 py-4 text-sm font-semibold text-white no-underline backdrop-blur-sm transition-all hover:border-white hover:bg-white/20 sm:w-auto"
               >
                 トップに戻る
               </a>
