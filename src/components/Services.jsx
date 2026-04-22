@@ -26,7 +26,9 @@ export default function Services() {
               <Wrapper
                 key={i}
                 {...wrapperProps}
-                className="glass-card-elevated group block rounded-xl border-2 border-mint-400/40 p-3 no-underline transition-all duration-300 md:rounded-2xl md:p-8"
+                className={`glass-card-elevated group block rounded-xl border-2 border-mint-400/40 p-3 no-underline transition-all duration-300 md:rounded-2xl md:p-8 ${
+                  service.iconKey === 'consulting' ? 'card-glow' : ''
+                }`}
               >
                 <div className={`service-icon-anim-${i % 4} mb-3 h-14 w-14 overflow-hidden rounded-xl shadow-md transition-transform group-hover:scale-105 md:mb-5 md:h-24 md:w-24 md:rounded-2xl`}>
                   {service.video ? (

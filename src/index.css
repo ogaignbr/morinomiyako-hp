@@ -342,6 +342,48 @@ h1, h2, h3 {
 .service-icon-anim-2 { animation: service-icon-dive 2.8s ease-in-out infinite; }
 .service-icon-anim-3 { animation: service-icon-slide 3s ease-in-out infinite; }
 
+/* Glowing edge effect (for highlighted service card) */
+@keyframes card-glow-pulse {
+  0%, 100% {
+    box-shadow:
+      0 0 10px rgba(52, 211, 153, 0.35),
+      0 0 22px rgba(16, 185, 129, 0.22),
+      inset 0 0 0 1px rgba(16, 185, 129, 0.35);
+  }
+  50% {
+    box-shadow:
+      0 0 22px rgba(52, 211, 153, 0.7),
+      0 0 44px rgba(16, 185, 129, 0.45),
+      inset 0 0 0 1px rgba(16, 185, 129, 0.7);
+  }
+}
+
+.card-glow {
+  position: relative;
+  border-color: rgba(16, 185, 129, 0.7) !important;
+  animation: card-glow-pulse 2.6s ease-in-out infinite;
+}
+
+.card-glow::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  padding: 2px;
+  background: linear-gradient(135deg, rgba(110, 231, 183, 0.8), rgba(16, 185, 129, 0.4), rgba(110, 231, 183, 0.8));
+  background-size: 200% 200%;
+  animation: card-glow-shimmer 3.5s linear infinite;
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  pointer-events: none;
+}
+
+@keyframes card-glow-shimmer {
+  0% { background-position: 0% 0%; }
+  100% { background-position: 200% 200%; }
+}
+
 /* Service title pop-in animation (別ページと重複しないよう独立設計) */
 @keyframes service-title-pop {
   0% {
