@@ -228,37 +228,20 @@ export default function AiUpdateLP() {
 
             <div className="grid grid-cols-2 gap-3 sm:gap-4">
               {[
-                {
-                  icon: '🧠',
-                  title: '思考をそのまま形にする',
-                  text: '音声入力やAIとの対話を通じて、頭の中のアイデアを直接アウトプットに変換。タイピングに頼らない新しい働き方へ。',
-                },
-                {
-                  icon: '⚡',
-                  title: '仕事のスピードが変わる',
-                  text: '資料、LP、文章、事業案、設計。これまで何時間もかかっていたアウトプットを、AIと共に圧倒的に高速化します。',
-                },
-                {
-                  icon: '🔍',
-                  title: '自分で調べて解決できる',
-                  text: 'AIに質問しながら自力で課題を紐解いていく力が身につきます。わからないことを、自分で調べて形にできるようになります。',
-                },
-                {
-                  icon: '🚀',
-                  title: '時代と共に進化できる',
-                  text: '一度身につければ、新しい技術やツールが出てもAIと対話しながら吸収していける。"変化に強い自分"になれます。',
-                },
+                { img: 'feature-think.png', alt: '思考をそのまま形にする' },
+                { img: 'feature-speed.png', alt: '仕事のスピードが変わる' },
+                { img: 'feature-solve.png', alt: '自分で調べて解決できる' },
+                { img: 'feature-evolve.png', alt: '時代と共に進化できる' },
               ].map((item, i) => (
-                <div key={i} className="rounded-xl border border-white bg-white p-4 shadow-sm transition-all hover:shadow-md sm:rounded-2xl sm:p-6 md:p-8">
-                  <span className="mb-2 block text-xl sm:mb-3 sm:text-2xl md:mb-4 md:text-3xl">
-                    {item.icon}
-                  </span>
-                  <h3 className="mb-1 text-xs font-bold text-[#2d3748] sm:mb-2 sm:text-sm md:text-base">
-                    {item.title}
-                  </h3>
-                  <p className="text-[10px] leading-snug text-[#718096] sm:text-xs md:text-sm md:leading-relaxed">
-                    {item.text}
-                  </p>
+                <div
+                  key={i}
+                  className="overflow-hidden rounded-xl bg-white shadow-sm transition-all hover:shadow-md sm:rounded-2xl"
+                >
+                  <img
+                    src={`${import.meta.env.BASE_URL}images/services/${item.img}`}
+                    alt={item.alt}
+                    className="block h-auto w-full object-cover"
+                  />
                 </div>
               ))}
             </div>
@@ -285,32 +268,6 @@ export default function AiUpdateLP() {
                   className="w-full object-contain"
                 />
               </div>
-            </div>
-
-            <div className="grid grid-cols-3 gap-2 sm:gap-3 md:gap-4">
-              {[
-                { icon: '💬', label: 'AIとの\n対話環境づくり' },
-                { icon: '🎙️', label: '音声入力の\n活用' },
-                { icon: '🧩', label: '思考整理・\n言語化' },
-                { icon: '📝', label: '発信文の\n作成' },
-                { icon: '📊', label: '資料作成の\n高速化' },
-                { icon: '🌐', label: 'LP・企画の\nたたき台作成' },
-                { icon: '💡', label: '事業アイデアの\n整理・設計' },
-                { icon: '⚙️', label: '業務効率化の\n仕組みづくり' },
-                { icon: '🛠️', label: 'アプリ・ツールの\n壁打ち・実装' },
-              ].map((item, i) => (
-                <div
-                  key={i}
-                  className="group flex flex-col items-center rounded-xl border border-[#e2e8f0] bg-white p-2 text-center transition-all hover:border-cyan-200 hover:shadow-md sm:rounded-2xl sm:p-4 md:p-5"
-                >
-                  <span className="mb-1 text-lg transition-transform group-hover:scale-110 sm:mb-2 sm:text-xl md:mb-3 md:text-2xl">
-                    {item.icon}
-                  </span>
-                  <span className="text-[10px] leading-snug font-medium whitespace-pre-line text-[#4a5568] sm:text-xs md:text-sm md:leading-relaxed">
-                    {item.label}
-                  </span>
-                </div>
-              ))}
             </div>
 
             <p className="mt-8 text-center text-sm text-[#a0aec0]">
