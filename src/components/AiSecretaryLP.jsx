@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import FloatingSymbols from './FloatingSymbols'
 
 const B = import.meta.env.BASE_URL
@@ -114,6 +115,10 @@ const plans = [
 ]
 
 export default function AiSecretaryLP() {
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
   return (
     <div className="relative min-h-screen bg-white font-sans antialiased">
       <FloatingSymbols count={45} />
