@@ -123,12 +123,22 @@ export default function AiUpdateLP() {
             </div>
 
             {/* Smartphone analogy */}
-            <div className="rounded-3xl border border-cyan-100 bg-gradient-to-br from-white to-cyan-50/50 p-6 md:p-10">
-              <div className="mb-5 flex items-center gap-3">
+            <div className="relative overflow-hidden rounded-3xl border border-cyan-100 p-6 md:p-10">
+              <video
+                src={`${import.meta.env.BASE_URL}HP画像/スマホのアップデート、中身を全部理解していますか？.mp4`}
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="pointer-events-none absolute inset-0 h-full w-full object-cover"
+              />
+              <div className="pointer-events-none absolute inset-0 bg-white/82" />
+
+              <div className="relative mb-5 flex items-center gap-3">
                 <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-cyan-500 to-blue-500 text-2xl shadow-md">📱</span>
                 <h3 className="text-base font-bold text-[#2d3748] md:text-lg">スマホのアップデート、中身を全部理解していますか？</h3>
               </div>
-              <div className="space-y-4 text-sm leading-[1.9] text-[#4a5568] md:text-base">
+              <div className="relative space-y-4 text-sm leading-[1.9] text-[#4a5568] md:text-base">
                 <p>
                   スマートフォンのアップデート通知が来たとき、更新内容を一つひとつ全部理解してからボタンを押す人は、ほとんどいないと思います。
                 </p>
