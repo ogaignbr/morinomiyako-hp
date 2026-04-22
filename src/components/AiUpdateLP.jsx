@@ -34,11 +34,18 @@ export default function AiUpdateLP() {
             1. ファーストビュー
         ════════════════════════════════════════════════ */}
         <section className="relative overflow-hidden pt-24 pb-20 md:pt-36 md:pb-32">
-          {/* Decorative background */}
+          {/* Background image */}
+          <div
+            className="pointer-events-none absolute inset-0 bg-cover bg-center bg-no-repeat"
+            style={{ backgroundImage: `url('${import.meta.env.BASE_URL}images/services/ai-equipped-hero-bg.png')` }}
+          />
+          {/* White overlay for text readability */}
+          <div className="pointer-events-none absolute inset-0 bg-white/70 backdrop-blur-[2px]" />
+          {/* Decorative background blurs (subtle on top of image) */}
           <div className="pointer-events-none absolute inset-0">
-            <div className="absolute -top-20 -left-32 h-96 w-96 rounded-full bg-cyan-100/50 blur-3xl" />
-            <div className="absolute top-1/3 -right-24 h-80 w-80 rounded-full bg-blue-100/40 blur-3xl" />
-            <div className="absolute bottom-0 left-1/3 h-60 w-60 rounded-full bg-teal-50/60 blur-3xl" />
+            <div className="absolute -top-20 -left-32 h-96 w-96 rounded-full bg-cyan-100/40 blur-3xl" />
+            <div className="absolute top-1/3 -right-24 h-80 w-80 rounded-full bg-blue-100/30 blur-3xl" />
+            <div className="absolute bottom-0 left-1/3 h-60 w-60 rounded-full bg-teal-50/50 blur-3xl" />
           </div>
           {/* Grid pattern */}
           <div className="pointer-events-none absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'linear-gradient(#0891b2 1px, transparent 1px), linear-gradient(90deg, #0891b2 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
@@ -383,27 +390,12 @@ export default function AiUpdateLP() {
               </h2>
             </div>
 
-            <div className="grid grid-cols-4 gap-2 sm:gap-3">
-              {[
-                { icon: '📄', title: '資料づくり' },
-                { icon: '🌐', title: 'LPづくり' },
-                { icon: '📢', title: '発信づくり' },
-                { icon: '💼', title: '事業づくり' },
-                { icon: '📱', title: 'アプリづくり' },
-                { icon: '🔧', title: 'ツールづくり' },
-                { icon: '🖥️', title: 'システムづくり' },
-                { icon: '📋', title: '業務の整理と\n効率化' },
-              ].map((item, i) => (
-                <div
-                  key={i}
-                  className="flex flex-col items-center rounded-xl bg-white p-2 shadow-sm transition-all hover:shadow-md sm:rounded-2xl sm:p-4 md:p-5"
-                >
-                  <span className="mb-1 text-lg sm:mb-2 sm:text-xl md:text-2xl">{item.icon}</span>
-                  <span className="text-center text-[9px] leading-snug font-semibold whitespace-pre-line text-[#2d3748] sm:text-xs md:text-sm">
-                    {item.title}
-                  </span>
-                </div>
-              ))}
+            <div className="mx-auto max-w-3xl overflow-hidden rounded-2xl md:rounded-3xl">
+              <img
+                src={`${import.meta.env.BASE_URL}images/services/ai-equipped-together.png`}
+                alt="AIと話しながら、ここまで一緒にできる"
+                className="block h-auto w-full object-contain"
+              />
             </div>
           </div>
         </section>
