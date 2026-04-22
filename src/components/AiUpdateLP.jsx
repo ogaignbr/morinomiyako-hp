@@ -177,10 +177,23 @@ export default function AiUpdateLP() {
                 />
               </div>
 
-              <p className="mx-auto max-w-lg text-sm leading-relaxed text-[#718096] md:text-base">
-                AIを頭の外にある便利なツールとして使うのではなく、<br className="hidden md:block" />
-                自分の機能の一部にしていくこと。それが「AI搭載」です。
-              </p>
+              <div className="mx-auto max-w-2xl space-y-5 text-left text-sm leading-relaxed text-[#4a5568] md:text-base md:leading-loose">
+                <p className="font-semibold text-[#2d3748]">
+                  スマートフォンの更新内容を、ひとつずつ全部理解してから更新ボタンを押す人はほとんどいません。
+                </p>
+                <p>
+                  <span className="font-semibold text-[#2d3748]">AIも同じです。</span><br />
+                  次々と新しいツールや技術が登場し、ひとつずつ追っていてもキリがありません。
+                </p>
+                <p>
+                  大切なのは、すべてを理解することではなく、<br className="hidden sm:block" />
+                  AIを<span className="font-semibold text-cyan-600">「体の一部」として取り入れる</span>という考え方。
+                </p>
+                <p>
+                  進化すればするほど自分の能力も上がっていく——<br className="hidden sm:block" />
+                  その状態をつくることが、<span className="font-semibold text-cyan-600">「あなたにAIを搭載する」</span>という言葉の意味です。
+                </p>
+              </div>
             </div>
 
             <div className="grid grid-cols-2 gap-3 sm:gap-4">
