@@ -177,21 +177,21 @@ export default function AiUpdateLP() {
                 />
               </div>
 
-              <div className="mx-auto max-w-2xl space-y-5 text-left text-sm leading-relaxed text-[#4a5568] md:text-base md:leading-loose">
-                <p className="font-semibold text-[#2d3748]">
-                  スマートフォンの更新内容を、ひとつずつ全部理解してから更新ボタンを押す人はほとんどいません。
+              <div className="mx-auto max-w-2xl space-y-6 text-left text-sm leading-relaxed text-[#4a5568] md:text-base md:leading-loose">
+                <p>
+                  スマートフォンのアップデート通知が来たとき、更新内容をひとつひとつ全部理解してからボタンを押す人は、ほとんどいないと思います。
                 </p>
                 <p>
-                  <span className="font-semibold text-[#2d3748]">AIも同じです。</span><br />
-                  次々と新しいツールや技術が登場し、ひとつずつ追っていてもキリがありません。
+                  でも、アップデートを受け入れた後の私たちは、<br className="hidden sm:block" />
+                  前より便利に、前より安全に、前よりスムーズに使えるようになっている。
+                </p>
+                <p className="text-center text-base font-semibold text-[#2d3748] md:text-lg">
+                  AIも、同じです。
                 </p>
                 <p>
-                  大切なのは、すべてを理解することではなく、<br className="hidden sm:block" />
-                  AIを<span className="font-semibold text-cyan-600">「体の一部」として取り入れる</span>という考え方。
-                </p>
-                <p>
-                  進化すればするほど自分の能力も上がっていく——<br className="hidden sm:block" />
-                  その状態をつくることが、<span className="font-semibold text-cyan-600">「あなたにAIを搭載する」</span>という言葉の意味です。
+                  全部を理解してから始める必要はありません。<br className="hidden sm:block" />
+                  まずは、<span className="font-semibold text-cyan-600">自分の働き方に取り入れてみること</span>。<br />
+                  <span className="font-semibold text-cyan-600">自分自身を更新していくこと</span>。
                 </p>
               </div>
             </div>
