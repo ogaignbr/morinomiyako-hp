@@ -130,20 +130,13 @@ export default function AiUpdateLP() {
               </div>
               <div className="space-y-4 text-sm leading-[1.9] text-[#4a5568] md:text-base">
                 <p>
-                  スマートフォンのアップデート通知が来たとき、<br className="hidden md:block" />
-                  更新内容を一つひとつ全部理解してからボタンを押す人は、ほとんどいないと思います。
+                  スマートフォンのアップデート通知が来たとき、更新内容を一つひとつ全部理解してからボタンを押す人は、ほとんどいないと思います。
                 </p>
                 <p>
-                  でも、アップデートを受け入れた後の私たちは、<br className="hidden md:block" />
-                  前より便利に、前より安全に、前よりスムーズに使えるようになっている。
-                </p>
-                <p className="font-medium text-[#2d3748]">
-                  AIも、同じです。
+                  でも、アップデートを受け入れた後の私たちは、前より便利に、前より安全に、前よりスムーズに使えるようになっている。AIも、同じです。
                 </p>
                 <p>
-                  全部を理解してから始める必要はありません。<br className="hidden md:block" />
-                  まずは、自分の働き方に取り入れてみること。<br className="hidden md:block" />
-                  自分自身を更新していくこと。
+                  全部を理解してから始める必要はありません。まずは、自分の働き方に取り入れてみること。自分自身を更新していくこと。
                 </p>
                 <p className="font-semibold text-cyan-700">
                   それが「AIを学ぶ」のではなく、「AIで自分をアップデートする」ということです。
@@ -166,7 +159,7 @@ export default function AiUpdateLP() {
                 「あなたにAIを搭載」<br className="sm:hidden" />とは何か
               </h2>
 
-              <div className="mx-auto mb-8 max-w-2xl overflow-hidden rounded-2xl shadow-lg md:mb-10 md:rounded-3xl">
+              <div className="mx-auto mb-6 max-w-2xl overflow-hidden rounded-2xl shadow-lg md:mb-8 md:rounded-3xl">
                 <video
                   src={`${import.meta.env.BASE_URL}images/services/ai-equipped-bg.mp4`}
                   autoPlay
@@ -177,23 +170,9 @@ export default function AiUpdateLP() {
                 />
               </div>
 
-              <div className="mx-auto max-w-2xl space-y-6 text-left text-sm leading-relaxed text-[#4a5568] md:text-base md:leading-loose">
-                <p>
-                  スマートフォンのアップデート通知が来たとき、更新内容をひとつひとつ全部理解してからボタンを押す人は、ほとんどいないと思います。
-                </p>
-                <p>
-                  でも、アップデートを受け入れた後の私たちは、<br className="hidden sm:block" />
-                  前より便利に、前より安全に、前よりスムーズに使えるようになっている。
-                </p>
-                <p className="text-center text-base font-semibold text-[#2d3748] md:text-lg">
-                  AIも、同じです。
-                </p>
-                <p>
-                  全部を理解してから始める必要はありません。<br className="hidden sm:block" />
-                  まずは、<span className="font-semibold text-cyan-600">自分の働き方に取り入れてみること</span>。<br />
-                  <span className="font-semibold text-cyan-600">自分自身を更新していくこと</span>。
-                </p>
-              </div>
+              <p className="mb-8 text-xl font-bold text-[#2d3748] md:mb-10 md:text-2xl">
+                あなたの能力を爆発的に拡張します
+              </p>
             </div>
 
             <div className="grid grid-cols-2 gap-3 sm:gap-4">
@@ -302,7 +281,7 @@ export default function AiUpdateLP() {
               </p>
             </div>
 
-            <div className="space-y-4">
+            <div className="grid grid-cols-2 gap-3 sm:gap-4">
               {[
                 {
                   num: '01',
@@ -325,13 +304,13 @@ export default function AiUpdateLP() {
                   text: '最終的には、自分で調べ、自分でAIと対話し、必要なものを自分で実装できる状態を目指します。一度身につければ、時代が変わっても進化し続けられます。',
                 },
               ].map((step, i) => (
-                <div key={i} className="flex gap-5 rounded-2xl border border-[#e2e8f0] bg-white p-5 transition-all hover:shadow-md md:gap-6 md:p-6">
+                <div key={i} className="flex flex-col gap-3 rounded-2xl border border-[#e2e8f0] bg-white p-4 transition-all hover:shadow-md md:gap-4 md:p-6">
                   <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-500 to-blue-500 text-sm font-bold text-white shadow-md">
                     {step.num}
                   </div>
                   <div>
-                    <h3 className="mb-1 text-base font-bold text-[#2d3748]">{step.title}</h3>
-                    <p className="text-sm leading-relaxed text-[#718096]">{step.text}</p>
+                    <h3 className="mb-1 text-sm font-bold text-[#2d3748] md:text-base">{step.title}</h3>
+                    <p className="text-xs leading-relaxed text-[#718096] md:text-sm">{step.text}</p>
                   </div>
                 </div>
               ))}
