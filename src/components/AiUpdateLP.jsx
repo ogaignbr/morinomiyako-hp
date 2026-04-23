@@ -184,26 +184,6 @@ export default function AiUpdateLP() {
                 あなたの能力を爆発的に拡張します
               </p>
             </div>
-
-            <div className="grid grid-cols-2 gap-3 sm:gap-4">
-              {[
-                { img: 'feature-think.png', alt: '思考をそのまま形にする' },
-                { img: 'feature-speed.png', alt: '仕事のスピードが変わる' },
-                { img: 'feature-solve.png', alt: '自分で調べて解決できる' },
-                { img: 'feature-evolve.png', alt: '時代と共に進化できる' },
-              ].map((item, i) => (
-                <div
-                  key={i}
-                  className="overflow-hidden rounded-xl bg-white shadow-sm transition-all hover:shadow-md sm:rounded-2xl"
-                >
-                  <img
-                    src={`${import.meta.env.BASE_URL}images/services/${item.img}`}
-                    alt={item.alt}
-                    className="block h-auto w-full object-cover"
-                  />
-                </div>
-              ))}
-            </div>
           </div>
         </section>
 
@@ -230,7 +210,7 @@ export default function AiUpdateLP() {
             </div>
 
             <p className="mt-8 text-center text-sm text-[#a0aec0]">
-              AIと話しながら、ここまでできる時代です。
+              AIと話しながら、ここまで一緒にできる時代です。
             </p>
           </div>
         </section>
@@ -291,39 +271,12 @@ export default function AiUpdateLP() {
               </p>
             </div>
 
-            <div className="grid grid-cols-2 gap-3 sm:gap-4">
-              {[
-                {
-                  num: '01',
-                  title: '一緒に考える',
-                  text: 'あなたの仕事や課題をヒアリングし、どこにAIを組み込むと効果的かを一緒に整理します。',
-                },
-                {
-                  num: '02',
-                  title: '一緒に作る',
-                  text: '資料、LP、発信文、企画書など、AIとの対話を通じて実際のアウトプットを一緒に形にしていきます。',
-                },
-                {
-                  num: '03',
-                  title: '一緒に実装する',
-                  text: '業務の仕組み化やツール活用、音声入力の環境構築など、あなたの日常にAIを実装していきます。',
-                },
-                {
-                  num: '04',
-                  title: '自分で実装できる自分へ',
-                  text: '最終的には、自分で調べ、自分でAIと対話し、必要なものを自分で実装できる状態を目指します。一度身につければ、時代が変わっても進化し続けられます。',
-                },
-              ].map((step, i) => (
-                <div key={i} className="flex flex-col gap-3 rounded-2xl border border-[#e2e8f0] bg-white p-4 transition-all hover:shadow-md md:gap-4 md:p-6">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-500 to-blue-500 text-sm font-bold text-white shadow-md">
-                    {step.num}
-                  </div>
-                  <div>
-                    <h3 className="mb-1 text-sm font-bold text-[#2d3748] md:text-base">{step.title}</h3>
-                    <p className="text-xs leading-relaxed text-[#718096] md:text-sm">{step.text}</p>
-                  </div>
-                </div>
-              ))}
+            <div className="mx-auto max-w-3xl overflow-hidden rounded-2xl border border-[#e2e8f0] bg-white shadow-sm md:rounded-3xl">
+              <img
+                src={`${import.meta.env.BASE_URL}images/services/support-flow.jpg`}
+                alt="伴走の進め方"
+                className="block h-auto w-full object-contain"
+              />
             </div>
           </div>
         </section>
@@ -342,9 +295,9 @@ export default function AiUpdateLP() {
               </h2>
             </div>
 
-            <div className="mx-auto max-w-3xl overflow-hidden rounded-2xl md:rounded-3xl">
+            <div className="mx-auto max-w-3xl overflow-hidden rounded-2xl border border-[#e2e8f0] bg-white shadow-sm md:rounded-3xl">
               <img
-                src={`${import.meta.env.BASE_URL}images/services/ai-equipped-together.png`}
+                src={`${import.meta.env.BASE_URL}images/services/ai-chat-together-capabilities.jpg`}
                 alt="AIと話しながら、ここまで一緒にできる"
                 className="block h-auto w-full object-contain"
               />
@@ -428,37 +381,21 @@ export default function AiUpdateLP() {
         ════════════════════════════════════════════════ */}
         <section className="bg-[#f7fafc] py-16 md:py-24">
           <div className="mx-auto max-w-4xl px-5 md:px-8">
-            <div className="mb-12 text-center">
+            <div className="mb-8 text-center md:mb-10">
               <span className="mb-3 inline-block text-xs font-semibold tracking-[0.15em] text-cyan-600 uppercase">
                 Flow
               </span>
-              <h2 className="mb-4 text-2xl font-bold text-[#2d3748] md:text-3xl">
+              <h2 className="text-2xl font-bold text-[#2d3748] md:text-3xl">
                 ご相談の流れ
               </h2>
             </div>
 
-            <div className="relative">
-              {/* Connector line */}
-              <div className="absolute top-0 bottom-0 left-6 hidden w-px bg-gradient-to-b from-cyan-300 to-blue-300 sm:block md:left-8" />
-
-              <div className="space-y-6">
-                {[
-                  { num: '1', title: '相談申し込み', text: 'フォームまたはメッセージからお気軽にご連絡ください。' },
-                  { num: '2', title: '現状ヒアリング', text: 'お仕事内容や課題、AIへの期待を一緒に整理します。' },
-                  { num: '3', title: 'どこにAIを搭載するか整理', text: 'あなたの業務のどこにAIを実装すると最も効果的かを設計します。' },
-                  { num: '4', title: '伴走スタート', text: '一緒に考え、一緒に作りながら、AI搭載を進めていきます。' },
-                ].map((step, i) => (
-                  <div key={i} className="flex gap-5 md:gap-6">
-                    <div className="relative z-10 flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-cyan-500 to-blue-500 text-base font-bold text-white shadow-lg md:h-16 md:w-16 md:text-lg">
-                      {step.num}
-                    </div>
-                    <div className="flex-1 rounded-2xl border border-[#e2e8f0] bg-white p-5 shadow-sm md:p-6">
-                      <h3 className="mb-1 text-base font-bold text-[#2d3748]">{step.title}</h3>
-                      <p className="text-sm leading-relaxed text-[#718096]">{step.text}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
+            <div className="mx-auto max-w-3xl overflow-hidden rounded-2xl border border-[#e2e8f0] bg-white shadow-sm md:rounded-3xl">
+              <img
+                src={`${import.meta.env.BASE_URL}images/services/ai-intro-4-steps.jpg`}
+                alt="ご相談の流れ"
+                className="block h-auto w-full object-contain"
+              />
             </div>
           </div>
         </section>
