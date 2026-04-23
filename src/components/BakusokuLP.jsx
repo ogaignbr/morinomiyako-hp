@@ -119,7 +119,7 @@ export default function BakusokuLP() {
             <div className="glass-card mx-3 mt-3 rounded-2xl px-5 py-2 md:mx-6 md:mt-4 md:px-8 md:py-3">
               <div className="flex items-center justify-between">
                 <a
-                  href="/"
+                  href={import.meta.env.BASE_URL}
                   className="text-base font-bold tracking-tight text-bluegray-800 no-underline md:text-lg"
                 >
                   オリジナルアプリ制作
@@ -460,7 +460,7 @@ export default function BakusokuLP() {
                   無料で相談する
                 </a>
                 <a
-                  href="/"
+                  href={import.meta.env.BASE_URL}
                   className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-bluegray-200 bg-white px-8 py-4 text-sm font-semibold text-bluegray-700 no-underline transition-all hover:bg-bluegray-50 sm:w-auto"
                 >
                   杜の都工房トップへ

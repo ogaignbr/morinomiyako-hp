@@ -15,7 +15,7 @@ export default function AiUpdateLP() {
         <div className="mx-auto max-w-5xl">
           <div className="mx-3 mt-3 rounded-2xl border border-white/40 bg-white/70 px-5 py-2 shadow-lg backdrop-blur-xl md:mx-6 md:mt-4 md:px-8 md:py-3">
             <div className="flex items-center justify-between">
-              <a href="/" className="text-base font-bold tracking-tight text-[#2d3748] no-underline md:text-lg">
+              <a href={import.meta.env.BASE_URL} className="text-base font-bold tracking-tight text-[#2d3748] no-underline md:text-lg">
                 AI搭載サポート
               </a>
               <a
@@ -489,7 +489,7 @@ export default function AiUpdateLP() {
                 相談してみる
               </a>
               <a
-                href="/"
+                href={import.meta.env.BASE_URL}
                 className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-white/50 bg-white/10 px-10 py-4 text-sm font-semibold text-white no-underline backdrop-blur-sm transition-all hover:border-white hover:bg-white/20 sm:w-auto"
               >
                 トップに戻る
