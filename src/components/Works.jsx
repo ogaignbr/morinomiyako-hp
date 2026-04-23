@@ -20,7 +20,7 @@ export default function Works() {
             <span className="title-reveal"><span className="title-reveal-inner">お仕事</span></span>
           </h2>
           <p className="mx-auto max-w-md text-sm leading-relaxed text-bluegray-600">
-            AIとデザインで形にしてきた、これまでの仕事
+            制作イメージと料金について
           </p>
         </div>
 

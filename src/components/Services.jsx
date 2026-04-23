@@ -13,7 +13,7 @@ export default function Services() {
             <span className="title-reveal"><span className="title-reveal-inner">できること</span></span>
           </h2>
           <p className="mx-auto max-w-md text-sm leading-relaxed text-bluegray-600">
-            AIとデザインの力で、あなたのアイデアを形にします
+            あなたのアイデアを形にします
           </p>
         </div>
 
