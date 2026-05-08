@@ -1,4 +1,4 @@
-import { IconBell, IconCalendar, IconChevronRight, IconInstagram, IconLine, IconMapPin, IconMenu, IconPhone } from './icons'
+import { IconBell, IconCalendar, IconChevronRight, IconInstagram, IconLine, IconMail, IconMapPin, IconMenu } from './icons'
 import { site } from '../data/siteContent'
 
 const cardItems = [
@@ -21,18 +21,18 @@ const cardItems = [
 
 export default function AppHomeScreen() {
   return (
-    <section className="app-home-screen mx-auto flex h-[100dvh] w-full max-w-[390px] flex-col bg-white px-2 pb-21 pt-2">
+    <section className="app-home-screen mx-auto flex min-h-screen w-full max-w-[390px] flex-col bg-transparent px-2 pb-21 pt-2">
       <div className="rounded-lg border border-bluegray-100 bg-white py-2 shadow-[0_6px_18px_rgba(0,0,0,0.06)]">
         <div className="mb-1.5 flex items-start justify-between gap-2 px-2.5">
           <div className="flex items-center gap-1.5">
             <img
               src={`${import.meta.env.BASE_URL}images/logo-stamp.png`}
               alt="杜の都工房ロゴ"
-              className="h-[48px] w-[48px] object-contain"
+              className="h-[58px] w-[58px] object-contain"
             />
             <div>
-              <p className="font-serif text-[12px] leading-tight font-semibold tracking-[0.03em] text-bluegray-800">Webアプリ制作</p>
-              <p className="font-serif text-[11px] leading-tight font-semibold tracking-[0.06em] text-mint-500">杜の都工房</p>
+              <p className="font-serif text-[15px] leading-tight font-semibold tracking-[0.03em] text-bluegray-800">Webアプリ制作</p>
+              <p className="font-serif text-[14px] leading-tight font-semibold tracking-[0.06em] text-mint-500">杜の都工房</p>
             </div>
           </div>
           <div className="flex items-center gap-0.5 text-bluegray-700">
@@ -48,13 +48,13 @@ export default function AppHomeScreen() {
           </div>
         </div>
 
-        <div className="mx-2.5 mb-1.5 flex items-center gap-1.5 rounded-md border border-blue-100 bg-blue-50 px-1.5 py-1.5">
-          <span className="inline-flex items-center gap-1 rounded-md bg-blue-500 px-1.5 py-1 text-[9px] font-bold text-white">
+        <div className="mx-2.5 mb-1.5 flex items-center gap-1.5 rounded-md border border-mint-100 bg-mint-50 px-1.5 py-1.5">
+          <span className="inline-flex items-center gap-1 rounded-md bg-metallic-green px-1.5 py-1 text-[9px] font-bold text-white">
             <IconBell className="h-3 w-3" />
             お知らせ
           </span>
-          <span className="truncate font-serif text-[10px] font-medium tracking-[0.02em] text-blue-700">ホーム画面を新しく公開しました</span>
-          <IconChevronRight className="h-3 w-3 text-blue-500" />
+          <span className="truncate font-serif text-[10px] font-medium tracking-[0.02em] text-mint-600">ホーム画面を新しく公開しました</span>
+          <IconChevronRight className="h-3 w-3 text-mint-500" />
         </div>
 
         <div className="mb-2.5">
@@ -79,33 +79,25 @@ export default function AppHomeScreen() {
           ))}
         </div>
 
-        <div className="mb-1.5 relative px-2.5">
+        <div className="my-3 relative px-2.5">
           <a
             href="#/contact"
-            className="flex items-center justify-center gap-2 rounded-md bg-gradient-to-r from-cyan-500 to-sky-500 px-3 py-2 font-serif text-[17px] font-semibold tracking-[0.1em] text-white no-underline shadow-md"
+            className="flex items-center justify-center gap-2 rounded-md bg-metallic-green px-3 py-2 font-serif text-[17px] font-semibold tracking-[0.1em] text-white no-underline shadow-md"
           >
             <IconCalendar className="h-5 w-5" />
             問い合わせ
           </a>
-          <a
-            href="#/contact"
-            className="absolute -right-1 -bottom-2 inline-flex h-[60px] w-[60px] flex-col items-center justify-center rounded-full bg-cyan-500 text-center font-serif text-[9.5px] leading-tight font-semibold tracking-[0.04em] text-white shadow-lg"
-          >
-            問い
-            <br />
-            合わせ
-          </a>
         </div>
 
         <div className="mx-2.5 rounded-md border border-bluegray-100 bg-bluegray-50 px-2 py-1.5">
-          <p className="mb-0.5 font-serif text-[11px] font-semibold tracking-[0.03em] text-cyan-600">{site.name}</p>
+          <p className="mb-0.5 font-serif text-[11px] font-semibold tracking-[0.03em] text-mint-600">{site.name}</p>
           <p className="text-[9px] leading-relaxed text-bluegray-600">〒981-3133 宮城県仙台市泉区</p>
           <p className="mt-0.5 flex items-center gap-1 text-[10px] text-bluegray-600">
-            <IconMapPin className="h-3.5 w-3.5 text-cyan-500" />
+            <IconMapPin className="h-3.5 w-3.5 text-mint-500" />
             仙台市泉区
           </p>
           <a href={`mailto:${site.email}`} className="mt-0.5 flex items-center gap-1 text-[10px] text-bluegray-700 no-underline">
-            <IconPhone className="h-3.5 w-3.5 text-cyan-500" />
+            <IconMail className="h-3.5 w-3.5 text-mint-500" />
             {site.email}
           </a>
         </div>

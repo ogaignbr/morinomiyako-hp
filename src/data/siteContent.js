@@ -8,7 +8,7 @@ const B = import.meta.env.BASE_URL.replace(/\/$/, '')
 export const site = {
   name: '杜の都工房',
   tagline: '古き良き × 最先端',
-  email: 'hello@example.com', // ← 実際のメールアドレスに差し替え
+  email: 'morinomiyako.kobo@gmail.com',
 }
 
 export const hero = {
