@@ -3,18 +3,18 @@ import { IconDocument, IconChevronRight, IconExternalLink } from './icons'
 
 export default function Note() {
   return (
-    <section id="note" className="relative py-20 md:py-28">
-      <div className="section-padding mx-auto max-w-5xl">
-        <div className="mb-14 text-center md:mb-20">
-          <span className="text-metallic mb-3 inline-block text-xs font-semibold tracking-[0.2em] uppercase">
+    <section id="note" className="relative bg-white px-4 pt-8 pb-10">
+      <div className="mx-auto w-full max-w-[360px]">
+        <div className="mb-6 text-center">
+          <span className="text-metallic mb-2 inline-block text-[10px] font-semibold tracking-[0.25em] uppercase">
             Note
           </span>
-          <h2 className="section-line mb-4 text-2xl font-bold tracking-tight text-bluegray-800 md:text-3xl">
-            <span className="title-reveal"><span className="title-reveal-inner">noteで発信中</span></span>
+          <h2 className="font-serif text-[20px] font-bold tracking-[0.04em] text-bluegray-800">
+            noteで発信中
           </h2>
-          <p className="mx-auto max-w-md text-sm leading-relaxed text-bluegray-600">
-            AIツールの使い方・実際に作ったものの裏側を公開中。<br />
-            1,000円から学べるコンテンツも揃えています。
+          <div className="mx-auto mt-3 h-[1.5px] w-12 rounded-full bg-metallic-green" />
+          <p className="mx-auto mt-4 text-[12px] leading-relaxed text-bluegray-500">
+            AIツールの使い方や、実際に作ったものの裏側を公開中。
           </p>
         </div>
 
@@ -52,15 +52,15 @@ export default function Note() {
           ))}
         </div>
 
-        <div className="mt-10 text-center">
+        <div className="mt-8 text-center">
           <a
             href="https://note.com/gaogao_note/portal"
             target="_blank"
             rel="noopener noreferrer"
-            className="group inline-flex items-center gap-2 rounded-full bg-bluegray-800 px-7 py-3.5 text-sm font-medium text-white no-underline shadow-lg transition-all hover:bg-bluegray-900 hover:shadow-xl"
+            className="group inline-flex items-center gap-2 rounded-full bg-metallic-green px-6 py-3 text-[12px] font-semibold tracking-[0.06em] text-white no-underline shadow-md transition-all hover:shadow-lg"
           >
             noteをもっと見る
-            <IconExternalLink className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+            <IconExternalLink className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
           </a>
         </div>
       </div>

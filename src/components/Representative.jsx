@@ -2,48 +2,49 @@ import { representative } from '../data/siteContent'
 
 export default function Representative() {
   return (
-    <section className="relative py-20 md:py-28">
-      <div className="section-padding mx-auto max-w-4xl">
-        <div className="mb-14 text-center md:mb-20">
-          <span className="text-metallic mb-3 inline-block text-xs font-semibold tracking-[0.2em] uppercase">
+    <section className="relative bg-white px-4 pt-4 pb-12">
+      <div className="mx-auto w-full max-w-[360px]">
+        <div className="mb-6 text-center">
+          <span className="text-metallic mb-2 inline-block text-[10px] font-semibold tracking-[0.25em] uppercase">
             Message
           </span>
-          <h2 className="section-line mb-4 text-2xl font-bold tracking-tight text-bluegray-800 md:text-3xl">
-            <span className="title-reveal"><span className="title-reveal-inner">代表挨拶</span></span>
+          <h2 className="font-serif text-[20px] font-bold tracking-[0.04em] text-bluegray-800">
+            代表挨拶
           </h2>
+          <div className="mx-auto mt-3 h-[1.5px] w-12 rounded-full bg-metallic-green" />
         </div>
 
-        <div className="flex flex-col items-center gap-10 md:flex-row md:items-start md:gap-12">
-          <div className="shrink-0">
-            <div className="h-40 w-40 overflow-hidden rounded-full border-4 border-white shadow-lg md:h-48 md:w-48">
-              <img
-                src={representative.photo}
-                alt={representative.name}
-                className="h-full w-full object-cover"
-                loading="lazy"
-              />
-            </div>
+        <div className="flex flex-col items-center gap-5">
+          <div className="h-32 w-32 overflow-hidden rounded-full border-4 border-white shadow-lg ring-1 ring-bluegray-100">
+            <img
+              src={representative.photo}
+              alt={representative.name}
+              className="h-full w-full object-cover"
+              loading="lazy"
+            />
           </div>
 
-          <div className="flex-1 text-center md:text-left">
-            <div className="mb-1">
-              <span className="text-xs font-semibold text-bluegray-400">{representative.role}</span>
-              <h3 className="text-xl font-bold text-bluegray-800 md:text-2xl">
-                {representative.name}
-              </h3>
-            </div>
-            <p className="text-xs text-bluegray-400">{representative.location}</p>
-            <p className="mb-6 text-xs text-bluegray-400">家族：{representative.family}</p>
-
-            {representative.greeting.map((paragraph, i) => (
-              <p
-                key={i}
-                className="mb-4 whitespace-pre-line text-sm leading-loose text-bluegray-600 last:mb-0"
-              >
-                {paragraph}
-              </p>
-            ))}
+          <div className="text-center">
+            <span className="text-[10px] font-semibold tracking-[0.18em] text-bluegray-400 uppercase">
+              {representative.role}
+            </span>
+            <h3 className="font-serif text-[18px] font-bold tracking-[0.04em] text-bluegray-800">
+              {representative.name}
+            </h3>
+            <p className="mt-1 text-[11px] text-bluegray-500">{representative.location}</p>
+            <p className="text-[11px] text-bluegray-500">家族：{representative.family}</p>
           </div>
+        </div>
+
+        <div className="mt-7 space-y-4">
+          {representative.greeting.map((paragraph, i) => (
+            <p
+              key={i}
+              className="whitespace-pre-line text-[13px] leading-[1.95] text-bluegray-600"
+            >
+              {paragraph}
+            </p>
+          ))}
         </div>
       </div>
     </section>

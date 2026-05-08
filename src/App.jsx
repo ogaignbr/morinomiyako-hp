@@ -14,6 +14,10 @@ import AiUpdateLP from './components/AiUpdateLP'
 import AiSecretaryLP from './components/AiSecretaryLP'
 import WebDesignLP from './components/WebDesignLP'
 
+const aboutHeaderImage = new URL('../HP画像/自己紹介.png', import.meta.url).href
+const planHeaderImage = new URL('../HP画像/プラン.png', import.meta.url).href
+const noteHeaderImage = new URL('../HP画像/note.png', import.meta.url).href
+
 function App() {
   const [page, setPage] = useState(getPage())
 
@@ -45,8 +49,15 @@ function App() {
         <div className="pointer-events-none absolute -left-12 top-8 h-44 w-44 rounded-full bg-mint-300/12 blur-3xl animate-float-slow" />
         <div className="pointer-events-none absolute -right-16 top-1/3 h-52 w-52 rounded-full bg-white/8 blur-3xl animate-float" />
         <div className="pointer-events-none absolute left-1/2 top-3/4 h-48 w-48 -translate-x-1/2 rounded-full bg-mint-200/10 blur-3xl animate-float-slow" />
+        <div className="pointer-events-none absolute inset-0 z-0">
+          <div className="bg-orb bg-orb-a" />
+          <div className="bg-orb bg-orb-b" />
+          <div className="bg-orb bg-orb-c" />
+          <div className="bg-cube bg-cube-a" />
+          <div className="bg-cube bg-cube-b" />
+        </div>
 
-        <div className="relative mx-auto min-h-screen w-full max-w-[390px] bg-[#0b0c0c] shadow-[0_12px_50px_rgba(0,0,0,0.14)] ring-1 ring-white/10 md:my-2 md:min-h-[calc(100dvh-16px)] md:rounded-[20px]">
+        <div className="relative z-20 mx-auto min-h-screen w-full max-w-[390px] bg-[#0b0c0c] shadow-[0_12px_50px_rgba(0,0,0,0.14)] ring-1 ring-white/10 md:my-2 md:min-h-[calc(100dvh-16px)] md:rounded-[20px]">
           <AppHomeScreen />
           <AppBottomTabs page={page} />
         </div>
@@ -60,10 +71,24 @@ function App() {
       <div className="pointer-events-none absolute -left-12 top-8 h-44 w-44 rounded-full bg-mint-300/12 blur-3xl animate-float-slow" />
       <div className="pointer-events-none absolute -right-16 top-1/3 h-52 w-52 rounded-full bg-white/8 blur-3xl animate-float" />
       <div className="pointer-events-none absolute left-1/2 top-3/4 h-48 w-48 -translate-x-1/2 rounded-full bg-mint-200/10 blur-3xl animate-float-slow" />
+      <div className="pointer-events-none absolute inset-0 z-0">
+        <div className="bg-orb bg-orb-a" />
+        <div className="bg-orb bg-orb-b" />
+        <div className="bg-orb bg-orb-c" />
+        <div className="bg-cube bg-cube-a" />
+        <div className="bg-cube bg-cube-b" />
+      </div>
 
-      <div className="relative mx-auto min-h-screen w-full max-w-[390px] bg-[#0b0c0c] pb-24 shadow-[0_12px_50px_rgba(0,0,0,0.14)] ring-1 ring-white/10 md:my-2 md:min-h-[calc(100dvh-16px)] md:rounded-[20px]">
+      <div
+        className={`relative z-20 mx-auto min-h-screen w-full max-w-[390px] pb-24 shadow-[0_12px_50px_rgba(0,0,0,0.14)] ring-1 md:my-2 md:min-h-[calc(100dvh-16px)] md:rounded-[20px] ${
+          page === 'about' || page === 'note'
+            ? 'bg-white text-bluegray-700 ring-bluegray-100'
+            : 'bg-[#0b0c0c] ring-white/10'
+        }`}
+      >
         {page === 'about' && (
           <main>
+            <img src={aboutHeaderImage} alt="自己紹介ヘッダー" className="h-36 w-full object-cover" />
             <About />
             <Representative />
           </main>
@@ -71,6 +96,7 @@ function App() {
 
         {page === 'plan' && (
           <main>
+            <img src={planHeaderImage} alt="プランヘッダー" className="h-36 w-full object-cover" />
             <Services />
             <Works />
           </main>
@@ -78,6 +104,7 @@ function App() {
 
         {page === 'note' && (
           <main>
+            <img src={noteHeaderImage} alt="noteヘッダー" className="h-36 w-full object-cover" />
             <Note />
             <Links />
           </main>
