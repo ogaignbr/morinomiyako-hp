@@ -1,34 +1,46 @@
 import { site } from '../data/siteContent'
-import { IconMail } from './icons'
 
 export default function Footer() {
   return (
-    <section id="contact" className="relative bg-white px-4 pt-4 pb-12">
+    <footer className="bg-bluegray-800 px-4 pt-8 pb-28">
       <div className="mx-auto w-full max-w-[360px]">
-        <div className="mb-6 text-center">
-          <span className="text-metallic mb-2 inline-block text-[10px] font-semibold tracking-[0.25em] uppercase">
-            Contact
+        {/* Logo & name */}
+        <div className="text-center">
+          <span className="font-serif text-[16px] font-bold tracking-[0.06em] text-white">
+            {site.name}
           </span>
-          <h2 className="font-serif text-[20px] font-bold tracking-[0.04em] text-bluegray-800">
-            相談する
-          </h2>
-          <div className="mx-auto mt-3 h-[1.5px] w-12 rounded-full bg-metallic-green" />
+          <p className="mt-1 text-[10px] tracking-[0.15em] text-bluegray-400">
+            {site.tagline}
+          </p>
         </div>
 
-        <p className="mb-4 text-center text-[12px] leading-relaxed text-bluegray-500">
-          お仕事のご相談はお気軽にどうぞ
+        {/* Divider */}
+        <div className="mx-auto my-5 h-px w-16 bg-bluegray-600" />
+
+        {/* Nav links */}
+        <nav className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
+          {[
+            { label: 'ホーム', href: '#/home' },
+            { label: 'プラン', href: '#/plan' },
+            { label: '私たちについて', href: '#/about' },
+            { label: 'ブログ', href: '#/note' },
+            { label: 'お問い合わせ', href: '#/contact' },
+          ].map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              className="text-[11px] font-medium tracking-[0.04em] text-bluegray-400 no-underline transition hover:text-white"
+            >
+              {link.label}
+            </a>
+          ))}
+        </nav>
+
+        {/* Copyright */}
+        <p className="mt-6 text-center text-[10px] text-bluegray-500">
+          &copy; {new Date().getFullYear()} {site.name}. All rights reserved.
         </p>
-
-        <div className="flex justify-center">
-          <a
-            href={`mailto:${site.email}`}
-            className="inline-flex items-center gap-1.5 rounded-full border border-mint-200 bg-white px-5 py-2 font-serif text-[12px] font-semibold tracking-[0.06em] text-mint-600 no-underline shadow-sm transition hover:bg-mint-50"
-          >
-            <IconMail className="h-4 w-4" />
-            メールで相談する
-          </a>
-        </div>
       </div>
-    </section>
+    </footer>
   )
 }

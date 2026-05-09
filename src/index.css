@@ -551,9 +551,7 @@ h1, h2, h3 {
 .floating-reserve-button {
   position: fixed;
   z-index: 60;
-  /* Keep the button at the visible lower-right of the mobile frame.
-     On narrow phones it hugs the viewport; on desktop it hugs the 390px frame. */
-  left: min(calc(100vw - 78px), calc(50% + 132px));
+  right: 16px;
   bottom: calc(92px + env(safe-area-inset-bottom));
 }
 

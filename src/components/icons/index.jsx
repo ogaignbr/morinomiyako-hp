@@ -324,14 +324,17 @@ const socialIcons = {
   github: IconGitHub,
 }
 
+// eslint-disable-next-line react-refresh/only-export-components -- registry helpers for dynamic cards
 export function getServiceIcon(key) {
   return serviceIcons[key] || IconWebDesign
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 export function getFeatureIcon(key) {
   return featureIcons[key] || IconSparkle
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 export function getSocialIcon(key) {
   return socialIcons[key] || IconNote
 }

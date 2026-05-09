@@ -1,10 +1,10 @@
+import { createElement } from 'react'
 import { services, works } from '../data/siteContent'
 import { getServiceIcon, IconArrowRight, IconImage } from './icons'
 
 function ServiceCard({ item }) {
   const Wrapper = item.href ? 'a' : 'div'
   const wrapperProps = item.href ? { href: item.href } : {}
-  const Icon = item.iconKey ? getServiceIcon(item.iconKey) : null
 
   return (
     <Wrapper
@@ -21,9 +21,9 @@ function ServiceCard({ item }) {
             playsInline
             className="h-full w-full object-cover"
           />
-        ) : Icon ? (
+        ) : item.iconKey ? (
           <div className="flex h-full w-full items-center justify-center bg-metallic-green text-white">
-            <Icon className="h-7 w-7" />
+            {createElement(getServiceIcon(item.iconKey), { className: 'h-7 w-7' })}
           </div>
         ) : (
           <div className="flex h-full w-full items-center justify-center text-bluegray-300">

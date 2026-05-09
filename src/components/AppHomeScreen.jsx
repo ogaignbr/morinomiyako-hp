@@ -69,7 +69,7 @@ export default function AppHomeScreen() {
   }, [menuOpen])
 
   return (
-    <section className="app-home-screen mx-auto flex min-h-screen w-full max-w-[390px] flex-col bg-transparent px-2 pb-21 pt-2">
+    <section className="app-home-screen mx-auto flex min-h-screen w-full flex-col bg-transparent px-2 pb-21 pt-2">
       <div className="rounded-lg border border-bluegray-100 bg-white py-2 shadow-[0_6px_18px_rgba(0,0,0,0.06)]">
         <div className="mb-1.5 flex items-start justify-between gap-2 px-2.5">
           <a href="#/home" className="flex items-center gap-1.5 no-underline">

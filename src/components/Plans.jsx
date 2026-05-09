@@ -54,7 +54,13 @@ export default function Plans() {
           ))}
         </div>
 
-        <div className="mt-3 grid grid-cols-3 gap-2">
+        <div className="my-5 flex items-center gap-3">
+          <div className="h-[1px] flex-1 bg-gradient-to-r from-transparent via-bluegray-200 to-transparent" />
+          <span className="text-[10px] font-medium tracking-[0.15em] text-bluegray-400">OPTION</span>
+          <div className="h-[1px] flex-1 bg-gradient-to-r from-transparent via-bluegray-200 to-transparent" />
+        </div>
+
+        <div className="grid grid-cols-3 gap-2">
           <a href="#/plan-option" className={`${cardStyles} col-start-2`}>
             <div className="w-full overflow-hidden bg-bluegray-50">
               <img

@@ -10,6 +10,7 @@ import AppHomeScreen from './components/AppHomeScreen'
 import AppBottomTabs from './components/AppBottomTabs'
 import FloatingContactButton from './components/FloatingContactButton'
 import Diagnosis from './components/Diagnosis'
+import Footer from './components/Footer'
 import BakusokuLP from './components/BakusokuLP'
 import AiUpdateLP from './components/AiUpdateLP'
 import AiSecretaryLP from './components/AiSecretaryLP'
@@ -49,19 +50,8 @@ function App() {
 
   if (page === 'home') {
     return (
-      <div className="relative min-h-screen overflow-hidden bg-[linear-gradient(160deg,#0f4d2f_0%,#1e7a4a_34%,#38a169_52%,#2a8f5a_70%,#145a32_100%)] font-sans antialiased">
-        <div className="pointer-events-none absolute -left-12 top-8 h-44 w-44 rounded-full bg-mint-300/12 blur-3xl animate-float-slow" />
-        <div className="pointer-events-none absolute -right-16 top-1/3 h-52 w-52 rounded-full bg-white/8 blur-3xl animate-float" />
-        <div className="pointer-events-none absolute left-1/2 top-3/4 h-48 w-48 -translate-x-1/2 rounded-full bg-mint-200/10 blur-3xl animate-float-slow" />
-        <div className="pointer-events-none absolute inset-0 z-0">
-          <div className="bg-orb bg-orb-a" />
-          <div className="bg-orb bg-orb-b" />
-          <div className="bg-orb bg-orb-c" />
-          <div className="bg-cube bg-cube-a" />
-          <div className="bg-cube bg-cube-b" />
-        </div>
-
-        <div className="relative z-20 mx-auto min-h-screen w-full max-w-[390px] bg-[#0b0c0c] shadow-[0_12px_50px_rgba(0,0,0,0.14)] ring-1 ring-white/10 md:my-2 md:min-h-[calc(100dvh-16px)] md:rounded-[20px]">
+      <div className="relative min-h-screen overflow-hidden bg-[#0b0c0c] font-sans antialiased">
+        <div className="relative z-20 min-h-screen w-full">
           <AppHomeScreen />
           <AppBottomTabs page={page} />
         </div>
@@ -71,32 +61,11 @@ function App() {
   }
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-[linear-gradient(160deg,#0f4d2f_0%,#1e7a4a_34%,#38a169_52%,#2a8f5a_70%,#145a32_100%)] font-sans antialiased">
-      <div className="pointer-events-none absolute -left-12 top-8 h-44 w-44 rounded-full bg-mint-300/12 blur-3xl animate-float-slow" />
-      <div className="pointer-events-none absolute -right-16 top-1/3 h-52 w-52 rounded-full bg-white/8 blur-3xl animate-float" />
-      <div className="pointer-events-none absolute left-1/2 top-3/4 h-48 w-48 -translate-x-1/2 rounded-full bg-mint-200/10 blur-3xl animate-float-slow" />
-      <div className="pointer-events-none absolute inset-0 z-0">
-        <div className="bg-orb bg-orb-a" />
-        <div className="bg-orb bg-orb-b" />
-        <div className="bg-orb bg-orb-c" />
-        <div className="bg-cube bg-cube-a" />
-        <div className="bg-cube bg-cube-b" />
-      </div>
-
-      <div
-        className={`relative z-20 mx-auto min-h-screen w-full max-w-[390px] pb-24 shadow-[0_12px_50px_rgba(0,0,0,0.14)] ring-1 md:my-2 md:min-h-[calc(100dvh-16px)] md:rounded-[20px] ${
-          page === 'about' ||
-          page === 'note' ||
-          page === 'contact' ||
-          page === 'plan' ||
-          page.startsWith('plan-')
-            ? 'bg-white text-bluegray-700 ring-bluegray-100'
-            : 'bg-[#0b0c0c] ring-white/10'
-        }`}
-      >
+    <div className="relative min-h-screen overflow-hidden bg-white font-sans antialiased">
+      <div className="relative z-20 min-h-screen w-full pb-24 bg-white text-bluegray-700">
         {page === 'about' && (
           <main>
-            <img src={aboutHeaderImage} alt="自己紹介ヘッダー" className="h-48 w-full bg-white object-contain" />
+            <img src={aboutHeaderImage} alt="自己紹介ヘッダー" className="w-full bg-white object-cover" />
             <About />
             <Representative />
           </main>
@@ -125,6 +94,7 @@ function App() {
           <main>
             <Diagnosis />
             <Links />
+            <Footer />
           </main>
         )}
 

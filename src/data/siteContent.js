@@ -7,7 +7,7 @@ const B = import.meta.env.BASE_URL.replace(/\/$/, '')
 
 export const site = {
   name: '杜の都工房',
-  tagline: '古き良き × 最先端',
+  tagline: '競争よりも、共創へ。',
   email: 'morinomiyako.kobo@gmail.com',
 }
 

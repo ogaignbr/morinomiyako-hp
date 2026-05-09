@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import { site } from '../data/siteContent'
+import SampleRequestForm from './SampleRequestForm'
+import ConsultationForm from './ConsultationForm'
 
 // Q1 is shared (yes/no). After that, questions branch.
 const firstQuestion = {
@@ -197,6 +199,7 @@ function getRecommendation(hasWebsite, branchAnswers, branchQuestions) {
 
 export default function Diagnosis() {
   const [started, setStarted] = useState(false)
+  const [consultationMode, setConsultationMode] = useState(false)
   const [hasWebsite, setHasWebsite] = useState(null)
   const [current, setCurrent] = useState(0) // index within branch questions
   const [answers, setAnswers] = useState([])
@@ -244,6 +247,15 @@ export default function Diagnosis() {
     }
   }
 
+  // Consultation form
+  if (consultationMode) {
+    return (
+      <ConsultationForm
+        onBack={() => setConsultationMode(false)}
+      />
+    )
+  }
+
   // Landing
   if (!started) {
     return (
@@ -277,9 +289,9 @@ export default function Diagnosis() {
               </p>
             </button>
 
-            <a
-              href={`mailto:${site.email}`}
-              className="flex flex-col items-center rounded-2xl border border-mint-200 bg-gradient-to-b from-mint-50 to-white p-4 text-center no-underline shadow-sm transition hover:-translate-y-0.5 hover:shadow-md active:scale-[0.98]"
+            <button
+              onClick={() => setConsultationMode(true)}
+              className="flex flex-col items-center rounded-2xl border border-mint-200 bg-gradient-to-b from-mint-50 to-white p-4 text-center shadow-sm transition hover:-translate-y-0.5 hover:shadow-md active:scale-[0.98]"
             >
               <div className="mb-2 flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-mint-500 to-mint-600 text-white shadow">
                 <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -290,9 +302,9 @@ export default function Diagnosis() {
                 相談する
               </span>
               <p className="mt-1.5 text-[10.5px] leading-relaxed text-bluegray-500">
-                メールでお気軽にご相談・お見積もり
+                質問に答えてお気軽にご相談
               </p>
-            </a>
+            </button>
           </div>
         </div>
       </section>
@@ -382,6 +394,8 @@ export default function Diagnosis() {
               </a>
             </div>
           )}
+
+          <SampleRequestForm diagnosisResult={primary.title} />
 
           <div className="mt-6 text-center">
             <button
