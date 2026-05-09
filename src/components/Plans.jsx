@@ -9,7 +9,13 @@ const planImages = {
 const optionImage = new URL('../../HP画像/オプション.png', import.meta.url).href
 
 const cardStyles =
-  'group flex flex-col overflow-hidden rounded-xl border border-bluegray-100 bg-white no-underline shadow-[0_6px_18px_rgba(15,77,47,0.08)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_10px_22px_rgba(15,77,47,0.16)]'
+  'group flex flex-col overflow-hidden rounded-xl border border-bluegray-100 bg-white no-underline shadow-[0_8px_20px_rgba(15,77,47,0.12),inset_0_1px_0_rgba(255,255,255,0.75),inset_0_-3px_8px_rgba(15,77,47,0.08)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_14px_28px_rgba(15,77,47,0.2)] active:translate-y-[1px]'
+
+const planNameBg = {
+  light: 'bg-[linear-gradient(135deg,#dff8ec_0%,#baf0d5_100%)] text-[#18613c]',
+  standard: 'bg-[linear-gradient(135deg,#dff0ff_0%,#c7e4ff_100%)] text-[#1d4c89]',
+  premium: 'bg-[linear-gradient(135deg,#f7f1d8_0%,#ebdcab_100%)] text-[#745d16]',
+}
 
 export default function Plans() {
   return (
@@ -39,8 +45,8 @@ export default function Plans() {
                   loading="lazy"
                 />
               </div>
-              <div className="px-1.5 py-2 text-center">
-                <p className="font-serif text-[10.5px] font-semibold leading-tight tracking-[0.02em] text-bluegray-800">
+              <div className={`px-1.5 py-2 text-center ${planNameBg[plan.id]}`}>
+                <p className="font-serif text-[10.5px] font-semibold leading-tight tracking-[0.02em]">
                   {plan.shortTitle}
                 </p>
               </div>

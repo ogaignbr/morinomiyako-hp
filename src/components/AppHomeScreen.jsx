@@ -144,7 +144,7 @@ export default function AppHomeScreen() {
             <a
               key={card.title}
               href={card.href}
-              className="rounded-md border border-bluegray-100 bg-white p-0.5 text-center no-underline shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
+              className="home-neon-card rounded-md border border-bluegray-100 bg-white p-0.5 text-center no-underline shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
             >
               <img
                 src={card.image}

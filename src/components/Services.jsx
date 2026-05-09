@@ -9,7 +9,7 @@ function ServiceCard({ item }) {
   return (
     <Wrapper
       {...wrapperProps}
-      className="group flex items-stretch gap-3 overflow-hidden rounded-xl border-2 border-mint-400/55 bg-white p-2.5 no-underline shadow-[0_6px_18px_rgba(15,77,47,0.08)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_10px_22px_rgba(15,77,47,0.16)]"
+      className="group flex items-stretch gap-3 overflow-hidden rounded-xl border border-bluegray-100 bg-white p-2.5 no-underline shadow-[0_6px_18px_rgba(15,77,47,0.08)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_10px_22px_rgba(15,77,47,0.16)]"
     >
       <div className="aspect-square w-[88px] shrink-0 overflow-hidden rounded-lg bg-gradient-to-br from-mint-50 to-white shadow-md">
         {item.video ? (
@@ -34,7 +34,7 @@ function ServiceCard({ item }) {
       <div className="flex flex-1 flex-col justify-between py-0.5">
         <div>
           <h4 className="mb-1">
-            <span className="inline-block rounded bg-mint-400 px-1.5 py-0.5 font-serif text-[11px] font-semibold tracking-[0.04em] text-white">
+            <span className="font-serif text-[12.5px] font-semibold tracking-[0.04em] text-bluegray-800 transition-colors group-hover:text-mint-500">
               {item.title}
             </span>
           </h4>
