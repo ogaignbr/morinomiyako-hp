@@ -4,7 +4,7 @@ const tabs = [
   { id: 'home', label: 'ホーム', href: '#/home', icon: IconHome },
   { id: 'about', label: '自己紹介', href: '#/about', icon: IconUser },
   { id: 'plan', label: 'プラン', href: '#/plan', icon: IconDocument },
-  { id: 'note', label: 'note', href: '#/note', icon: IconNote },
+  { id: 'note', label: 'ブログ', href: '#/note', icon: IconNote },
   { id: 'contact', label: '問い合わせ', href: '#/contact', icon: IconCalendar },
 ]
 

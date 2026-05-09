@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
+import Plans from './components/Plans'
+import PlanDetail from './components/PlanDetail'
 import Services from './components/Services'
-import Works from './components/Works'
 import About from './components/About'
 import Representative from './components/Representative'
 import Note from './components/Note'
@@ -9,20 +10,25 @@ import Footer from './components/Footer'
 import AppHomeScreen from './components/AppHomeScreen'
 import AppBottomTabs from './components/AppBottomTabs'
 import FloatingContactButton from './components/FloatingContactButton'
+import Diagnosis from './components/Diagnosis'
 import BakusokuLP from './components/BakusokuLP'
 import AiUpdateLP from './components/AiUpdateLP'
 import AiSecretaryLP from './components/AiSecretaryLP'
 import WebDesignLP from './components/WebDesignLP'
 
 const aboutHeaderImage = new URL('../HP画像/自己紹介.png', import.meta.url).href
-const planHeaderImage = new URL('../HP画像/プラン.png', import.meta.url).href
 const noteHeaderImage = new URL('../HP画像/note.png', import.meta.url).href
+
+const PLAN_DETAIL_IDS = ['light', 'standard', 'premium', 'option']
 
 function App() {
   const [page, setPage] = useState(getPage())
 
   useEffect(() => {
-    const onHash = () => setPage(getPage())
+    const onHash = () => {
+      setPage(getPage())
+      window.scrollTo({ top: 0, behavior: 'auto' })
+    }
     window.addEventListener('hashchange', onHash)
     return () => window.removeEventListener('hashchange', onHash)
   }, [])
@@ -81,7 +87,11 @@ function App() {
 
       <div
         className={`relative z-20 mx-auto min-h-screen w-full max-w-[390px] pb-24 shadow-[0_12px_50px_rgba(0,0,0,0.14)] ring-1 md:my-2 md:min-h-[calc(100dvh-16px)] md:rounded-[20px] ${
-          page === 'about' || page === 'note'
+          page === 'about' ||
+          page === 'note' ||
+          page === 'contact' ||
+          page === 'plan' ||
+          page.startsWith('plan-')
             ? 'bg-white text-bluegray-700 ring-bluegray-100'
             : 'bg-[#0b0c0c] ring-white/10'
         }`}
@@ -96,9 +106,14 @@ function App() {
 
         {page === 'plan' && (
           <main>
-            <img src={planHeaderImage} alt="プランヘッダー" className="h-36 w-full object-cover" />
+            <Plans />
             <Services />
-            <Works />
+          </main>
+        )}
+
+        {page.startsWith('plan-') && (
+          <main>
+            <PlanDetail planId={page.replace('plan-', '')} />
           </main>
         )}
 
@@ -106,12 +121,13 @@ function App() {
           <main>
             <img src={noteHeaderImage} alt="noteヘッダー" className="h-36 w-full object-cover" />
             <Note />
-            <Links />
           </main>
         )}
 
         {page === 'contact' && (
           <main>
+            <Links />
+            <Diagnosis />
             <Footer />
           </main>
         )}
@@ -134,6 +150,9 @@ function getPage() {
   if (hash === '#/ai-update') return 'ai-update'
   if (hash === '#/ai-secretary') return 'ai-secretary'
   if (hash === '#/web-design') return 'web-design'
+  for (const id of PLAN_DETAIL_IDS) {
+    if (hash === `#/plan-${id}`) return `plan-${id}`
+  }
   return 'home'
 }
 

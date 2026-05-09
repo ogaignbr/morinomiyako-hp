@@ -7,10 +7,10 @@ export default function Note() {
       <div className="mx-auto w-full max-w-[360px]">
         <div className="mb-6 text-center">
           <span className="text-metallic mb-2 inline-block text-[10px] font-semibold tracking-[0.25em] uppercase">
-            Note
+            Blog
           </span>
           <h2 className="font-serif text-[20px] font-bold tracking-[0.04em] text-bluegray-800">
-            noteで発信中
+            ブログで発信中
           </h2>
           <div className="mx-auto mt-3 h-[1.5px] w-12 rounded-full bg-metallic-green" />
           <p className="mx-auto mt-4 text-[12px] leading-relaxed text-bluegray-500">
@@ -59,7 +59,7 @@ export default function Note() {
             rel="noopener noreferrer"
             className="group inline-flex items-center gap-2 rounded-full bg-metallic-green px-6 py-3 text-[12px] font-semibold tracking-[0.06em] text-white no-underline shadow-md transition-all hover:shadow-lg"
           >
-            noteをもっと見る
+            ブログをもっと見る
             <IconExternalLink className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
           </a>
         </div>

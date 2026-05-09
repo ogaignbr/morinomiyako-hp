@@ -1,57 +1,47 @@
-import { site, navItems } from '../data/siteContent'
-import { IconMail } from './icons'
+import { site } from '../data/siteContent'
+import { IconMail, IconMapPin } from './icons'
 
 export default function Footer() {
   return (
-    <footer id="contact" className="relative">
-      {/* CTA - white background */}
-      <div className="border-t border-bluegray-100/50 bg-white py-16 md:py-20">
-        <div className="section-padding mx-auto max-w-5xl text-center">
-          <h2 className="mb-3 text-xl font-bold text-bluegray-800 md:text-2xl">
+    <footer id="contact" className="relative bg-white">
+      <div className="border-t border-bluegray-100 px-4 py-6">
+        <div className="mx-auto w-full max-w-[360px] text-center">
+          <p className="font-serif text-[12px] font-semibold tracking-[0.06em] text-bluegray-700">
             お仕事のご相談はこちら
-          </h2>
-          <p className="mb-8 text-sm text-bluegray-600">
-            まずはお気軽にご連絡ください
+          </p>
+          <p className="mt-1 text-[10.5px] text-bluegray-500">
+            お気軽にご連絡ください
           </p>
           <a
             href={`mailto:${site.email}`}
-            className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-bluegray-800 to-bluegray-700 px-8 py-4 text-sm font-medium text-white no-underline shadow-lg transition-all hover:shadow-xl"
+            className="mt-3 inline-flex items-center gap-1.5 rounded-full border border-mint-200 bg-white px-4 py-1.5 font-serif text-[11px] font-semibold tracking-[0.06em] text-mint-600 no-underline transition hover:bg-mint-50"
           >
-            <IconMail className="h-4 w-4" />
+            <IconMail className="h-3.5 w-3.5" />
             メールで相談する
           </a>
         </div>
       </div>
 
-      {/* Footer bar - green background */}
-      <div className="bg-metallic-green py-10 md:py-12">
-        <div className="section-padding mx-auto max-w-5xl">
-          <div className="flex flex-col items-center gap-6 md:flex-row md:justify-between">
-            <a href="#" className="flex items-center gap-2 no-underline">
-              <img src={`${import.meta.env.BASE_URL}images/logo-stamp.png`} alt="杜の都工房" className="h-[120px] w-[120px] object-contain" />
-              <div>
-                <span className="block text-sm font-semibold text-white">{site.name}</span>
-                <span className="block text-[11px] text-white/70">宮城県仙台市泉区</span>
-              </div>
-            </a>
-
-            <nav className="flex flex-wrap justify-center gap-6">
-              {navItems.map((item) => (
-                <a
-                  key={item.href}
-                  href={item.href}
-                  className="text-xs font-medium text-white/80 no-underline transition-colors hover:text-white"
-                >
-                  {item.label}
-                </a>
-              ))}
-            </nav>
-
-            <p className="text-[11px] text-white/60">
-              &copy; {new Date().getFullYear()} {site.name}
-            </p>
+      <div className="border-t border-bluegray-100 px-4 py-4">
+        <div className="mx-auto flex w-full max-w-[360px] items-center justify-between gap-2 text-bluegray-400">
+          <div className="flex items-center gap-1.5">
+            <img
+              src={`${import.meta.env.BASE_URL}favicon.png`}
+              alt={site.name}
+              className="h-5 w-5 object-contain opacity-80"
+            />
+            <span className="font-serif text-[10.5px] font-medium tracking-[0.06em] text-bluegray-500">
+              {site.name}
+            </span>
           </div>
+          <span className="flex items-center gap-1 text-[9.5px]">
+            <IconMapPin className="h-3 w-3" />
+            仙台市泉区
+          </span>
         </div>
+        <p className="mx-auto mt-2 w-full max-w-[360px] text-center text-[9.5px] text-bluegray-400">
+          &copy; {new Date().getFullYear()} {site.name}
+        </p>
       </div>
     </footer>
   )

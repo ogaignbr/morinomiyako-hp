@@ -1,4 +1,18 @@
-import { IconBell, IconCalendar, IconChevronRight, IconInstagram, IconLine, IconMail, IconMapPin, IconMenu } from './icons'
+import { useEffect, useRef, useState } from 'react'
+import {
+  IconBell,
+  IconCalendar,
+  IconChevronRight,
+  IconDocument,
+  IconHome,
+  IconInstagram,
+  IconLine,
+  IconMail,
+  IconMapPin,
+  IconMenu,
+  IconNote,
+  IconUser,
+} from './icons'
 import { site } from '../data/siteContent'
 
 const homeHeaderImage = new URL('../../HP画像/ヘッダー１.png', import.meta.url).href
@@ -8,31 +22,57 @@ const noteCardImage = new URL('../../HP画像/note.png', import.meta.url).href
 
 const cardItems = [
   {
-    title: '自己紹介',
-    description: '杜の都工房をご紹介',
+    title: '杜の都工房とは？',
+    description: '工房理念/代表挨拶',
     href: '#/about',
     image: aboutCardImage,
   },
   {
-    title: 'プラン',
-    description: 'できることとお仕事',
+    title: '制作プラン',
+    description: '各種プラン詳細',
     href: '#/plan',
     image: planCardImage,
   },
   {
-    title: 'note',
-    description: '最新の発信をお知らせ',
+    title: 'ブログ',
+    description: '役立つ情報を発信',
     href: '#/note',
     image: noteCardImage,
   },
 ]
 
+const menuItems = [
+  { label: 'ホーム', href: '#/home', icon: IconHome },
+  { label: '杜の都工房とは？', href: '#/about', icon: IconUser },
+  { label: '制作プラン', href: '#/plan', icon: IconDocument },
+  { label: 'ブログ', href: '#/note', icon: IconNote },
+  { label: '問い合わせ', href: '#/contact', icon: IconCalendar },
+]
+
 export default function AppHomeScreen() {
+  const [menuOpen, setMenuOpen] = useState(false)
+  const menuWrapperRef = useRef(null)
+
+  useEffect(() => {
+    if (!menuOpen) return
+    const onClick = (e) => {
+      if (menuWrapperRef.current && !menuWrapperRef.current.contains(e.target)) {
+        setMenuOpen(false)
+      }
+    }
+    document.addEventListener('mousedown', onClick)
+    document.addEventListener('touchstart', onClick)
+    return () => {
+      document.removeEventListener('mousedown', onClick)
+      document.removeEventListener('touchstart', onClick)
+    }
+  }, [menuOpen])
+
   return (
     <section className="app-home-screen mx-auto flex min-h-screen w-full max-w-[390px] flex-col bg-transparent px-2 pb-21 pt-2">
       <div className="rounded-lg border border-bluegray-100 bg-white py-2 shadow-[0_6px_18px_rgba(0,0,0,0.06)]">
         <div className="mb-1.5 flex items-start justify-between gap-2 px-2.5">
-          <div className="flex items-center gap-1.5">
+          <a href="#/home" className="flex items-center gap-1.5 no-underline">
             <img
               src={`${import.meta.env.BASE_URL}images/logo-stamp.png`}
               alt="杜の都工房ロゴ"
@@ -42,17 +82,43 @@ export default function AppHomeScreen() {
               <p className="font-serif text-[15px] leading-tight font-semibold tracking-[0.03em] text-bluegray-800">Webアプリ制作</p>
               <p className="font-serif text-[14px] leading-tight font-semibold tracking-[0.06em] text-mint-500">杜の都工房</p>
             </div>
-          </div>
-          <div className="flex items-center gap-0.5 text-bluegray-700">
+          </a>
+          <div className="relative flex items-center gap-0.5 text-bluegray-700" ref={menuWrapperRef}>
             <button className="rounded-md p-1.5 transition hover:bg-bluegray-50" aria-label="Instagram">
               <IconInstagram className="h-6 w-6" />
             </button>
             <button className="rounded-md p-1.5 text-mint-500 transition hover:bg-mint-50" aria-label="LINE">
               <IconLine className="h-6 w-6" />
             </button>
-            <button className="rounded-md p-1.5 transition hover:bg-bluegray-50" aria-label="メニュー">
+            <button
+              type="button"
+              onClick={() => setMenuOpen((v) => !v)}
+              className={`rounded-md p-1.5 transition ${menuOpen ? 'bg-mint-50 text-mint-500' : 'hover:bg-bluegray-50'}`}
+              aria-label="メニュー"
+              aria-expanded={menuOpen}
+            >
               <IconMenu className="h-6 w-6" />
             </button>
+            {menuOpen && (
+              <div className="absolute right-0 top-[42px] z-40 w-[170px] overflow-hidden rounded-lg border border-bluegray-100 bg-white shadow-[0_14px_30px_rgba(10,30,18,0.18)]">
+                {menuItems.map((item) => {
+                  const Icon = item.icon
+                  return (
+                    <a
+                      key={item.href}
+                      href={item.href}
+                      onClick={() => setMenuOpen(false)}
+                      className="flex items-center gap-2 border-b border-bluegray-50 px-3 py-2.5 text-bluegray-700 no-underline transition last:border-b-0 hover:bg-mint-50 hover:text-mint-500"
+                    >
+                      <Icon className="h-4 w-4" />
+                      <span className="font-serif text-[12px] font-semibold tracking-[0.04em]">
+                        {item.label}
+                      </span>
+                    </a>
+                  )
+                })}
+              </div>
+            )}
           </div>
         </div>
 

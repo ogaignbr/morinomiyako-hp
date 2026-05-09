@@ -1,80 +1,182 @@
-import { services } from '../data/siteContent'
-import { getServiceIcon, IconArrowRight } from './icons'
+import { services, works } from '../data/siteContent'
+import { getServiceIcon, IconArrowRight, IconImage } from './icons'
+
+function ServiceCard({ item }) {
+  const Wrapper = item.href ? 'a' : 'div'
+  const wrapperProps = item.href ? { href: item.href } : {}
+  const Icon = item.iconKey ? getServiceIcon(item.iconKey) : null
+
+  return (
+    <Wrapper
+      {...wrapperProps}
+      className="group flex items-stretch gap-3 overflow-hidden rounded-xl border-2 border-mint-400/55 bg-white p-2.5 no-underline shadow-[0_6px_18px_rgba(15,77,47,0.08)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_10px_22px_rgba(15,77,47,0.16)]"
+    >
+      <div className="aspect-square w-[88px] shrink-0 overflow-hidden rounded-lg bg-gradient-to-br from-mint-50 to-white shadow-md">
+        {item.video ? (
+          <video
+            src={item.video}
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="h-full w-full object-cover"
+          />
+        ) : Icon ? (
+          <div className="flex h-full w-full items-center justify-center bg-metallic-green text-white">
+            <Icon className="h-7 w-7" />
+          </div>
+        ) : (
+          <div className="flex h-full w-full items-center justify-center text-bluegray-300">
+            <IconImage className="h-6 w-6 opacity-50" />
+          </div>
+        )}
+      </div>
+      <div className="flex flex-1 flex-col justify-between py-0.5">
+        <div>
+          <h4 className="mb-1">
+            <span className="inline-block rounded bg-mint-400 px-1.5 py-0.5 font-serif text-[11px] font-semibold tracking-[0.04em] text-white">
+              {item.title}
+            </span>
+          </h4>
+          <p className="line-clamp-2 text-[10.5px] leading-relaxed text-bluegray-600">
+            {item.description}
+          </p>
+        </div>
+        <div className="mt-1.5 flex items-center justify-between gap-2">
+          <div className="flex flex-wrap items-center gap-1">
+            {item.tags?.slice(0, 2).map((tag) => (
+              <span
+                key={tag}
+                className="rounded-full bg-bluegray-50 px-1.5 py-0.5 text-[9px] font-medium text-bluegray-600"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+          {item.href && (
+            <span className="text-metallic flex shrink-0 items-center gap-0.5 font-serif text-[10px] font-semibold tracking-[0.06em]">
+              詳しく
+              <IconArrowRight className="h-2.5 w-2.5 transition-transform group-hover:translate-x-0.5" />
+            </span>
+          )}
+        </div>
+      </div>
+    </Wrapper>
+  )
+}
+
+function WorkCard({ item }) {
+  const Wrapper = item.href ? 'a' : 'div'
+  const wrapperProps = item.href ? { href: item.href } : {}
+
+  return (
+    <Wrapper
+      {...wrapperProps}
+      className="group flex items-stretch gap-3 overflow-hidden rounded-xl border border-bluegray-100 bg-white p-2.5 no-underline shadow-[0_6px_18px_rgba(15,77,47,0.08)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_10px_22px_rgba(15,77,47,0.16)]"
+    >
+      <div className="aspect-[16/9] w-[120px] shrink-0 self-center overflow-hidden rounded-lg bg-gradient-to-br from-mint-50 to-white shadow-md">
+        {item.video ? (
+          <video
+            src={item.video}
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="h-full w-full object-cover"
+          />
+        ) : item.image ? (
+          <img
+            src={item.image}
+            alt={item.title}
+            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+            loading="lazy"
+          />
+        ) : (
+          <div className="flex h-full w-full items-center justify-center text-bluegray-300">
+            <IconImage className="h-6 w-6 opacity-50" />
+          </div>
+        )}
+      </div>
+      <div className="flex flex-1 flex-col justify-between py-0.5">
+        <div>
+          <h4 className="mb-1 font-serif text-[12.5px] font-semibold tracking-[0.04em] text-bluegray-800 transition-colors group-hover:text-mint-500">
+            {item.title}
+          </h4>
+          <p className="line-clamp-2 text-[10.5px] leading-relaxed text-bluegray-600">
+            {item.description}
+          </p>
+        </div>
+        <div className="mt-1.5 flex items-center justify-between gap-2">
+          <div className="flex flex-wrap items-center gap-1">
+            {item.tags?.slice(0, 2).map((tag) => (
+              <span
+                key={tag}
+                className="rounded-full bg-bluegray-50 px-1.5 py-0.5 text-[9px] font-medium text-bluegray-600"
+              >
+                {tag}
+              </span>
+            ))}
+            {item.price && (
+              <span className="font-serif text-[10.5px] font-bold text-mint-500">
+                {item.price}
+              </span>
+            )}
+          </div>
+          {item.href && (
+            <span className="text-metallic flex shrink-0 items-center gap-0.5 font-serif text-[10px] font-semibold tracking-[0.06em]">
+              詳しく
+              <IconArrowRight className="h-2.5 w-2.5 transition-transform group-hover:translate-x-0.5" />
+            </span>
+          )}
+        </div>
+      </div>
+    </Wrapper>
+  )
+}
 
 export default function Services() {
   return (
-    <section id="services" className="relative bg-white py-20 md:py-28">
-      <div className="section-padding mx-auto max-w-6xl">
-        <div className="mb-14 text-center md:mb-20">
-          <span className="text-metallic mb-3 inline-block text-xs font-semibold tracking-[0.2em] uppercase">
+    <section id="services" className="relative bg-white px-4 pt-6 pb-10">
+      <div className="mx-auto w-full max-w-[360px]">
+        <div className="mb-5 text-center">
+          <span className="text-metallic mb-2 inline-block text-[10px] font-semibold tracking-[0.25em] uppercase">
             Services
           </span>
-          <h2 className="section-line mb-4 text-2xl font-bold tracking-tight text-bluegray-800 md:text-3xl">
-            <span className="title-reveal"><span className="title-reveal-inner">できること</span></span>
+          <h2 className="font-serif text-[20px] font-bold tracking-[0.04em] text-bluegray-800">
+            できること
           </h2>
-          <p className="mx-auto max-w-md text-sm leading-relaxed text-bluegray-600">
+          <div className="mx-auto mt-3 h-[1.5px] w-12 rounded-full bg-metallic-green" />
+          <p className="mx-auto mt-3 text-[12px] leading-relaxed text-bluegray-500">
             あなたのアイデアを形にします
           </p>
         </div>
 
-        <div className="grid grid-cols-2 gap-3 lg:gap-6">
-          {services.map((service, i) => {
-            const Icon = getServiceIcon(service.iconKey)
-            const Wrapper = service.href ? 'a' : 'div'
-            const wrapperProps = service.href ? { href: service.href } : {}
-            return (
-              <Wrapper
-                key={i}
-                {...wrapperProps}
-                className={`glass-card-elevated group block rounded-xl border-2 border-mint-400/40 p-3 no-underline transition-all duration-300 md:rounded-2xl md:p-8 ${
-                  service.iconKey === 'consulting' ? 'card-glow' : ''
-                }`}
-              >
-                <div className={`service-icon-anim-${i % 4} mb-3 h-14 w-14 overflow-hidden rounded-xl shadow-md transition-transform group-hover:scale-105 md:mb-5 md:h-24 md:w-24 md:rounded-2xl`}>
-                  {service.video ? (
-                    <video
-                      src={service.video}
-                      autoPlay
-                      loop
-                      muted
-                      playsInline
-                      className="h-full w-full object-cover"
-                    />
-                  ) : (
-                    <div className="flex h-full w-full items-center justify-center bg-metallic-green text-white">
-                      <Icon className="h-5 w-5 md:h-6 md:w-6" />
-                    </div>
-                  )}
-                </div>
-                <h3 className="mb-1 text-sm font-semibold md:mb-2 md:text-lg">
-                  <span
-                    className={`service-title-reveal inline rounded bg-mint-400 px-1.5 py-0.5 text-[11px] text-white md:px-2 md:text-base delay-${i % 4}`}
-                  >
-                    {service.title}
-                  </span>
-                </h3>
-                <p className="mb-2 text-[10px] leading-relaxed text-bluegray-600 md:mb-4 md:text-sm">
-                  {service.description}
-                </p>
-                <div className="flex flex-wrap gap-1 md:gap-2">
-                  {service.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="rounded-full bg-bluegray-50 px-2 py-0.5 text-[9px] font-medium text-bluegray-600 md:px-3 md:py-1 md:text-[11px]"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-                {service.href && (
-                  <div className="text-metallic mt-2 flex items-center gap-1 text-[10px] font-semibold md:mt-4 md:text-xs">
-                    詳しく見る
-                    <IconArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-1 md:h-3.5 md:w-3.5" />
-                  </div>
-                )}
-              </Wrapper>
-            )
-          })}
+        <div className="mb-3 flex items-center gap-2">
+          <span className="h-[1px] flex-1 bg-mint-100" />
+          <span className="font-serif text-[10.5px] font-semibold tracking-[0.18em] text-mint-600">
+            AI伴走・実装サポート
+          </span>
+          <span className="h-[1px] flex-1 bg-mint-100" />
+        </div>
+
+        <div className="space-y-3">
+          {services.map((service, i) => (
+            <ServiceCard key={`s-${i}`} item={service} />
+          ))}
+        </div>
+
+        <div className="mt-7 mb-3 flex items-center gap-2">
+          <span className="h-[1px] flex-1 bg-bluegray-100" />
+          <span className="font-serif text-[10.5px] font-semibold tracking-[0.18em] text-bluegray-600">
+            制作サービス
+          </span>
+          <span className="h-[1px] flex-1 bg-bluegray-100" />
+        </div>
+
+        <div className="space-y-3">
+          {works.map((work, i) => (
+            <WorkCard key={`w-${i}`} item={work} />
+          ))}
         </div>
       </div>
     </section>
