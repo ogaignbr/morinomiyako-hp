@@ -1,48 +1,34 @@
 import { site } from '../data/siteContent'
-import { IconMail, IconMapPin } from './icons'
+import { IconMail } from './icons'
 
 export default function Footer() {
   return (
-    <footer id="contact" className="relative bg-white">
-      <div className="border-t border-bluegray-100 px-4 py-6">
-        <div className="mx-auto w-full max-w-[360px] text-center">
-          <p className="font-serif text-[12px] font-semibold tracking-[0.06em] text-bluegray-700">
-            お仕事のご相談はこちら
-          </p>
-          <p className="mt-1 text-[10.5px] text-bluegray-500">
-            お気軽にご連絡ください
-          </p>
+    <section id="contact" className="relative bg-white px-4 pt-4 pb-12">
+      <div className="mx-auto w-full max-w-[360px]">
+        <div className="mb-6 text-center">
+          <span className="text-metallic mb-2 inline-block text-[10px] font-semibold tracking-[0.25em] uppercase">
+            Contact
+          </span>
+          <h2 className="font-serif text-[20px] font-bold tracking-[0.04em] text-bluegray-800">
+            相談する
+          </h2>
+          <div className="mx-auto mt-3 h-[1.5px] w-12 rounded-full bg-metallic-green" />
+        </div>
+
+        <p className="mb-4 text-center text-[12px] leading-relaxed text-bluegray-500">
+          お仕事のご相談はお気軽にどうぞ
+        </p>
+
+        <div className="flex justify-center">
           <a
             href={`mailto:${site.email}`}
-            className="mt-3 inline-flex items-center gap-1.5 rounded-full border border-mint-200 bg-white px-4 py-1.5 font-serif text-[11px] font-semibold tracking-[0.06em] text-mint-600 no-underline transition hover:bg-mint-50"
+            className="inline-flex items-center gap-1.5 rounded-full border border-mint-200 bg-white px-5 py-2 font-serif text-[12px] font-semibold tracking-[0.06em] text-mint-600 no-underline shadow-sm transition hover:bg-mint-50"
           >
-            <IconMail className="h-3.5 w-3.5" />
+            <IconMail className="h-4 w-4" />
             メールで相談する
           </a>
         </div>
       </div>
-
-      <div className="border-t border-bluegray-100 px-4 py-4">
-        <div className="mx-auto flex w-full max-w-[360px] items-center justify-between gap-2 text-bluegray-400">
-          <div className="flex items-center gap-1.5">
-            <img
-              src={`${import.meta.env.BASE_URL}favicon.png`}
-              alt={site.name}
-              className="h-5 w-5 object-contain opacity-80"
-            />
-            <span className="font-serif text-[10.5px] font-medium tracking-[0.06em] text-bluegray-500">
-              {site.name}
-            </span>
-          </div>
-          <span className="flex items-center gap-1 text-[9.5px]">
-            <IconMapPin className="h-3 w-3" />
-            仙台市泉区
-          </span>
-        </div>
-        <p className="mx-auto mt-2 w-full max-w-[360px] text-center text-[9.5px] text-bluegray-400">
-          &copy; {new Date().getFullYear()} {site.name}
-        </p>
-      </div>
-    </footer>
+    </section>
   )
 }

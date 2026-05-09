@@ -54,13 +54,9 @@ export default function AiUpdateLP() {
               <span className="block bg-gradient-to-r from-cyan-500 to-blue-500 bg-clip-text text-transparent">AIを搭載</span>
             </h1>
 
-            <p className="mb-3 text-lg font-medium text-[#4a5568] md:text-xl">
-              学ぶのではなく、アップデートする。
-            </p>
             <p className="mx-auto mb-10 max-w-lg text-sm leading-relaxed text-[#718096] md:text-base">
-              AIを使いこなすのではなく、AIを身につける。<br />
-              自分で調べ、自分で実装できるまで伴走します。<br className="hidden sm:block" />
-              一度身につければ、時代と共に進化し続けられる自分に。
+              AIと共に進めたいことを、ひとつずつ形に。<br />
+              自分で調べ、自分で実装できるまで伴走します。
             </p>
 
             <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center sm:gap-4">
@@ -87,77 +83,7 @@ export default function AiUpdateLP() {
         </section>
 
         {/* ════════════════════════════════════════════════
-            3. 学ぶではなくアップデート
-        ════════════════════════════════════════════════ */}
-        <section className="py-16 md:py-24">
-          <div className="mx-auto max-w-4xl px-5 md:px-8">
-            <div className="mb-12 text-center">
-              <span className="mb-3 inline-block text-xs font-semibold tracking-[0.15em] text-cyan-600 uppercase">
-                Concept
-              </span>
-              <h2 className="mb-4 text-2xl font-bold text-[#2d3748] md:text-3xl">
-                「学ぶ」ではなく<br className="sm:hidden" />「アップデート」する
-              </h2>
-            </div>
-
-            {/* Comparison cards */}
-            <div className="mb-10 grid grid-cols-2 gap-3 sm:gap-4">
-              <div className="rounded-xl border border-[#e2e8f0] bg-[#f7fafc] p-4 sm:rounded-2xl sm:p-6 md:p-8">
-                <div className="mb-2 inline-flex items-center gap-2 rounded-full bg-[#e2e8f0] px-2 py-0.5 sm:mb-3 sm:px-3 sm:py-1">
-                  <span className="text-[10px] font-semibold text-[#718096] sm:text-xs">学ぶ</span>
-                </div>
-                <p className="text-[11px] leading-snug text-[#718096] sm:text-sm sm:leading-relaxed">
-                  理解して、覚えて、知識を蓄える。<br />
-                  全部わかってからでないと使えない。
-                </p>
-              </div>
-              <div className="rounded-xl border border-cyan-200 bg-gradient-to-br from-cyan-50 to-blue-50 p-4 sm:rounded-2xl sm:p-6 md:p-8">
-                <div className="mb-2 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-cyan-500 to-blue-500 px-2 py-0.5 sm:mb-3 sm:px-3 sm:py-1">
-                  <span className="text-[10px] font-semibold text-white sm:text-xs">アップデート</span>
-                </div>
-                <p className="text-[11px] leading-snug text-[#4a5568] sm:text-sm sm:leading-relaxed">
-                  すべてを理解していなくても、<br />
-                  更新を受け入れるだけで進化する。
-                </p>
-              </div>
-            </div>
-
-            {/* Smartphone analogy */}
-            <div className="relative overflow-hidden rounded-3xl border border-cyan-100 p-6 md:p-10">
-              <video
-                src={`${import.meta.env.BASE_URL}HP画像/スマホのアップデート、中身を全部理解していますか？.mp4`}
-                autoPlay
-                loop
-                muted
-                playsInline
-                className="pointer-events-none absolute inset-0 h-full w-full object-cover"
-              />
-              <div className="pointer-events-none absolute inset-0 bg-white/82" />
-
-              <div className="relative mb-5 flex items-center gap-3">
-                <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-cyan-500 to-blue-500 text-2xl shadow-md">📱</span>
-                <h3 className="text-base font-bold text-[#2d3748] md:text-lg">スマホのアップデート、中身を全部理解していますか？</h3>
-              </div>
-              <div className="relative space-y-4 text-sm leading-[1.9] text-[#4a5568] md:text-base">
-                <p>
-                  スマートフォンのアップデート通知が来たとき、更新内容を一つひとつ全部理解してからボタンを押す人は、ほとんどいないと思います。
-                </p>
-                <p>
-                  でも、アップデートを受け入れた後の私たちは、前より便利に、前より安全に、前よりスムーズに使えるようになっている。AIも、同じです。
-                </p>
-                <p>
-                  全部を理解してから始める必要はありません。まずは、自分の働き方に取り入れてみること。自分自身を更新していくこと。
-                </p>
-                <p className="font-semibold text-cyan-700">
-                  それが「AIを学ぶ」のではなく、「AIで自分をアップデートする」ということです。
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* ════════════════════════════════════════════════
-            4.「あなたにAIを搭載」とは何か
+            「あなたにAIを搭載」とは何か
         ════════════════════════════════════════════════ */}
         <section id="what" className="bg-[#f7fafc] py-16 md:py-24">
           <div className="mx-auto max-w-4xl px-5 md:px-8">
@@ -237,7 +163,7 @@ export default function AiUpdateLP() {
                 <div className="border-l border-cyan-100 bg-gradient-to-r from-cyan-50 to-blue-50 p-4 text-center text-xs font-bold text-cyan-700">AI搭載サポート</div>
               </div>
               {[
-                { label: '目的', general: '知識を学ぶ', ours: '自分をアップデートする' },
+                { label: '目的', general: '知識を学ぶ', ours: '実務へ伴走して形にする' },
                 { label: 'スタイル', general: 'ツール理解が中心', ours: '実務に組み込む' },
                 { label: '進め方', general: '講義を受ける', ours: 'AIと共に進む' },
                 { label: '成果', general: '学んで終わることも', ours: '仕事・事業が前に進む' },
@@ -377,85 +303,7 @@ export default function AiUpdateLP() {
         </section>
 
         {/* ════════════════════════════════════════════════
-            10. 申し込みまでの流れ
-        ════════════════════════════════════════════════ */}
-        <section className="bg-[#f7fafc] py-16 md:py-24">
-          <div className="mx-auto max-w-4xl px-5 md:px-8">
-            <div className="mb-8 text-center md:mb-10">
-              <span className="mb-3 inline-block text-xs font-semibold tracking-[0.15em] text-cyan-600 uppercase">
-                Flow
-              </span>
-              <h2 className="text-2xl font-bold text-[#2d3748] md:text-3xl">
-                ご相談の流れ
-              </h2>
-            </div>
-
-            <div className="mx-auto max-w-3xl overflow-hidden rounded-2xl border border-[#e2e8f0] bg-white shadow-sm md:rounded-3xl">
-              <img
-                src={`${import.meta.env.BASE_URL}images/services/ai-intro-4-steps.jpg`}
-                alt="ご相談の流れ"
-                className="block h-auto w-full object-contain"
-              />
-            </div>
-          </div>
-        </section>
-
-        {/* ════════════════════════════════════════════════
-            11. FAQ
-        ════════════════════════════════════════════════ */}
-        <section className="py-16 md:py-24">
-          <div className="mx-auto max-w-3xl px-5 md:px-8">
-            <div className="mb-12 text-center">
-              <span className="mb-3 inline-block text-xs font-semibold tracking-[0.15em] text-cyan-600 uppercase">
-                FAQ
-              </span>
-              <h2 className="mb-4 text-2xl font-bold text-[#2d3748] md:text-3xl">
-                よくあるご質問
-              </h2>
-            </div>
-
-            <div className="space-y-3">
-              {[
-                {
-                  q: 'AI初心者でも大丈夫ですか？',
-                  a: 'はい、まったく問題ありません。AIに触れたことがない方でも、音声入力や簡単な対話から始めて、自然にAIを使えるようになります。',
-                },
-                {
-                  q: 'タイピングが苦手でもできますか？',
-                  a: 'もちろんです。むしろ音声入力を活用するので、タイピングに頼らない新しいアウトプットの方法をお伝えします。',
-                },
-                {
-                  q: 'どんな業種でも相談できますか？',
-                  a: '個人事業主、副業、小規模事業者の方であれば、業種を問わずご相談いただけます。あなたの仕事に合わせてAIの搭載ポイントを一緒に見つけます。',
-                },
-                {
-                  q: 'ツールやアプリ制作の相談もできますか？',
-                  a: 'はい。業務効率化ツール、簡単なアプリ、仕組み化の設計なども、壁打ちや実装支援として一緒に進められます。',
-                },
-                {
-                  q: '本当に学ばなくても大丈夫ですか？',
-                  a: '「学ぶ」というより「体験しながら更新されていく」イメージです。スマホのアップデートのように、使いながら自然と進化していく感覚を大切にしています。',
-                },
-              ].map((item, i) => (
-                <details key={i} className="group rounded-2xl border border-[#e2e8f0] bg-white transition-all open:shadow-md">
-                  <summary className="flex cursor-pointer items-center gap-3 p-5 text-sm font-semibold text-[#2d3748] md:p-6 md:text-base [&::-webkit-details-marker]:hidden">
-                    <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-cyan-50 text-xs font-bold text-cyan-600">Q</span>
-                    <span className="flex-1">{item.q}</span>
-                    <svg className="h-4 w-4 shrink-0 text-[#a0aec0] transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-                    </svg>
-                  </summary>
-                  <div className="border-t border-[#edf2f7] px-5 pb-5 pt-4 md:px-6 md:pb-6">
-                    <p className="pl-9 text-sm leading-relaxed text-[#718096]">{item.a}</p>
-                  </div>
-                </details>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ════════════════════════════════════════════════
-            12. Final CTA
+            Final CTA
         ════════════════════════════════════════════════ */}
         <section id="final-cta" className="relative overflow-hidden py-20 md:py-28">
           {/* Background video (no blur, as-is) */}
@@ -470,16 +318,15 @@ export default function AiUpdateLP() {
 
           <div className="relative mx-auto max-w-3xl px-5 text-center md:px-8" style={{ textShadow: '0 2px 18px rgba(0,0,0,0.65)' }}>
             <h2 className="mb-4 text-2xl font-bold text-white md:text-3xl lg:text-4xl">
-              AIを学ぶ前に、<br className="sm:hidden" />
-              自分をアップデート<br className="sm:hidden" />しませんか？
+              お気軽に、<br className="sm:hidden" />
+              まずはご相談から
             </h2>
             <p className="mb-3 text-base font-medium text-cyan-200 md:text-lg">
               あなたにAIを搭載する第一歩を、ここから。
             </p>
             <p className="mx-auto mb-10 max-w-md text-sm leading-relaxed text-white">
-              無理に学ぶ必要はありません。<br />
-              まずはお話を聞かせてください。<br />
-              あなたの仕事のどこにAIを搭載できるか、一緒に考えましょう。
+              ご希望や課題をお聞かせください。<br />
+              あなたの仕事のどこにAIが活きるか、一緒に考えましょう。
             </p>
             <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center sm:gap-4">
               <a

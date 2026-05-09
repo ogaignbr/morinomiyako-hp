@@ -30,7 +30,7 @@ export const services = [
     iconKey: 'consulting',
     title: 'AI搭載サポート',
     description:
-      'AIを学ぶよりも、自分にAIを搭載しアップデートする。AIを相棒と呼べるまで、伴走します。',
+      'ツールだけでなく、あなたの仕事へのAI活用を実務まで伴走します。AIを相棒と呼べるまで、一緒に形にしていきます。',
     tags: ['AI実装', '情報共有', '案件共有'],
     video: `${B}/images/services/service-04.mp4`,
     href: '#/ai-update',
@@ -57,9 +57,9 @@ export const works = [
     href: '#/ai-secretary',
   },
   {
-    title: 'Webページ制作',
+    title: 'LP制作',
     description:
-      'ホームページやランディングページ、公式LINEの設計まで。ブランドの魅力を最大限に伝えるWebページをトータルで制作します。',
+      'ホームページやランディングページ、公式LINEの設計まで。ブランドの魅力を最大限に伝えるLP・Webページをトータルで制作します。',
     tags: ['HP', 'LP', '公式LINE'],
     price: '130,000円〜',
     video: `${B}/images/works/brand-lp-card.mp4`,

@@ -3,27 +3,6 @@ import FloatingSymbols from './FloatingSymbols'
 
 const B = import.meta.env.BASE_URL
 
-const flow = [
-  {
-    number: '01',
-    title: 'ヒアリング・戦略設計',
-    description:
-      'まずは2〜3時間しっかりお話を伺います。「誰に、何を、どう伝えたいか」を言語化し、ゴール・ターゲット・訴求軸を一緒に設計していきます。',
-  },
-  {
-    number: '02',
-    title: 'ワイヤー・デザイン制作',
-    description:
-      '動線設計（ワイヤーフレーム）→ ビジュアルデザインの順で制作。AIでたたき台を高速生成し、人の手で細部を磨き込むハイブリッド進行。',
-  },
-  {
-    number: '03',
-    title: 'コーディング・公開',
-    description:
-      'スマホファーストで実装し、公開までサポート。公開後の簡単な修正も対応。運用のしかたまで丁寧にお渡しします。',
-  },
-]
-
 const examples = [
   {
     title: 'コーポレート・企業サイト',
@@ -77,43 +56,6 @@ const examples = [
   },
 ]
 
-const plans = [
-  {
-    name: 'ライトLP',
-    price: '¥130,000〜',
-    desc: '1ページ完結型のシンプル構成',
-    features: [
-      '1ページ構成（5〜7セクション)',
-      '戦略設計＋ワイヤー＋デザイン',
-      'スマホ最適化',
-      '公開後1ヶ月の微修正込み',
-    ],
-  },
-  {
-    name: 'スタンダードHP',
-    price: '¥280,000〜',
-    desc: '複数ページのコーポレート・サービス',
-    features: [
-      '5〜8ページ構成',
-      'お問い合わせフォーム実装',
-      '公式LINE連携・SNS導線',
-      '公開後3ヶ月の運用サポート',
-    ],
-    popular: true,
-  },
-  {
-    name: 'プレミアム',
-    price: '要見積もり',
-    desc: '本格的な戦略設計が必要な方へ',
-    features: [
-      '無制限のページ数',
-      '上位表示対策（SEO）',
-      'ブランディング一式',
-      '保守・改修プランあり',
-    ],
-  },
-]
-
 export default function WebDesignLP() {
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -132,13 +74,13 @@ export default function WebDesignLP() {
                   href={import.meta.env.BASE_URL}
                   className="text-base font-bold tracking-tight text-bluegray-800 no-underline md:text-lg"
                 >
-                  Webページ制作
+                  LP制作
                 </a>
                 <a
-                  href="#pricing"
+                  href="#lp-cta"
                   className="bg-metallic-blue rounded-full px-5 py-2 text-xs font-semibold text-white no-underline transition-all hover:shadow-lg md:text-sm"
                 >
-                  料金を見る
+                  相談する
                 </a>
               </div>
             </div>
@@ -152,29 +94,29 @@ export default function WebDesignLP() {
               <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-bluegray-100 bg-white px-4 py-2 shadow-sm">
                 <span className="bg-metallic-blue h-2 w-2 rounded-full" />
                 <span className="text-xs font-semibold text-bluegray-600">
-                  見た目だけで終わらない、動線設計型Webページ
+                  見た目だけで終わらない、動線設計型のLP制作
                 </span>
               </div>
 
               <h1 className="mb-6 text-2xl leading-tight font-bold tracking-tight text-bluegray-800 sm:text-3xl md:text-4xl lg:text-5xl">
                 <span className="block">"誰に・何を"を突き詰めた、</span>
-                <span className="text-metallic-blue block">伝わるWebページを。</span>
+                <span className="text-metallic-blue block">伝わるLPを。</span>
               </h1>
 
               <p className="mx-auto mb-10 max-w-xl text-sm leading-relaxed text-bluegray-600 md:text-base">
                 丁寧なヒアリングと動線設計で、
                 <strong className="font-bold">"あなたの会社に合った"</strong>
-                ページを1枚ずつ形に。
+                LPを1枚ずつ形に。
                 <br className="hidden sm:block" />
                 AIを活用するから、通常より<strong className="font-bold">スピーディ</strong>に仕上がります。
               </p>
 
               <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center sm:gap-4">
                 <a
-                  href="#pricing"
+                  href="#lp-cta"
                   className="bg-metallic-blue inline-flex w-full items-center justify-center gap-2 rounded-full px-8 py-4 text-sm font-semibold text-white no-underline shadow-lg transition-all hover:shadow-xl sm:w-auto"
                 >
-                  料金プランを見る
+                  無料で相談する
                 </a>
                 <a
                   href="#examples"
@@ -346,10 +288,10 @@ export default function WebDesignLP() {
                   Examples
                 </span>
                 <h2 className="mb-4 text-2xl font-bold text-bluegray-800 md:text-3xl">
-                  こんなWebページを作れます
+                  こんなLPを作れます
                 </h2>
                 <p className="mx-auto max-w-xl text-sm text-bluegray-600">
-                  業種や目的に合わせて、10種類以上のページを制作しています。
+                  業種や目的に合わせて、訴求の磨き込みまで丁寧に制作します。
                 </p>
               </div>
 
@@ -373,131 +315,11 @@ export default function WebDesignLP() {
                   </div>
                 ))}
               </div>
-
-              <p className="mt-10 text-center text-sm text-bluegray-600">
-                上記はほんの一例です。「こんなページ作れる？」というご相談、お気軽にどうぞ。
-              </p>
-            </div>
-          </section>
-
-          {/* ── Flow ── */}
-          <section className="bg-slate-25 py-16 md:py-24">
-            <div className="section-padding mx-auto max-w-4xl">
-              <div className="mb-14 text-center">
-                <span className="mb-3 inline-block text-xs font-semibold tracking-[0.15em] text-bluegray-400 uppercase">
-                  Flow
-                </span>
-                <h2 className="mb-4 text-2xl font-bold text-bluegray-800 md:text-3xl">
-                  制作の流れ
-                </h2>
-              </div>
-
-              <div className="space-y-5 md:space-y-6">
-                {flow.map((step, i) => (
-                  <div
-                    key={i}
-                    className="glass-card-elevated flex flex-col gap-4 rounded-2xl p-6 md:flex-row md:items-start md:gap-8 md:p-8"
-                  >
-                    <div className="bg-metallic-blue flex h-12 w-12 shrink-0 items-center justify-center rounded-full text-sm font-bold text-white">
-                      {step.number}
-                    </div>
-                    <div>
-                      <h3 className="mb-2 text-lg font-bold text-bluegray-800">{step.title}</h3>
-                      <p className="text-sm leading-relaxed text-bluegray-600">
-                        {step.description}
-                      </p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </section>
-
-          {/* ── Pricing ── */}
-          <section id="pricing" className="py-16 md:py-24">
-            <div className="section-padding mx-auto max-w-5xl">
-              <div className="mb-14 text-center">
-                <span className="mb-3 inline-block text-xs font-semibold tracking-[0.15em] text-bluegray-400 uppercase">
-                  Pricing
-                </span>
-                <h2 className="mb-4 text-2xl font-bold text-bluegray-800 md:text-3xl">
-                  料金プラン
-                </h2>
-                <p className="mx-auto max-w-lg text-sm text-bluegray-600">
-                  <strong className="font-bold">13万円から</strong>
-                  。まずは1枚、あなたの会社に合ったページから始めましょう。
-                </p>
-              </div>
-
-              <div className="grid grid-cols-3 gap-2 sm:gap-4 md:gap-6">
-                {plans.map((plan, i) => (
-                  <div
-                    key={i}
-                    className={`relative overflow-hidden rounded-xl border p-3 sm:p-5 md:p-8 ${
-                      plan.popular
-                        ? 'border-blue-300 bg-white shadow-xl'
-                        : 'border-bluegray-100 bg-white'
-                    }`}
-                  >
-                    {plan.popular && (
-                      <div className="bg-metallic-blue absolute top-0 right-0 rounded-bl-lg px-1.5 py-0.5 text-[8px] font-bold text-white sm:px-3 sm:py-1 sm:text-[10px]">
-                        おすすめ
-                      </div>
-                    )}
-                    <h3 className="mb-1 text-xs font-bold text-bluegray-800 sm:text-base md:text-lg">
-                      {plan.name}
-                    </h3>
-                    <p className="mb-2 text-[10px] leading-snug text-bluegray-500 sm:mb-4 sm:text-xs">
-                      {plan.desc}
-                    </p>
-                    <div className="text-metallic-blue mb-3 text-sm font-bold sm:mb-6 sm:text-xl md:text-2xl">
-                      {plan.price}
-                    </div>
-                    <ul className="mb-3 space-y-1 sm:mb-6 sm:space-y-2">
-                      {plan.features.map((f, j) => (
-                        <li
-                          key={j}
-                          className="flex items-start gap-1 text-[10px] leading-snug text-bluegray-600 sm:items-center sm:gap-2 sm:text-sm"
-                        >
-                          <svg
-                            className="mt-0.5 h-2.5 w-2.5 shrink-0 text-blue-500 sm:mt-0 sm:h-4 sm:w-4"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                            strokeWidth={2}
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              d="M5 13l4 4L19 7"
-                            />
-                          </svg>
-                          {f}
-                        </li>
-                      ))}
-                    </ul>
-                    <a
-                      href="mailto:hello@example.com"
-                      className={`block rounded-full py-1.5 text-center text-[10px] font-semibold no-underline transition-all sm:py-2.5 sm:text-xs md:py-3 md:text-sm ${
-                        plan.popular
-                          ? 'bg-metallic-blue text-white hover:shadow-lg'
-                          : 'bg-bluegray-50 text-bluegray-700 hover:bg-bluegray-100'
-                      }`}
-                    >
-                      お問い合わせ
-                    </a>
-                  </div>
-                ))}
-              </div>
-
-              <p className="mt-8 text-center text-xs text-bluegray-400">
-                ※ ページ数・機能・写真撮影の有無などによって金額は前後します。まずは無料相談でお見積もりをご案内します。
-              </p>
             </div>
           </section>
 
           {/* ── Final CTA ── */}
-          <section className="py-16 md:py-24">
+          <section id="lp-cta" className="py-16 md:py-24">
             <div className="section-padding mx-auto max-w-3xl text-center">
               <h2 className="mb-4 text-2xl font-bold text-bluegray-800 md:text-3xl">
                 "あなたの会社に合った"1枚を、一緒に作りませんか？
@@ -527,7 +349,7 @@ export default function WebDesignLP() {
         <footer className="border-t border-bluegray-100/50 py-8">
           <div className="section-padding mx-auto max-w-5xl text-center">
             <p className="text-[11px] text-bluegray-400">
-              &copy; {new Date().getFullYear()} 杜の都工房 — Webページ制作
+              &copy; {new Date().getFullYear()} 杜の都工房 — LP制作
             </p>
           </div>
         </footer>

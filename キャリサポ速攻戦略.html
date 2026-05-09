@@ -1,0 +1,1307 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>キャリサポ速攻戦略｜月商300万最短ルート</title>
+<style>
+  :root {
+    --bg: #080810;
+    --surface: #12121e;
+    --card: #1a1a2a;
+    --accent: #e94560;
+    --gold: #f5a623;
+    --green: #2ecc71;
+    --blue: #3498db;
+    --purple: #9b59b6;
+    --teal: #1abc9c;
+    --text: #eaeaea;
+    --muted: rgba(255,255,255,0.42);
+    --border: rgba(255,255,255,0.07);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Noto Sans JP', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+  }
+
+  .deck {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 24px 20px;
+  }
+
+  /* ===== BASE SLIDE ===== */
+  .slide {
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: var(--surface);
+    border-radius: 18px;
+    margin-bottom: 28px;
+    padding: 52px 64px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 24px 64px rgba(0,0,0,0.7);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .slide::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 5px; height: 100%;
+    background: linear-gradient(180deg, var(--accent), var(--gold));
+  }
+
+  .sn {
+    position: absolute;
+    top: 18px; right: 24px;
+    font-size: 11px;
+    color: rgba(255,255,255,0.2);
+    letter-spacing: 2px;
+  }
+
+  /* ===== COVER ===== */
+  .cover {
+    background: linear-gradient(135deg, #08080f 0%, #14142a 60%, #1a0a1a 100%);
+    align-items: center;
+    text-align: center;
+  }
+  .cover::after { display: none; }
+
+  .cover-eyebrow {
+    font-size: 11px;
+    letter-spacing: 5px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  .cover-h1 {
+    font-size: 62px;
+    font-weight: 900;
+    line-height: 1.15;
+    margin-bottom: 16px;
+  }
+
+  .cover-h1 .g {
+    background: linear-gradient(90deg, var(--accent), var(--gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .cover-sub {
+    font-size: 18px;
+    color: var(--muted);
+    letter-spacing: 2px;
+    margin-bottom: 40px;
+  }
+
+  .cover-tags {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .ctag {
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+
+  /* grid utils */
+  .g2 { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+  .g3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px; }
+  .g4 { display: grid; grid-template-columns: repeat(4,1fr); gap: 14px; }
+
+  /* ===== SLIDE HEADER ===== */
+  .sh {
+    margin-bottom: 26px;
+  }
+  .sh-eye {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 6px;
+    display: block;
+  }
+  .sh-title {
+    font-size: 34px;
+    font-weight: 800;
+    line-height: 1.2;
+  }
+  .sh-title .hl { color: var(--gold); }
+
+  /* ===== CARD ===== */
+  .c {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+  }
+  .c-red   { background: rgba(233,69,96,.07);  border-color: rgba(233,69,96,.3); }
+  .c-gold  { background: rgba(245,166,35,.07); border-color: rgba(245,166,35,.3); }
+  .c-green { background: rgba(46,204,113,.07); border-color: rgba(46,204,113,.3); }
+  .c-blue  { background: rgba(52,152,219,.07); border-color: rgba(52,152,219,.3); }
+  .c-purp  { background: rgba(155,89,182,.07); border-color: rgba(155,89,182,.3); }
+  .c-teal  { background: rgba(26,188,156,.07); border-color: rgba(26,188,156,.3); }
+
+  .c-label {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 6px;
+    display: block;
+  }
+  .c-val {
+    font-size: 26px;
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .c-body {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* table */
+  .tbl { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+  .tbl th {
+    padding: 9px 13px; text-align: left;
+    background: rgba(255,255,255,0.05);
+    color: var(--muted); font-size: 10px;
+    letter-spacing: 1px; text-transform: uppercase;
+    border-bottom: 1px solid var(--border);
+  }
+  .tbl td { padding: 9px 13px; border-bottom: 1px solid rgba(255,255,255,0.04); color: rgba(255,255,255,.82); }
+  .tbl tr:last-child td { border-bottom: none; }
+  .tbl .tot td { font-weight: 800; color: var(--gold); font-size: 13px; background: rgba(245,166,35,.06); border-top: 1px solid rgba(245,166,35,.25); }
+
+  .bdg {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 700;
+  }
+  .bdg-r { background: rgba(233,69,96,.2); color: var(--accent); }
+  .bdg-g { background: rgba(245,166,35,.2); color: var(--gold); }
+  .bdg-gr { background: rgba(46,204,113,.2); color: var(--green); }
+  .bdg-b { background: rgba(52,152,219,.2); color: var(--blue); }
+  .bdg-p { background: rgba(155,89,182,.2); color: var(--purple); }
+  .bdg-t { background: rgba(26,188,156,.2); color: var(--teal); }
+
+  /* highlight box */
+  .hbox {
+    background: linear-gradient(135deg, rgba(233,69,96,.12), rgba(245,166,35,.1));
+    border: 1px solid rgba(245,166,35,.3);
+    border-radius: 12px;
+    padding: 16px 22px;
+    font-size: 13px;
+    line-height: 1.8;
+    color: rgba(255,255,255,.88);
+  }
+
+  /* section break */
+  .sec-break {
+    background: linear-gradient(135deg, #0e0e1e, #1a1030);
+    align-items: flex-start;
+    padding: 50px 64px;
+  }
+  .sec-break::after { display: none; }
+  .sec-big {
+    font-size: 100px;
+    font-weight: 900;
+    color: rgba(255,255,255,.03);
+    position: absolute;
+    right: 50px;
+    bottom: 10px;
+    line-height: 1;
+    letter-spacing: -5px;
+  }
+
+  /* step row */
+  .step-row {
+    display: flex;
+    gap: 0;
+    align-items: stretch;
+    margin-bottom: 10px;
+  }
+  .step-num {
+    width: 42px;
+    flex-shrink: 0;
+    background: rgba(255,255,255,.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 900;
+    border-radius: 8px 0 0 8px;
+  }
+  .step-body {
+    flex: 1;
+    padding: 12px 16px;
+    background: rgba(255,255,255,.03);
+    border-radius: 0 8px 8px 0;
+    border-top: 1px solid var(--border);
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .step-title { font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 3px; }
+  .step-desc { font-size: 11.5px; color: var(--muted); line-height: 1.5; }
+
+  /* timeline */
+  .tl-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+    gap: 0;
+  }
+  .tl-label {
+    width: 100px;
+    flex-shrink: 0;
+    font-size: 11px;
+    color: var(--muted);
+    text-align: right;
+    padding-right: 14px;
+    font-weight: 600;
+  }
+  .tl-dot {
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-right: 14px;
+  }
+  .tl-content {
+    flex: 1;
+    font-size: 12.5px;
+    color: rgba(255,255,255,.8);
+    line-height: 1.5;
+  }
+  .tl-line {
+    width: 100px;
+    flex-shrink: 0;
+    height: 1px;
+    margin: 0 0 8px 100px;
+    background: var(--border);
+    position: relative;
+  }
+
+  /* funnel */
+  .funnel {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .funnel-step {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 13px;
+  }
+  .funnel-icon { font-size: 18px; width: 28px; text-align: center; flex-shrink: 0; }
+  .funnel-text { flex: 1; }
+  .funnel-rate { font-size: 12px; color: var(--muted); font-weight: 700; }
+
+  /* comparison */
+  .comp-head {
+    display: flex;
+    gap: 14px;
+    margin-bottom: 10px;
+  }
+  .comp-col {
+    flex: 1;
+    text-align: center;
+    padding: 10px;
+    border-radius: 8px;
+  }
+  .comp-row {
+    display: flex;
+    gap: 14px;
+    margin-bottom: 6px;
+    font-size: 12.5px;
+  }
+  .comp-cell {
+    flex: 1;
+    padding: 8px 12px;
+    border-radius: 6px;
+    background: rgba(255,255,255,.03);
+    text-align: center;
+    color: rgba(255,255,255,.75);
+  }
+  .comp-label-cell {
+    width: 120px;
+    flex-shrink: 0;
+    font-size: 11px;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.5px;
+  }
+
+  ul.bl { list-style: none; padding: 0; }
+  ul.bl li {
+    padding: 7px 0 7px 18px;
+    border-bottom: 1px solid rgba(255,255,255,.04);
+    font-size: 13px;
+    position: relative;
+    color: rgba(255,255,255,.8);
+    line-height: 1.5;
+  }
+  ul.bl li::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 50%;
+    transform: translateY(-50%);
+    width: 7px; height: 2px;
+    background: var(--gold);
+  }
+  ul.bl li:last-child { border-bottom: none; }
+
+  .big {
+    font-size: 68px;
+    font-weight: 900;
+    background: linear-gradient(90deg, var(--accent), var(--gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+  }
+
+  .partner-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 18px 16px;
+    position: relative;
+    overflow: hidden;
+  }
+  .partner-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 3px;
+  }
+  .partner-rank {
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+  .partner-name {
+    font-size: 15px;
+    font-weight: 800;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+  .partner-why {
+    font-size: 11.5px;
+    color: var(--muted);
+    line-height: 1.6;
+    margin-bottom: 10px;
+  }
+  .partner-num {
+    font-size: 22px;
+    font-weight: 900;
+  }
+  .partner-sub {
+    font-size: 10px;
+    color: var(--muted);
+  }
+
+  .action-item {
+    display: flex;
+    gap: 12px;
+    padding: 11px 14px;
+    border-radius: 9px;
+    background: rgba(255,255,255,.03);
+    border: 1px solid var(--border);
+    margin-bottom: 7px;
+    align-items: flex-start;
+  }
+  .ai-num {
+    font-size: 18px;
+    font-weight: 900;
+    width: 28px;
+    flex-shrink: 0;
+    line-height: 1;
+  }
+  .ai-body { flex: 1; }
+  .ai-title { font-size: 13px; font-weight: 700; margin-bottom: 2px; }
+  .ai-desc { font-size: 11.5px; color: var(--muted); line-height: 1.5; }
+  .ai-tag { flex-shrink: 0; }
+</style>
+</head>
+<body>
+<div class="deck">
+
+<!-- ======== SLIDE 1: COVER ======== -->
+<div class="slide cover">
+  <div class="cover-eyebrow">杜の都工房 ｜ キャリサポ集中戦略</div>
+  <div class="cover-h1">
+    SNSなしで<br><span class="g">月商300万円</span><br>最短ルート
+  </div>
+  <div class="cover-sub">リアル接点 × 紹介ネットワーク型 速攻設計</div>
+  <div class="cover-tags">
+    <span class="ctag" style="background:rgba(233,69,96,.2);color:var(--accent);">成約率 × 単価 × スピード</span>
+    <span class="ctag" style="background:rgba(245,166,35,.2);color:var(--gold);">キャリサポ紹介報酬 最大化</span>
+    <span class="ctag" style="background:rgba(46,204,113,.2);color:var(--green);">パートナー型収益モデル</span>
+  </div>
+  <div class="sn">01 / 16</div>
+</div>
+
+<!-- ======== SLIDE 2: SNS vs リアル 比較 ======== -->
+<div class="slide">
+  <div class="sn">02 / 16</div>
+  <div class="sh">
+    <span class="sh-eye">Problem Analysis</span>
+    <div class="sh-title">なぜSNS単体では<span class="hl">遅いのか</span></div>
+  </div>
+
+  <div style="display:flex;gap:14px;margin-bottom:18px;">
+    <div style="flex:1;">
+      <div style="text-align:center;padding:8px;background:rgba(233,69,96,.08);border:1px solid rgba(233,69,96,.2);border-radius:8px;margin-bottom:10px;font-size:13px;font-weight:700;color:var(--accent);">SNS発信のみ</div>
+      <div class="comp-row" style="justify-content:space-around;gap:0;">
+        <div style="flex:1;text-align:center;padding:10px 6px;border-right:1px solid var(--border);">
+          <div style="font-size:10px;color:var(--muted);margin-bottom:4px;">成約率</div>
+          <div style="font-size:24px;font-weight:900;color:var(--accent);">0.5〜2%</div>
+        </div>
+        <div style="flex:1;text-align:center;padding:10px 6px;border-right:1px solid var(--border);">
+          <div style="font-size:10px;color:var(--muted);margin-bottom:4px;">リード獲得まで</div>
+          <div style="font-size:24px;font-weight:900;color:var(--accent);">3〜6ヶ月</div>
+        </div>
+        <div style="flex:1;text-align:center;padding:10px 6px;">
+          <div style="font-size:10px;color:var(--muted);margin-bottom:4px;">相手の温度感</div>
+          <div style="font-size:18px;font-weight:900;color:var(--accent);">コールド</div>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;font-size:28px;color:rgba(255,255,255,.15);padding:0 8px;">VS</div>
+    <div style="flex:1;">
+      <div style="text-align:center;padding:8px;background:rgba(46,204,113,.08);border:1px solid rgba(46,204,113,.2);border-radius:8px;margin-bottom:10px;font-size:13px;font-weight:700;color:var(--green);">リアル × 紹介ネットワーク</div>
+      <div class="comp-row" style="justify-content:space-around;gap:0;">
+        <div style="flex:1;text-align:center;padding:10px 6px;border-right:1px solid var(--border);">
+          <div style="font-size:10px;color:var(--muted);margin-bottom:4px;">成約率</div>
+          <div style="font-size:24px;font-weight:900;color:var(--green);">40〜70%</div>
+        </div>
+        <div style="flex:1;text-align:center;padding:10px 6px;border-right:1px solid var(--border);">
+          <div style="font-size:10px;color:var(--muted);margin-bottom:4px;">リード獲得まで</div>
+          <div style="font-size:24px;font-weight:900;color:var(--green);">1〜4週間</div>
+        </div>
+        <div style="flex:1;text-align:center;padding:10px 6px;">
+          <div style="font-size:10px;color:var(--muted);margin-bottom:4px;">相手の温度感</div>
+          <div style="font-size:18px;font-weight:900;color:var(--green);">ウォーム</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hbox">
+    <strong style="color:var(--gold);">核心的な問題：</strong>
+    SNSのフォロワーがまだ少ない今、投稿100本より<strong style="color:var(--white);">パートナー1人</strong>の方が圧倒的に速い。<br>
+    キャリサポのターゲット（退職検討者・AI学習希望者）と<strong style="color:var(--white);">毎日接触している職種がすでに存在する</strong>。そこに直接アクセスする。
+  </div>
+</div>
+
+<!-- ======== SLIDE 3: 戦略全体図 ======== -->
+<div class="slide">
+  <div class="sn">03 / 16</div>
+  <div class="sh">
+    <span class="sh-eye">Strategy Overview</span>
+    <div class="sh-title">月商300万への<span class="hl">3本柱戦略</span></div>
+  </div>
+
+  <div class="g3" style="margin-bottom:18px;">
+    <div class="c c-red" style="text-align:center;">
+      <div style="font-size:36px;margin-bottom:8px;">🤝</div>
+      <div style="font-size:16px;font-weight:800;color:var(--text);margin-bottom:6px;">柱1：紹介パートナー網</div>
+      <div style="font-size:12px;color:var(--muted);line-height:1.6;margin-bottom:10px;">自分の代わりに毎日見込み客と接触している<br>職種・人物と提携する</div>
+      <div style="font-size:22px;font-weight:900;color:var(--accent);">月 ¥150万</div>
+    </div>
+    <div class="c c-gold" style="text-align:center;">
+      <div style="font-size:36px;margin-bottom:8px;">🎤</div>
+      <div style="font-size:16px;font-weight:800;color:var(--text);margin-bottom:6px;">柱2：リアルセミナー</div>
+      <div style="font-size:12px;color:var(--muted);line-height:1.6;margin-bottom:10px;">小規模集合型で<br>成約率40〜60%を実現する</div>
+      <div style="font-size:22px;font-weight:900;color:var(--gold);">月 ¥100万</div>
+    </div>
+    <div class="c c-green" style="text-align:center;">
+      <div style="font-size:36px;margin-bottom:8px;">🔄</div>
+      <div style="font-size:16px;font-weight:800;color:var(--text);margin-bottom:6px;">柱3：既存顧客の連鎖紹介</div>
+      <div style="font-size:12px;color:var(--muted);line-height:1.6;margin-bottom:10px;">成立した紹介先から<br>次の紹介を生む仕組み</div>
+      <div style="font-size:22px;font-weight:900;color:var(--green);">月 ¥50万</div>
+    </div>
+  </div>
+
+  <div style="background:rgba(255,255,255,.03);border-radius:10px;padding:14px 20px;display:flex;align-items:center;gap:20px;">
+    <div style="font-size:14px;color:var(--muted);">最初の90日間の集中先</div>
+    <div style="flex:1;height:1px;background:var(--border);"></div>
+    <div style="text-align:right;">
+      <span style="font-size:13px;color:rgba(255,255,255,.7);">柱1（パートナー構築）に<strong style="color:var(--gold);">70%の時間</strong>を投入。柱2（セミナー）20%。柱3（連鎖設計）10%。</span>
+    </div>
+  </div>
+</div>
+
+<!-- ======== SLIDE 4: パートナー5類型 ======== -->
+<div class="slide sec-break">
+  <div class="sn">04 / 16</div>
+  <span style="font-size:10px;letter-spacing:3px;color:var(--accent);text-transform:uppercase;">柱1｜Partner Network</span>
+  <div style="font-size:46px;font-weight:900;color:var(--text);margin:12px 0 8px;">紹介パートナー<br>5つのアーキタイプ</div>
+  <div style="font-size:18px;color:var(--muted);">「毎日ターゲットに会っている人」と組む</div>
+  <div style="margin-top:20px;display:flex;gap:10px;flex-wrap:wrap;">
+    <span class="bdg bdg-r">社会保険労務士</span>
+    <span class="bdg bdg-g">FP・保険代理店</span>
+    <span class="bdg bdg-b">転職エージェント</span>
+    <span class="bdg bdg-p">退職代行・弁護士</span>
+    <span class="bdg bdg-t">中小企業の人事担当者</span>
+  </div>
+  <div class="sec-big">01</div>
+</div>
+
+<!-- ======== SLIDE 5: パートナー詳細 ======== -->
+<div class="slide">
+  <div class="sn">05 / 16</div>
+  <div class="sh" style="margin-bottom:20px;">
+    <span class="sh-eye">5 Partner Archetypes</span>
+    <div class="sh-title" style="font-size:28px;">誰と組むか｜<span class="hl">最優先パートナー一覧</span></div>
+  </div>
+
+  <div class="g2">
+    <div style="display:flex;flex-direction:column;gap:8px;">
+      <!-- 社労士 -->
+      <div class="partner-card" style="border-top-color:var(--accent);">
+        <div class="partner-card" style="padding:0;border:none;background:none;">
+          <div style="display:flex;gap:12px;align-items:flex-start;">
+            <div>
+              <div class="partner-rank">Tier 1 ★★★★★</div>
+              <div class="partner-name">社会保険労務士（社労士）</div>
+              <div class="partner-why">労働・退職・雇用保険の専門家。<strong style="color:var(--text);">退職を検討している従業員</strong>と毎日接触している。<br>「退職サポート¥7万」と「失業保険活用」訴求が完全一致。</div>
+            </div>
+            <div style="text-align:right;flex-shrink:0;">
+              <div class="partner-num" style="color:var(--accent);">月10件</div>
+              <div class="partner-sub">紹介期待値</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FP -->
+      <div class="partner-card">
+        <div style="display:flex;gap:12px;align-items:flex-start;">
+          <div>
+            <div class="partner-rank">Tier 1 ★★★★★</div>
+            <div class="partner-name">ファイナンシャルプランナー（FP）・保険代理店</div>
+            <div class="partner-why">転職・退職時のお金の不安を相談される職種。<br>「退職後の生活費＋給付金活用」訴求が刺さる。生命保険見直し時に必ず転職話が出る。</div>
+          </div>
+          <div style="text-align:right;flex-shrink:0;">
+            <div class="partner-num" style="color:var(--gold);">月8件</div>
+            <div class="partner-sub">紹介期待値</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 退職代行 -->
+      <div class="partner-card">
+        <div style="display:flex;gap:12px;align-items:flex-start;">
+          <div>
+            <div class="partner-rank">Tier 1 ★★★★☆</div>
+            <div class="partner-name">退職代行サービス・労働問題弁護士</div>
+            <div class="partner-why">すでに退職意思が<strong style="color:var(--text);">確定している人</strong>だけが来る。最もホットなリード。退職後の次のステップとしてキャリサポが自然に刺さる。</div>
+          </div>
+          <div style="text-align:right;flex-shrink:0;">
+            <div class="partner-num" style="color:var(--green);">月5件</div>
+            <div class="partner-sub">紹介期待値</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:8px;">
+      <!-- 転職エージェント -->
+      <div class="partner-card">
+        <div style="display:flex;gap:12px;align-items:flex-start;">
+          <div>
+            <div class="partner-rank">Tier 2 ★★★★☆</div>
+            <div class="partner-name">転職エージェント・ハローワーク支援員</div>
+            <div class="partner-why">転職サポートは直接競合するが、<strong style="color:var(--text);">AIリスキリング講座</strong>の紹介には完全に非競合。「スキルアップしてから転職したい人」を送客し合える相互送客関係を作る。</div>
+          </div>
+          <div style="text-align:right;flex-shrink:0;">
+            <div class="partner-num" style="color:var(--blue);">月8件</div>
+            <div class="partner-sub">紹介期待値</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 人事担当者 -->
+      <div class="partner-card">
+        <div style="display:flex;gap:12px;align-items:flex-start;">
+          <div>
+            <div class="partner-rank">Tier 2 ★★★☆☆</div>
+            <div class="partner-name">中小企業の人事担当者・経営者</div>
+            <div class="partner-why">退職者が出た後の従業員に「次のステップ」として紹介してもらう。または社内でAI研修ニーズがあれば直接提案。1回の関係で複数件が発生する。</div>
+          </div>
+          <div style="text-align:right;flex-shrink:0;">
+            <div class="partner-num" style="color:var(--purple);">月5件</div>
+            <div class="partner-sub">紹介期待値</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="c c-gold" style="padding:14px 16px;">
+        <div style="font-size:11px;color:var(--gold);margin-bottom:6px;">5パートナー合計の月間期待値</div>
+        <div style="font-size:13px;color:rgba(255,255,255,.85);line-height:1.7;">
+          月36件紹介 × 成約率60% = <strong style="color:var(--text);">月22件成立</strong><br>
+          平均単価¥85,000 = <strong style="color:var(--gold);font-size:16px;">月約¥187万</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ======== SLIDE 6: パートナー提案書の設計 ======== -->
+<div class="slide">
+  <div class="sn">06 / 16</div>
+  <div class="sh">
+    <span class="sh-eye">Partnership Pitch Design</span>
+    <div class="sh-title">パートナーへの<span class="hl">提案設計</span>｜「なぜあなたにトクか」を1枚で</div>
+  </div>
+
+  <div class="g2">
+    <div>
+      <div style="font-size:11px;color:var(--accent);letter-spacing:2px;margin-bottom:10px;">提案書に含める5要素</div>
+      <div class="step-row">
+        <div class="step-num" style="color:var(--gold);">1</div>
+        <div class="step-body">
+          <div class="step-title">あなたのクライアントの悩みを言語化する</div>
+          <div class="step-desc">「退職後の生活費が不安な方に、給付金を最大活用できるサービスがあります」</div>
+        </div>
+      </div>
+      <div class="step-row">
+        <div class="step-num" style="color:var(--gold);">2</div>
+        <div class="step-body">
+          <div class="step-title">紹介するだけ。手間ゼロを強調</div>
+          <div class="step-desc">「LINE1通で完結。後はこちらが全対応します」</div>
+        </div>
+      </div>
+      <div class="step-row">
+        <div class="step-num" style="color:var(--gold);">3</div>
+        <div class="step-body">
+          <div class="step-title">紹介手数料を明示する（任意）</div>
+          <div class="step-desc">¥5,000〜¥15,000/件の謝礼設定。相手のメリットを作る。</div>
+        </div>
+      </div>
+      <div class="step-row">
+        <div class="step-num" style="color:var(--gold);">4</div>
+        <div class="step-body">
+          <div class="step-title">成果事例を1〜2件見せる</div>
+          <div class="step-desc">「退職後に¥291万受給できた事例」など具体数字で信頼を先出し</div>
+        </div>
+      </div>
+      <div class="step-row">
+        <div class="step-num" style="color:var(--gold);">5</div>
+        <div class="step-body">
+          <div class="step-title">相互送客の提案（Win-Win設計）</div>
+          <div class="step-desc">「こちらからもAI・Web関連の相談者をご紹介できます」</div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div style="font-size:11px;color:var(--blue);letter-spacing:2px;margin-bottom:10px;">提案書のフォーマット（1枚A4）</div>
+      <div class="c" style="font-size:12.5px;line-height:2;padding:16px 18px;">
+        <div style="border-bottom:1px solid var(--border);padding-bottom:8px;margin-bottom:8px;">
+          <strong style="color:var(--gold);">タイトル：</strong>退職後の不安を抱えるお客様へ、最適な次の一手を<br>
+          <strong style="color:var(--muted);">（先方のクライアントへの価値提案として書く）</strong>
+        </div>
+        <div style="border-bottom:1px solid var(--border);padding-bottom:8px;margin-bottom:8px;">
+          <strong style="color:var(--gold);">こんな方にご紹介ください：</strong><br>
+          ・退職後の生活費が不安な方<br>
+          ・AIスキルを学びたいが費用が心配な方<br>
+          ・転職を考えているが何から始めればいいかわからない方
+        </div>
+        <div style="border-bottom:1px solid var(--border);padding-bottom:8px;margin-bottom:8px;">
+          <strong style="color:var(--gold);">ご紹介の方法：</strong>LINEを1件転送するだけ。<br>
+          後は私が全て対応します（無料相談→提案→接続）
+        </div>
+        <div>
+          <strong style="color:var(--gold);">ご紹介いただいた場合：</strong><br>
+          成立時に御礼として¥5,000〜¥15,000お支払いします
+        </div>
+      </div>
+      <div style="margin-top:10px;font-size:11.5px;color:var(--muted);line-height:1.7;">
+        ポイント：提案書は「自分のビジネス紹介」ではなく<br>
+        「先方のクライアントへの価値提供」として書く。
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ======== SLIDE 7: パートナー開拓の具体的手順 ======== -->
+<div class="slide">
+  <div class="sn">07 / 16</div>
+  <div class="sh">
+    <span class="sh-eye">Partner Acquisition Process</span>
+    <div class="sh-title">パートナーの<span class="hl">見つけ方・口説き方</span>｜初月10人アプローチ</div>
+  </div>
+
+  <div class="g3">
+    <div>
+      <div style="font-size:11px;color:var(--accent);letter-spacing:2px;margin-bottom:10px;">STEP 1：探す（仙台ローカル）</div>
+      <ul class="bl" style="font-size:12.5px;">
+        <li>仙台商工会議所の会員名簿から社労士・FPをリストアップ</li>
+        <li>Google マップで「仙台 社労士」「仙台 FP」を検索して30件リスト化</li>
+        <li>地元の異業種交流会・経営者交流会に参加（月1〜2回）</li>
+        <li>宮城県社会保険労務士会の研修会に参加・名刺交換</li>
+        <li>退職代行サービスのSNSアカウントにDMを送る（全国可）</li>
+      </ul>
+    </div>
+    <div>
+      <div style="font-size:11px;color:var(--gold);letter-spacing:2px;margin-bottom:10px;">STEP 2：アプローチ方法</div>
+      <ul class="bl" style="font-size:12.5px;">
+        <li><strong style="color:var(--text);">リアル接触が最優先</strong>。会って話すだけで信頼が一気に上がる</li>
+        <li>初回は「提案」ではなく「情報交換・勉強会」として打診</li>
+        <li>「退職後の給付金活用を一緒に啓発しませんか」という切り口</li>
+        <li>メールよりLINEまたはDM。返信しやすい手段で連絡</li>
+        <li>相手のSNS投稿にコメントして関係を温めてからDM</li>
+      </ul>
+    </div>
+    <div>
+      <div style="font-size:11px;color:var(--green);letter-spacing:2px;margin-bottom:10px;">STEP 3：関係維持・深め方</div>
+      <ul class="bl" style="font-size:12.5px;">
+        <li>月1回の報告：「先月○件成立しました、ありがとうございます」</li>
+        <li>紹介者へのサンキューレター（紹介先が成立したタイミング）</li>
+        <li>先方の投稿をシェア・紹介してWin-Win関係を維持</li>
+        <li>紹介者自身の悩みにも積極的に相談乗る（AI活用支援など）</li>
+        <li>年2〜3回ランチ or コーヒーで関係をリフレッシュ</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="hbox" style="margin-top:14px;">
+    <strong style="color:var(--gold);">初月の現実的な目標：</strong>
+    アプローチ30件 → 面談成立10件 → 提携合意5件 → 月5〜10紹介獲得。<br>
+    5件 × ¥85,000平均 = <strong style="color:var(--text);">初月¥42.5万</strong>のキャリサポ収益が現実的に狙える。
+  </div>
+</div>
+
+<!-- ======== SLIDE 8: リアルセミナー設計 ======== -->
+<div class="slide sec-break">
+  <div class="sn">08 / 16</div>
+  <span style="font-size:10px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;">柱2｜Real Seminar Funnel</span>
+  <div style="font-size:46px;font-weight:900;color:var(--text);margin:12px 0 8px;">リアルセミナー設計</div>
+  <div style="font-size:18px;color:var(--muted);">参加者10人のセミナーで成約5〜6件を取る仕組み</div>
+  <div style="margin-top:20px;display:flex;gap:10px;">
+    <span class="bdg bdg-g">無料ミニセミナー</span>
+    <span class="bdg bdg-r">月2回開催</span>
+    <span class="bdg bdg-b">成約率40〜60%</span>
+    <span class="bdg bdg-t">1回¥40〜60万</span>
+  </div>
+  <div class="sec-big">02</div>
+</div>
+
+<!-- ======== SLIDE 9: セミナー詳細設計 ======== -->
+<div class="slide">
+  <div class="sn">09 / 16</div>
+  <div class="sh" style="margin-bottom:18px;">
+    <span class="sh-eye">Seminar Architecture</span>
+    <div class="sh-title" style="font-size:28px;">セミナーの<span class="hl">設計図</span>｜60分で成約を取る型</div>
+  </div>
+
+  <div class="g2">
+    <div>
+      <div style="font-size:11px;color:var(--gold);letter-spacing:2px;margin-bottom:10px;">テーマ設計（3パターン）</div>
+      <div class="c c-red" style="margin-bottom:8px;padding:12px 14px;">
+        <div style="font-size:13px;font-weight:700;color:var(--text);">「退職後の不安をゼロにするお金の話」</div>
+        <div style="font-size:11px;color:var(--muted);margin-top:4px;">→ 退職サポート＋学習サポート訴求。FP・社労士とコラボ開催で参加者を集めやすい</div>
+      </div>
+      <div class="c c-gold" style="margin-bottom:8px;padding:12px 14px;">
+        <div style="font-size:13px;font-weight:700;color:var(--text);">「国の補助金でAIを学ぶ方法」</div>
+        <div style="font-size:11px;color:var(--muted);margin-top:4px;">→ AIリスキリング講座訴求。参加者全員が潜在的な¥10万案件。最も単価が高い</div>
+      </div>
+      <div class="c c-blue" style="margin-bottom:8px;padding:12px 14px;">
+        <div style="font-size:13px;font-weight:700;color:var(--text);">「仙台で副業・フリーランスを始める最初の一歩」</div>
+        <div style="font-size:11px;color:var(--muted);margin-top:4px;">→ AI搭載サポート＋転職サポート。おがさわらの経験談として語れる</div>
+      </div>
+
+      <div style="font-size:11px;color:var(--accent);letter-spacing:2px;margin-top:12px;margin-bottom:8px;">開催方法</div>
+      <ul class="bl" style="font-size:12.5px;">
+        <li>仙台市内のコワーキングスペース（定員10〜15名）</li>
+        <li>参加費：無料（ドリンク代のみ）</li>
+        <li>月2回：第2・第4土曜の午前</li>
+        <li>パートナー（社労士・FP）との共同開催でリーチを拡大</li>
+      </ul>
+    </div>
+
+    <div>
+      <div style="font-size:11px;color:var(--green);letter-spacing:2px;margin-bottom:10px;">セミナー60分の構成</div>
+      <div class="funnel">
+        <div class="funnel-step" style="background:rgba(233,69,96,.08);border:1px solid rgba(233,69,96,.2);">
+          <div class="funnel-icon">⏱️</div>
+          <div class="funnel-text">
+            <div style="font-size:12px;font-weight:700;">0〜10分：自己紹介＋共感獲得</div>
+            <div style="font-size:11px;color:var(--muted);">「私もAIが怖かった」「仙台に移住した当事者」</div>
+          </div>
+          <div class="funnel-rate">信頼形成</div>
+        </div>
+        <div class="funnel-step" style="background:rgba(245,166,35,.08);border:1px solid rgba(245,166,35,.2);">
+          <div class="funnel-icon">💡</div>
+          <div class="funnel-text">
+            <div style="font-size:12px;font-weight:700;">10〜30分：問題提起＋数字で危機感</div>
+            <div style="font-size:11px;color:var(--muted);">「退職後の平均収入減少」「AI活用で変わった事例（¥13万→¥0）」</div>
+          </div>
+          <div class="funnel-rate">欲求喚起</div>
+        </div>
+        <div class="funnel-step" style="background:rgba(46,204,113,.08);border:1px solid rgba(46,204,113,.2);">
+          <div class="funnel-icon">🎯</div>
+          <div class="funnel-text">
+            <div style="font-size:12px;font-weight:700;">30〜50分：解決策の提示＋事例</div>
+            <div style="font-size:11px;color:var(--muted);">実際の給付金活用事例・AI講座の補助金仕組みをわかりやすく説明</div>
+          </div>
+          <div class="funnel-rate">信頼確立</div>
+        </div>
+        <div class="funnel-step" style="background:rgba(52,152,219,.08);border:1px solid rgba(52,152,219,.2);">
+          <div class="funnel-icon">📋</div>
+          <div class="funnel-text">
+            <div style="font-size:12px;font-weight:700;">50〜60分：個別相談の案内</div>
+            <div style="font-size:11px;color:var(--muted);">「今日その場でLINE登録→無料個別相談」に誘導</div>
+          </div>
+          <div class="funnel-rate" style="color:var(--gold);">成約へ</div>
+        </div>
+      </div>
+
+      <div class="c c-gold" style="margin-top:10px;padding:12px 14px;">
+        <div style="font-size:12px;line-height:1.7;">
+          参加10名 × 成約率<strong style="color:var(--text);">50%</strong> = 5件成立<br>
+          AI講座3件(¥30万) + 退職2件(¥14万) = <strong style="color:var(--gold);font-size:15px;">¥44万/回</strong><br>
+          月2回開催で <strong style="color:var(--gold);font-size:17px;">¥88万</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ======== SLIDE 10: 集客方法（セミナー用） ======== -->
+<div class="slide">
+  <div class="sn">10 / 16</div>
+  <div class="sh">
+    <span class="sh-eye">Seminar Audience Acquisition</span>
+    <div class="sh-title">セミナー参加者の<span class="hl">集め方</span>｜SNSなしでも10名集める</div>
+  </div>
+
+  <div class="g3">
+    <div>
+      <div style="font-size:11px;color:var(--accent);letter-spacing:2px;margin-bottom:10px;">パートナー経由（最速）</div>
+      <ul class="bl" style="font-size:12.5px;">
+        <li><strong style="color:var(--text);">社労士・FP</strong>が自分のクライアントに案内する（最短1週間で10名集客可能）</li>
+        <li>コラボ開催にすると先方も告知してくれる</li>
+        <li>パートナーの顧客 = すでに悩みを抱えているウォームリード</li>
+        <li>成約率が格段に高くなる</li>
+      </ul>
+    </div>
+    <div>
+      <div style="font-size:11px;color:var(--gold);letter-spacing:2px;margin-bottom:10px;">地域コミュニティ経由</div>
+      <ul class="bl" style="font-size:12.5px;">
+        <li>仙台市の各区のまちづくり・産業振興イベント</li>
+        <li>地元コワーキングスペース（Pono等）のイベント枠</li>
+        <li>異業種交流会で「次回セミナー」を告知</li>
+        <li>仙台商工会議所の掲示板・メルマガに告知を載せてもらう</li>
+        <li>仙台経済新聞・河北新報のイベント欄に無料掲載申請</li>
+      </ul>
+    </div>
+    <div>
+      <div style="font-size:11px;color:var(--green);letter-spacing:2px;margin-bottom:10px;">オンライン（補完）</div>
+      <ul class="bl" style="font-size:12.5px;">
+        <li>connpassやPeatixに無料セミナーとして登録</li>
+        <li>「仙台 退職」「宮城 AI学習」のキーワードで検索流入</li>
+        <li>Facebookグループ（仙台起業家・移住者コミュニティ）に告知</li>
+        <li>Threads で「次回セミナー告知」投稿（これのみSNS活用）</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="hbox" style="margin-top:14px;">
+    <strong style="color:var(--gold);">現実的な初回集客シナリオ：</strong>
+    社労士1名に「共同開催しませんか」と打診 → 先方のクライアント7〜10名を連れてくる。
+    初回セミナーはこれだけで成立する。<strong style="color:var(--text);">告知・集客にSNSは不要</strong>。パートナー1人との合意が全てを解決する。
+  </div>
+</div>
+
+<!-- ======== SLIDE 11: 連鎖紹介の設計 ======== -->
+<div class="slide sec-break">
+  <div class="sn">11 / 16</div>
+  <span style="font-size:10px;letter-spacing:3px;color:var(--green);text-transform:uppercase;">柱3｜Referral Loop</span>
+  <div style="font-size:46px;font-weight:900;color:var(--text);margin:12px 0 8px;">連鎖紹介の設計</div>
+  <div style="font-size:18px;color:var(--muted);">成立した案件が次の案件を生む「口コミエンジン」を作る</div>
+  <div style="margin-top:20px;display:flex;gap:10px;">
+    <span class="bdg bdg-gr">友人紹介報酬</span>
+    <span class="bdg bdg-g">感謝のタイミングを逃さない</span>
+    <span class="bdg bdg-r">1件が3件になる仕組み</span>
+  </div>
+  <div class="sec-big">03</div>
+</div>
+
+<!-- ======== SLIDE 12: 連鎖紹介 詳細 ======== -->
+<div class="slide">
+  <div class="sn">12 / 16</div>
+  <div class="sh" style="margin-bottom:20px;">
+    <span class="sh-eye">Referral Loop Architecture</span>
+    <div class="sh-title" style="font-size:28px;">1件を3件にする<span class="hl">口コミ設計</span></div>
+  </div>
+
+  <div class="g2">
+    <div>
+      <div style="font-size:11px;color:var(--green);letter-spacing:2px;margin-bottom:10px;">「紹介したくなる」3つの仕掛け</div>
+      <div class="c c-green" style="margin-bottom:8px;padding:14px;">
+        <div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:4px;">仕掛け1：成立時の「感謝タイミング」を絶対に逃さない</div>
+        <div style="font-size:12px;color:var(--muted);line-height:1.6;">給付金が振り込まれた日・講座が始まった日に「おかげさまで〇〇万円受け取れました」の連絡が来る。このタイミングで即座に「もし同じ悩みのお友達がいたらご紹介ください」と伝える。人は感謝している瞬間に最も紹介行動を取る。</div>
+      </div>
+      <div class="c c-blue" style="margin-bottom:8px;padding:14px;">
+        <div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:4px;">仕掛け2：「紹介特典」を設計する</div>
+        <div style="font-size:12px;color:var(--muted);line-height:1.6;">紹介者に¥3,000〜5,000のAmazonギフト券。または杜の都工房のサービス割引券（¥10,000相当）。現金より「体験できる特典」の方が紹介してもらいやすい。</div>
+      </div>
+      <div class="c c-gold" style="padding:14px;">
+        <div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:4px;">仕掛け3：「紹介しやすい素材」を渡す</div>
+        <div style="font-size:12px;color:var(--muted);line-height:1.6;">友人に転送できるLINEメッセージのテンプレートを渡す。「こういうサービスがあるんだけど」と送れる1文を用意しておく。</div>
+      </div>
+    </div>
+
+    <div>
+      <div style="font-size:11px;color:var(--accent);letter-spacing:2px;margin-bottom:10px;">連鎖紹介のシミュレーション</div>
+      <div style="background:rgba(255,255,255,.03);border-radius:10px;padding:14px;margin-bottom:12px;">
+        <div style="display:flex;flex-direction:column;gap:6px;font-size:12.5px;">
+          <div style="display:flex;align-items:center;gap:10px;padding:8px 10px;background:rgba(233,69,96,.08);border-radius:6px;">
+            <span style="color:var(--accent);font-weight:700;width:60px;">Month 1</span>
+            <span>パートナー経由で10件成立</span>
+          </div>
+          <div style="text-align:center;font-size:16px;color:var(--muted);">↓ 成立者の30%が紹介</div>
+          <div style="display:flex;align-items:center;gap:10px;padding:8px 10px;background:rgba(245,166,35,.08);border-radius:6px;">
+            <span style="color:var(--gold);font-weight:700;width:60px;">Month 2</span>
+            <span>10件の30% = 3件の口コミ追加発生</span>
+          </div>
+          <div style="text-align:center;font-size:16px;color:var(--muted);">↓ さらに連鎖</div>
+          <div style="display:flex;align-items:center;gap:10px;padding:8px 10px;background:rgba(46,204,113,.08);border-radius:6px;">
+            <span style="color:var(--green);font-weight:700;width:60px;">Month 3</span>
+            <span>累積で月5〜8件が口コミのみで発生</span>
+          </div>
+          <div style="text-align:center;font-size:16px;color:var(--muted);">↓ 積み上がる</div>
+          <div style="display:flex;align-items:center;gap:10px;padding:8px 10px;background:rgba(245,166,35,.15);border-radius:6px;border:1px solid rgba(245,166,35,.3);">
+            <span style="color:var(--gold);font-weight:700;width:60px;">Month 6</span>
+            <span style="color:var(--text);">月10件以上が口コミ自動流入に</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="c" style="padding:14px;">
+        <div style="font-size:11px;color:var(--muted);margin-bottom:8px;">口コミ10件/月の収益価値</div>
+        <div style="font-size:13px;line-height:1.7;">
+          10件 × 平均¥85,000 = <strong style="color:var(--gold);font-size:18px;">月¥85万</strong>の<br>
+          コスト0円リード。パートナー網との合算で<br>
+          <strong style="color:var(--text);">月¥250万以上</strong>を口コミ・紹介のみで達成。
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ======== SLIDE 13: 月次シミュレーション ======== -->
+<div class="slide">
+  <div class="sn">13 / 16</div>
+  <div class="sh">
+    <span class="sh-eye">Revenue Simulation</span>
+    <div class="sh-title">月商300万への<span class="hl">月次シミュレーション</span></div>
+  </div>
+
+  <div class="g2" style="margin-bottom:16px;">
+    <table class="tbl">
+      <thead>
+        <tr><th>月</th><th>パートナー件数</th><th>セミナー件数</th><th>口コミ件数</th><th>合計件数</th><th>月収益</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="bdg bdg-r">1ヶ月目</span></td>
+          <td>5件</td><td>5件</td><td>0件</td><td>10件</td>
+          <td style="color:var(--accent);font-weight:700;">¥85万</td>
+        </tr>
+        <tr>
+          <td><span class="bdg bdg-r">2ヶ月目</span></td>
+          <td>10件</td><td>8件</td><td>2件</td><td>20件</td>
+          <td style="color:var(--accent);font-weight:700;">¥170万</td>
+        </tr>
+        <tr>
+          <td><span class="bdg bdg-g">3ヶ月目</span></td>
+          <td>15件</td><td>10件</td><td>5件</td><td>30件</td>
+          <td style="color:var(--gold);font-weight:700;">¥255万</td>
+        </tr>
+        <tr class="tot">
+          <td colspan="4"><strong>4ヶ月目（月商300万達成）</strong></td>
+          <td>36件</td>
+          <td style="font-size:16px;">¥306万</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div>
+      <div style="font-size:11px;color:var(--gold);letter-spacing:2px;margin-bottom:10px;">月商300万の内訳（4ヶ月目）</div>
+      <div style="display:flex;flex-direction:column;gap:6px;">
+        <div style="display:flex;align-items:center;gap:10px;padding:10px 14px;background:rgba(233,69,96,.07);border-radius:8px;border-left:3px solid var(--accent);">
+          <div style="flex:1;">
+            <div style="font-size:13px;font-weight:700;">AIリスキリング紹介</div>
+            <div style="font-size:11px;color:var(--muted);">¥10万 × 15件</div>
+          </div>
+          <div style="font-size:16px;font-weight:800;color:var(--accent);">¥150万</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;padding:10px 14px;background:rgba(245,166,35,.07);border-radius:8px;border-left:3px solid var(--gold);">
+          <div style="flex:1;">
+            <div style="font-size:13px;font-weight:700;">退職サポート紹介</div>
+            <div style="font-size:11px;color:var(--muted);">¥7万 × 10件</div>
+          </div>
+          <div style="font-size:16px;font-weight:800;color:var(--gold);">¥70万</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;padding:10px 14px;background:rgba(52,152,219,.07);border-radius:8px;border-left:3px solid var(--blue);">
+          <div style="flex:1;">
+            <div style="font-size:13px;font-weight:700;">転職サポート成約</div>
+            <div style="font-size:11px;color:var(--muted);">¥15万 × 4件</div>
+          </div>
+          <div style="font-size:16px;font-weight:800;color:var(--blue);">¥60万</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;padding:10px 14px;background:rgba(46,204,113,.07);border-radius:8px;border-left:3px solid var(--green);">
+          <div style="flex:1;">
+            <div style="font-size:13px;font-weight:700;">学習サポート継続（累積15名）</div>
+            <div style="font-size:11px;color:var(--muted);">¥2万 × 15名</div>
+          </div>
+          <div style="font-size:16px;font-weight:800;color:var(--green);">¥30万</div>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:flex-end;padding:8px 14px;background:rgba(245,166,35,.12);border-radius:8px;border:1px solid rgba(245,166,35,.3);">
+          <div style="font-size:18px;font-weight:900;color:var(--gold);">合計 ¥310万</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hbox">
+    <strong style="color:var(--gold);">前提条件：</strong>
+    月1回パートナー開拓（5名と合意）+ 月2回セミナー開催（各10名）。
+    これだけで<strong style="color:var(--text);">4ヶ月以内に月商300万</strong>は現実的に達成できる数字。受託制作は考慮外。
+  </div>
+</div>
+
+<!-- ======== SLIDE 14: 最初の30日間タスク ======== -->
+<div class="slide">
+  <div class="sn">14 / 16</div>
+  <div class="sh">
+    <span class="sh-eye">First 30 Days</span>
+    <div class="sh-title">最初の<span class="hl">30日間</span>でやること全リスト</div>
+  </div>
+
+  <div class="g2">
+    <div>
+      <div style="font-size:11px;color:var(--accent);letter-spacing:2px;margin-bottom:10px;">Week 1：素材準備</div>
+      <div class="action-item">
+        <div class="ai-num" style="color:var(--accent);">1</div>
+        <div class="ai-body">
+          <div class="ai-title">パートナー提案書（A4一枚）を作る</div>
+          <div class="ai-desc">社労士向け・FP向け・退職代行向けの3バージョン。各30分で作成可能</div>
+        </div>
+        <div class="ai-tag"><span class="bdg bdg-r">1日</span></div>
+      </div>
+      <div class="action-item">
+        <div class="ai-num" style="color:var(--accent);">2</div>
+        <div class="ai-body">
+          <div class="ai-title">Googleマップで仙台の社労士・FPを30件リスト化</div>
+          <div class="ai-desc">事務所名・連絡先・SNSアカウントをスプレッドシートに記録</div>
+        </div>
+        <div class="ai-tag"><span class="bdg bdg-r">2時間</span></div>
+      </div>
+      <div class="action-item">
+        <div class="ai-num" style="color:var(--accent);">3</div>
+        <div class="ai-body">
+          <div class="ai-title">LINE公式アカウントを整備する</div>
+          <div class="ai-desc">「退職・AI相談窓口」として案内できる状態に。応答メッセージ設定</div>
+        </div>
+        <div class="ai-tag"><span class="bdg bdg-r">半日</span></div>
+      </div>
+      <div class="action-item">
+        <div class="ai-num" style="color:var(--accent);">4</div>
+        <div class="ai-body">
+          <div class="ai-title">セミナー告知ページをPeatixで作成</div>
+          <div class="ai-desc">「国の補助金でAIを学ぶ方法」第1回の告知ページを公開状態にする</div>
+        </div>
+        <div class="ai-tag"><span class="bdg bdg-r">2時間</span></div>
+      </div>
+
+      <div style="font-size:11px;color:var(--gold);letter-spacing:2px;margin-top:12px;margin-bottom:10px;">Week 2：アプローチ開始</div>
+      <div class="action-item">
+        <div class="ai-num" style="color:var(--gold);">5</div>
+        <div class="ai-body">
+          <div class="ai-title">社労士・FPにアポ取り（10件/週）</div>
+          <div class="ai-desc">「情報交換させてください」でOK。対面30分でいい</div>
+        </div>
+        <div class="ai-tag"><span class="bdg bdg-g">継続</span></div>
+      </div>
+    </div>
+
+    <div>
+      <div style="font-size:11px;color:var(--green);letter-spacing:2px;margin-bottom:10px;">Week 3〜4：稼働・成約</div>
+      <div class="action-item">
+        <div class="ai-num" style="color:var(--green);">6</div>
+        <div class="ai-body">
+          <div class="ai-title">異業種交流会に2回参加する</div>
+          <div class="ai-desc">仙台商工会議所・地元経営者コミュニティ。名刺を30枚持参してパートナー候補を見極める</div>
+        </div>
+        <div class="ai-tag"><span class="bdg bdg-gr">Week3</span></div>
+      </div>
+      <div class="action-item">
+        <div class="ai-num" style="color:var(--green);">7</div>
+        <div class="ai-body">
+          <div class="ai-title">初回セミナー開催（コラボ開催が理想）</div>
+          <div class="ai-desc">アポで合意した社労士orFPと共催。先方のクライアント7〜10名を集めてもらう</div>
+        </div>
+        <div class="ai-tag"><span class="bdg bdg-gr">Week4</span></div>
+      </div>
+      <div class="action-item">
+        <div class="ai-num" style="color:var(--green);">8</div>
+        <div class="ai-body">
+          <div class="ai-title">退職代行サービスにDMを5件送る</div>
+          <div class="ai-desc">全国対象。「退職後のサポートで連携したい」という切り口でアプローチ</div>
+        </div>
+        <div class="ai-tag"><span class="bdg bdg-gr">Week3</span></div>
+      </div>
+      <div class="action-item">
+        <div class="ai-num" style="color:var(--green);">9</div>
+        <div class="ai-body">
+          <div class="ai-title">成立した案件に紹介特典の案内を送る</div>
+          <div class="ai-desc">「ご友人にも同じ悩みがあれば」のメッセージテンプレートを渡す</div>
+        </div>
+        <div class="ai-tag"><span class="bdg bdg-gr">随時</span></div>
+      </div>
+      <div class="action-item">
+        <div class="ai-num" style="color:var(--green);">10</div>
+        <div class="ai-body">
+          <div class="ai-title">30日後にKPIを振り返る</div>
+          <div class="ai-desc">面談件数・提携合意数・紹介獲得数・成約数を記録。翌月の戦略を修正</div>
+        </div>
+        <div class="ai-tag"><span class="bdg bdg-gr">Day30</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ======== SLIDE 15: 成約率を上げる会話術 ======== -->
+<div class="slide">
+  <div class="sn">15 / 16</div>
+  <div class="sh">
+    <span class="sh-eye">Conversion Optimization</span>
+    <div class="sh-title">成約率を<span class="hl">倍にする</span>｜相談時の会話設計</div>
+  </div>
+
+  <div class="g2">
+    <div>
+      <div style="font-size:11px;color:var(--accent);letter-spacing:2px;margin-bottom:10px;">相談で絶対にやること</div>
+      <div class="step-row">
+        <div class="step-num" style="color:var(--accent);">①</div>
+        <div class="step-body">
+          <div class="step-title">まず「悩みをすべて聞く」。提案は後</div>
+          <div class="step-desc">「今何が一番不安ですか？」から始める。解決策は最後の5分でいい</div>
+        </div>
+      </div>
+      <div class="step-row">
+        <div class="step-num" style="color:var(--gold);">②</div>
+        <div class="step-body">
+          <div class="step-title">金額を「もらえる数字」で見せる</div>
+          <div class="step-desc">「最大¥291.6万を受け取れる可能性があります」という提示。コストではなくリターンで語る</div>
+        </div>
+      </div>
+      <div class="step-row">
+        <div class="step-num" style="color:var(--green);">③</div>
+        <div class="step-body">
+          <div class="step-title">「あなたの場合は〇〇万円受け取れる可能性があります」と個別化</div>
+          <div class="step-desc">在職期間・給与・状況から大まかな金額感を示す。抽象論より個別の数字が刺さる</div>
+        </div>
+      </div>
+      <div class="step-row">
+        <div class="step-num" style="color:var(--blue);">④</div>
+        <div class="step-body">
+          <div class="step-title">「無料で確認できます」を強調する</div>
+          <div class="step-desc">まず無料相談で対象かどうか確認する、というステップを提示。リスクゼロを伝える</div>
+        </div>
+      </div>
+      <div class="step-row">
+        <div class="step-num" style="color:var(--purple);">⑤</div>
+        <div class="step-body">
+          <div class="step-title">その場でLINE登録まで完了させる</div>
+          <div class="step-desc">「後で考えます」は成約ゼロに等しい。「今日確認だけしましょう」でその場完結を狙う</div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div style="font-size:11px;color:var(--gold);letter-spacing:2px;margin-bottom:10px;">サービス別の刺さる言葉</div>
+      <div class="c c-red" style="margin-bottom:8px;padding:12px 14px;">
+        <div style="font-size:11px;color:var(--accent);margin-bottom:4px;">退職サポート訴求</div>
+        <div style="font-size:13px;color:rgba(255,255,255,.85);line-height:1.7;">
+          「会社を辞めた後、最大18ヶ月間、毎月¥16万を受け取れる可能性があります。多くの方が手続きを知らないまま損をしています。」
+        </div>
+      </div>
+      <div class="c c-gold" style="margin-bottom:8px;padding:12px 14px;">
+        <div style="font-size:11px;color:var(--gold);margin-bottom:4px;">AIリスキリング訴求</div>
+        <div style="font-size:13px;color:rgba(255,255,255,.85);line-height:1.7;">
+          「経産省認定のAI講座、通常¥48万が国の支援で実質¥0になる場合があります。条件に合うか、まず無料で確認できます。」
+        </div>
+      </div>
+      <div class="c c-blue" style="padding:12px 14px;">
+        <div style="font-size:11px;color:var(--blue);margin-bottom:4px;">転職サポート訴求</div>
+        <div style="font-size:13px;color:rgba(255,255,255,.85);line-height:1.7;">
+          「転職で年収¥50万アップの事例があります。書類作成から面接まで全部サポートするので、今と同じ忙しさのまま動ける。まず話だけ聞いてみませんか。」
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ======== SLIDE 16: まとめ ======== -->
+<div class="slide cover" style="text-align:left;align-items:flex-start;">
+  <div class="sn" style="color:rgba(255,255,255,.2);">16 / 16</div>
+  <div style="font-size:10px;letter-spacing:4px;color:var(--gold);text-transform:uppercase;margin-bottom:16px;">Summary</div>
+  <div style="font-size:40px;font-weight:900;line-height:1.3;margin-bottom:24px;">
+    月商300万を<br><span style="background:linear-gradient(90deg,var(--accent),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">4ヶ月で達成</span>する<br>本質的な1文
+  </div>
+
+  <div style="font-size:18px;color:rgba(255,255,255,.8);line-height:1.9;margin-bottom:28px;max-width:680px;">
+    SNSの「いつか来るかもしれないリード」を待つのではなく、<br>
+    <strong style="color:var(--white);">今日すでに見込み客と接触している人</strong>を探して、<br>
+    その人と<strong style="color:var(--gold);">提携する</strong>。それだけ。
+  </div>
+
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;width:100%;">
+    <div style="padding:14px 16px;background:rgba(233,69,96,.12);border:1px solid rgba(233,69,96,.3);border-radius:10px;">
+      <div style="font-size:11px;color:var(--accent);margin-bottom:4px;">今週必ずやること</div>
+      <div style="font-size:13px;font-weight:700;color:var(--text);">社労士・FPに10件アプローチリストを作る</div>
+    </div>
+    <div style="padding:14px 16px;background:rgba(245,166,35,.12);border:1px solid rgba(245,166,35,.3);border-radius:10px;">
+      <div style="font-size:11px;color:var(--gold);margin-bottom:4px;">今月必ずやること</div>
+      <div style="font-size:13px;font-weight:700;color:var(--text);">パートナー提案書を完成させ、5件に手渡す</div>
+    </div>
+    <div style="padding:14px 16px;background:rgba(46,204,113,.12);border:1px solid rgba(46,204,113,.3);border-radius:10px;">
+      <div style="font-size:11px;color:var(--green);margin-bottom:4px;">来月必ずやること</div>
+      <div style="font-size:13px;font-weight:700;color:var(--text);">社労士コラボの初回セミナーを開催する</div>
+    </div>
+  </div>
+</div>
+
+</div>
+</body>
+</html>

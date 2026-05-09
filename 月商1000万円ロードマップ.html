@@ -1,0 +1,1319 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>月商1000万円ロードマップ｜杜の都工房</title>
+<style>
+  :root {
+    --primary: #1a1a2e;
+    --accent: #e94560;
+    --gold: #f5a623;
+    --teal: #16213e;
+    --light: #0f3460;
+    --text: #e8e8e8;
+    --white: #ffffff;
+    --green: #27ae60;
+    --blue: #2980b9;
+    --purple: #8e44ad;
+    --orange: #e67e22;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Noto Sans JP', sans-serif;
+    background: #0a0a0a;
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* ===== SLIDE WRAPPER ===== */
+  .slide-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  .slide {
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: var(--primary);
+    border-radius: 16px;
+    margin-bottom: 32px;
+    padding: 60px 70px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  /* slide decorative lines */
+  .slide::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 6px;
+    height: 100%;
+    background: linear-gradient(180deg, var(--accent), var(--gold));
+  }
+
+  .slide-num {
+    position: absolute;
+    top: 20px;
+    right: 28px;
+    font-size: 11px;
+    color: rgba(255,255,255,0.3);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  /* ===== COVER SLIDE ===== */
+  .slide-cover {
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+    align-items: center;
+    text-align: center;
+  }
+
+  .slide-cover::before { display: none; }
+
+  .cover-label {
+    font-size: 13px;
+    letter-spacing: 4px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    display: block;
+  }
+
+  .cover-title {
+    font-size: 72px;
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1.1;
+    margin-bottom: 16px;
+  }
+
+  .cover-title span {
+    background: linear-gradient(90deg, var(--accent), var(--gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .cover-sub {
+    font-size: 20px;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 48px;
+    letter-spacing: 2px;
+  }
+
+  .cover-tagline {
+    font-size: 14px;
+    color: rgba(255,255,255,0.4);
+    letter-spacing: 3px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 20px;
+    display: inline-block;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .cover-grid {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+  }
+
+  /* ===== SLIDE HEADER ===== */
+  .slide-header {
+    margin-bottom: 32px;
+  }
+
+  .slide-label {
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  .slide-title {
+    font-size: 38px;
+    font-weight: 800;
+    color: var(--white);
+    line-height: 1.2;
+  }
+
+  .slide-title span { color: var(--gold); }
+
+  /* ===== CARDS & GRIDS ===== */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+  .grid-5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+
+  .card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    padding: 22px;
+  }
+
+  .card-accent {
+    border-color: var(--accent);
+    background: rgba(233, 69, 96, 0.08);
+  }
+
+  .card-gold {
+    border-color: var(--gold);
+    background: rgba(245, 166, 35, 0.08);
+  }
+
+  .card-green {
+    border-color: var(--green);
+    background: rgba(39, 174, 96, 0.08);
+  }
+
+  .card-blue {
+    border-color: var(--blue);
+    background: rgba(41, 128, 185, 0.08);
+  }
+
+  .card-purple {
+    border-color: var(--purple);
+    background: rgba(142, 68, 173, 0.08);
+  }
+
+  .card-label {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  .card-value {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--white);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .card-desc {
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.5;
+  }
+
+  /* ===== PHASE BLOCKS ===== */
+  .phase-row {
+    display: flex;
+    gap: 0;
+    height: 72px;
+    margin-bottom: 14px;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .phase-label-col {
+    width: 180px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--white);
+    background: rgba(255,255,255,0.05);
+    border-right: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .phase-bar {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  .phase-bar-value {
+    font-size: 22px;
+    font-weight: 900;
+    margin-right: 16px;
+  }
+
+  /* ===== ARROW FLOW ===== */
+  .flow-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+
+  .flow-item {
+    flex: 1;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 10px;
+    padding: 14px 12px;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  .flow-arrow {
+    font-size: 18px;
+    color: var(--gold);
+    flex-shrink: 0;
+  }
+
+  /* ===== TABLE ===== */
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+
+  .data-table th {
+    padding: 10px 14px;
+    text-align: left;
+    background: rgba(255,255,255,0.06);
+    color: rgba(255,255,255,0.6);
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .data-table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    color: rgba(255,255,255,0.85);
+  }
+
+  .data-table tr:last-child td { border-bottom: none; }
+
+  .data-table .total-row td {
+    font-weight: 800;
+    color: var(--gold);
+    font-size: 14px;
+    background: rgba(245, 166, 35, 0.06);
+    border-top: 1px solid rgba(245, 166, 35, 0.3);
+  }
+
+  .badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 700;
+  }
+
+  .badge-red { background: rgba(233, 69, 96, 0.2); color: #e94560; }
+  .badge-gold { background: rgba(245, 166, 35, 0.2); color: #f5a623; }
+  .badge-green { background: rgba(39, 174, 96, 0.2); color: #27ae60; }
+  .badge-blue { background: rgba(41, 128, 185, 0.2); color: #2980b9; }
+  .badge-purple { background: rgba(142, 68, 173, 0.2); color: #9b59b6; }
+
+  /* ===== BIG NUMBER ===== */
+  .big-number {
+    font-size: 80px;
+    font-weight: 900;
+    line-height: 1;
+    background: linear-gradient(90deg, var(--accent), var(--gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* ===== BULLET LIST ===== */
+  .bullet-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .bullet-list li {
+    padding: 8px 0 8px 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    font-size: 14px;
+    position: relative;
+    color: rgba(255,255,255,0.8);
+  }
+
+  .bullet-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 8px;
+    height: 2px;
+    background: var(--gold);
+  }
+
+  /* ===== SECTION DIVIDER ===== */
+  .section-divider {
+    background: linear-gradient(135deg, #0f3460, #16213e);
+    align-items: flex-start;
+    padding: 50px 70px;
+  }
+
+  .section-number {
+    font-size: 100px;
+    font-weight: 900;
+    color: rgba(255,255,255,0.04);
+    position: absolute;
+    right: 60px;
+    bottom: 20px;
+    line-height: 1;
+  }
+
+  /* ===== TAG ===== */
+  .tag {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-right: 6px;
+    margin-bottom: 6px;
+  }
+
+  .highlight-box {
+    background: linear-gradient(135deg, rgba(233, 69, 96, 0.15), rgba(245, 166, 35, 0.15));
+    border: 1px solid rgba(245, 166, 35, 0.3);
+    border-radius: 12px;
+    padding: 18px 24px;
+  }
+
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    align-items: start;
+  }
+
+  .three-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    align-items: start;
+  }
+
+  /* Print / navigation hint */
+  .nav-hint {
+    text-align: center;
+    color: rgba(255,255,255,0.2);
+    font-size: 12px;
+    margin: 8px 0 24px;
+    letter-spacing: 2px;
+  }
+
+  /* ===== PROGRESS BAR ===== */
+  .progress-track {
+    background: rgba(255,255,255,0.06);
+    border-radius: 4px;
+    height: 8px;
+    margin-top: 8px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    border-radius: 4px;
+    background: linear-gradient(90deg, var(--accent), var(--gold));
+  }
+
+  .vs-row {
+    display: flex;
+    gap: 12px;
+    align-items: stretch;
+  }
+  .vs-col {
+    flex: 1;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 10px;
+    padding: 16px;
+  }
+  .vs-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    font-size: 20px;
+    color: rgba(255,255,255,0.3);
+    flex-shrink: 0;
+    padding: 0 4px;
+  }
+</style>
+</head>
+<body>
+
+<div class="slide-container">
+
+  <!-- ========== SLIDE 1: COVER ========== -->
+  <div class="slide slide-cover">
+    <div class="cover-grid"></div>
+    <span class="cover-label">杜の都工房 — 事業成長戦略</span>
+    <div class="cover-title">
+      月商<span>1,000万円</span><br>ロードマップ
+    </div>
+    <div class="cover-sub">2026〜2029｜5フェーズ完全設計</div>
+    <span class="cover-tagline">古き良き × 最先端｜共育・共創・共助</span>
+    <div class="slide-num">01 / 18</div>
+  </div>
+
+  <!-- ========== SLIDE 2: 現在地確認 ========== -->
+  <div class="slide">
+    <div class="slide-num">02 / 18</div>
+    <div class="slide-header">
+      <span class="slide-label">Current Status</span>
+      <div class="slide-title">現在地の確認｜<span>今どこにいるか</span></div>
+    </div>
+
+    <div class="grid-4" style="margin-bottom:20px;">
+      <div class="card card-accent">
+        <span class="card-label" style="color:var(--accent);">現在の月商目標</span>
+        <div class="card-value" style="font-size:22px;">¥30万</div>
+        <div class="card-desc">フェーズ1（〜2026年6月）</div>
+      </div>
+      <div class="card card-gold">
+        <span class="card-label" style="color:var(--gold);">主力サービス数</span>
+        <div class="card-value">4</div>
+        <div class="card-desc">Web・AI改善・コンテンツ・伴走</div>
+      </div>
+      <div class="card card-blue">
+        <span class="card-label" style="color:var(--blue);">副収益（キャリサポ）</span>
+        <div class="card-value" style="font-size:18px;">紹介報酬</div>
+        <div class="card-desc">¥7万〜¥10万/1件</div>
+      </div>
+      <div class="card card-green">
+        <span class="card-label" style="color:var(--green);">月商1000万への倍率</span>
+        <div class="card-value" style="color:var(--green);">×33</div>
+        <div class="card-desc">¥30万 → ¥1,000万</div>
+      </div>
+    </div>
+
+    <div class="two-col">
+      <div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.4);letter-spacing:2px;margin-bottom:10px;">STRENGTHS（強み）</div>
+        <ul class="bullet-list">
+          <li>React/Vite/Tailwind — 技術力 ★★★★</li>
+          <li>AI×手動ハイブリッド制作（スピード×品質）</li>
+          <li>キャリサポ紹介モデル（高単価×ストック）</li>
+          <li>「古き良き×最先端」の唯一無二ブランド</li>
+          <li>地方移住当事者の共感ストーリー</li>
+        </ul>
+      </div>
+      <div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.4);letter-spacing:2px;margin-bottom:10px;">GAPS（現時点での課題）</div>
+        <ul class="bullet-list">
+          <li>SNS集客力がまだ初期段階</li>
+          <li>実績・顧客の声が少ない</li>
+          <li>一人体制 — キャパの上限あり</li>
+          <li>ストック収益がまだ薄い</li>
+          <li>有料商品ラインが少ない</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== SLIDE 3: 全体ロードマップ ========== -->
+  <div class="slide">
+    <div class="slide-num">03 / 18</div>
+    <div class="slide-header">
+      <span class="slide-label">Master Roadmap</span>
+      <div class="slide-title">5フェーズ全体図｜<span>2026〜2029</span></div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:10px;">
+      <div class="phase-row">
+        <div class="phase-label-col">
+          <div>
+            <div style="font-size:10px;color:rgba(255,255,255,0.4);">PHASE 1</div>
+            <div>〜2026年6月</div>
+          </div>
+        </div>
+        <div class="phase-bar" style="background:linear-gradient(90deg, rgba(233,69,96,0.3), rgba(233,69,96,0.1));width:10%;">
+          <span class="phase-bar-value" style="color:var(--accent);">¥30〜50万</span>
+          <span style="font-size:12px;color:rgba(255,255,255,0.6);">基盤構築・実績ゼロからの脱出</span>
+        </div>
+      </div>
+
+      <div class="phase-row">
+        <div class="phase-label-col">
+          <div>
+            <div style="font-size:10px;color:rgba(255,255,255,0.4);">PHASE 2</div>
+            <div>2026年7〜12月</div>
+          </div>
+        </div>
+        <div class="phase-bar" style="background:linear-gradient(90deg, rgba(245,166,35,0.3), rgba(245,166,35,0.1));width:20%;">
+          <span class="phase-bar-value" style="color:var(--gold);">¥50〜100万</span>
+          <span style="font-size:12px;color:rgba(255,255,255,0.6);">実績公開・キャリサポ本格稼働</span>
+        </div>
+      </div>
+
+      <div class="phase-row">
+        <div class="phase-label-col">
+          <div>
+            <div style="font-size:10px;color:rgba(255,255,255,0.4);">PHASE 3</div>
+            <div>2027年</div>
+          </div>
+        </div>
+        <div class="phase-bar" style="background:linear-gradient(90deg, rgba(41,128,185,0.35), rgba(41,128,185,0.1));width:40%;">
+          <span class="phase-bar-value" style="color:var(--blue);">¥100〜300万</span>
+          <span style="font-size:12px;color:rgba(255,255,255,0.6);">商品化・コミュニティ・外注チーム</span>
+        </div>
+      </div>
+
+      <div class="phase-row">
+        <div class="phase-label-col">
+          <div>
+            <div style="font-size:10px;color:rgba(255,255,255,0.4);">PHASE 4</div>
+            <div>2028年</div>
+          </div>
+        </div>
+        <div class="phase-bar" style="background:linear-gradient(90deg, rgba(142,68,173,0.35), rgba(142,68,173,0.1));width:70%;">
+          <span class="phase-bar-value" style="color:#9b59b6;">¥300〜600万</span>
+          <span style="font-size:12px;color:rgba(255,255,255,0.6);">メディア化・スクール展開・自動化</span>
+        </div>
+      </div>
+
+      <div class="phase-row">
+        <div class="phase-label-col" style="background:rgba(245,166,35,0.15);border-color:var(--gold);">
+          <div>
+            <div style="font-size:10px;color:var(--gold);">PHASE 5</div>
+            <div style="color:var(--gold);">2029年〜</div>
+          </div>
+        </div>
+        <div class="phase-bar" style="background:linear-gradient(90deg, rgba(245,166,35,0.4), rgba(233,69,96,0.2));width:100%;">
+          <span class="phase-bar-value" style="background:linear-gradient(90deg,var(--accent),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-size:28px;">¥1,000万達成</span>
+          <span style="font-size:12px;color:rgba(255,255,255,0.6);margin-left:16px;">チーム×自動化×複数収益柱の完成</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== SLIDE 4: 5つの収益エンジン ========== -->
+  <div class="slide">
+    <div class="slide-num">04 / 18</div>
+    <div class="slide-header">
+      <span class="slide-label">Revenue Architecture</span>
+      <div class="slide-title">月商1000万円を支える<span>5つの収益エンジン</span></div>
+    </div>
+
+    <div class="grid-5" style="height:auto;margin-bottom:16px;">
+      <div class="card card-accent" style="text-align:center;padding:18px 12px;">
+        <div style="font-size:30px;margin-bottom:8px;">A</div>
+        <div style="font-size:13px;font-weight:700;color:var(--white);margin-bottom:6px;">受託制作</div>
+        <div style="font-size:11px;color:rgba(255,255,255,0.5);">Web/アプリ/AI秘書</div>
+        <div style="font-size:16px;font-weight:800;color:var(--accent);margin-top:8px;">¥50k〜</div>
+      </div>
+      <div class="card card-gold" style="text-align:center;padding:18px 12px;">
+        <div style="font-size:30px;margin-bottom:8px;">B</div>
+        <div style="font-size:13px;font-weight:700;color:var(--white);margin-bottom:6px;">キャリサポ紹介</div>
+        <div style="font-size:11px;color:rgba(255,255,255,0.5);">転職・AI講座・退職</div>
+        <div style="font-size:16px;font-weight:800;color:var(--gold);margin-top:8px;">¥7〜10万/件</div>
+      </div>
+      <div class="card card-green" style="text-align:center;padding:18px 12px;">
+        <div style="font-size:30px;margin-bottom:8px;">C</div>
+        <div style="font-size:13px;font-weight:700;color:var(--white);margin-bottom:6px;">ストック収益</div>
+        <div style="font-size:11px;color:rgba(255,255,255,0.5);">保守/マガジン/継続</div>
+        <div style="font-size:16px;font-weight:800;color:var(--green);margin-top:8px;">毎月積み上げ</div>
+      </div>
+      <div class="card card-blue" style="text-align:center;padding:18px 12px;">
+        <div style="font-size:30px;margin-bottom:8px;">D</div>
+        <div style="font-size:13px;font-weight:700;color:var(--white);margin-bottom:6px;">デジタル商品</div>
+        <div style="font-size:11px;color:rgba(255,255,255,0.5);">note/スクール/動画</div>
+        <div style="font-size:16px;font-weight:800;color:var(--blue);margin-top:8px;">無限販売可</div>
+      </div>
+      <div class="card card-purple" style="text-align:center;padding:18px 12px;">
+        <div style="font-size:30px;margin-bottom:8px;">E</div>
+        <div style="font-size:13px;font-weight:700;color:var(--white);margin-bottom:6px;">法人・BtoB</div>
+        <div style="font-size:11px;color:rgba(255,255,255,0.5);">自治体/DX支援/研修</div>
+        <div style="font-size:16px;font-weight:800;color:#9b59b6;margin-top:8px;">高単価</div>
+      </div>
+    </div>
+
+    <div class="highlight-box">
+      <div style="font-size:13px;color:rgba(255,255,255,0.9);line-height:1.7;">
+        <strong style="color:var(--gold);">月商1000万円の方程式：</strong>
+        受託（¥200万）+ キャリサポ紹介（¥300万）+ ストック（¥200万）+ デジタル商品（¥150万）+ BtoB（¥150万）
+        = <strong style="color:var(--accent);">¥1,000万</strong>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== SLIDE 5: PHASE 1 ========== -->
+  <div class="slide section-divider">
+    <div class="slide-num">05 / 18</div>
+    <span class="slide-label" style="color:var(--accent);">Phase 1 ｜ 〜2026年6月</span>
+    <div style="font-size:48px;font-weight:900;color:var(--white);margin:12px 0 8px;">基盤構築フェーズ</div>
+    <div style="font-size:20px;color:rgba(255,255,255,0.6);">目標：月商 ¥30〜50万｜実績ゼロからの脱出</div>
+    <div style="margin-top:24px;display:flex;gap:12px;">
+      <span class="tag badge-red">SNS毎日投稿</span>
+      <span class="tag badge-gold">note発信開始</span>
+      <span class="tag badge-green">無料相談フォーム設置</span>
+      <span class="tag badge-blue">キャリサポ登録</span>
+    </div>
+    <div class="section-number">01</div>
+  </div>
+
+  <!-- ========== SLIDE 6: PHASE 1 詳細 ========== -->
+  <div class="slide">
+    <div class="slide-num">06 / 18</div>
+    <div class="slide-header" style="margin-bottom:20px;">
+      <span class="slide-label" style="color:var(--accent);">Phase 1 Action Plan</span>
+      <div class="slide-title" style="font-size:28px;">今月〜6月でやること：<span>種をまく</span></div>
+    </div>
+
+    <div class="grid-3" style="margin-bottom:16px;">
+      <div>
+        <div style="font-size:11px;color:var(--accent);letter-spacing:2px;margin-bottom:10px;">SNS・発信</div>
+        <ul class="bullet-list" style="font-size:13px;">
+          <li>Threads 毎日1投稿（Before/After）</li>
+          <li>note マガジン開設（月額¥500）</li>
+          <li>YouTube 1本目：工房紹介動画</li>
+          <li>「爆速くん」実演ショート動画</li>
+          <li>Threads フォロワー500人目標</li>
+        </ul>
+      </div>
+      <div>
+        <div style="font-size:11px;color:var(--gold);letter-spacing:2px;margin-bottom:10px;">集客・問い合わせ</div>
+        <ul class="bullet-list" style="font-size:13px;">
+          <li>無料相談フォーム設置（Google Forms）</li>
+          <li>HPの問い合わせメールを正式化</li>
+          <li>顧客の声を1件 Works に追加</li>
+          <li>仙台ローカルコミュニティに参加</li>
+          <li>紹介プログラムの案内文を作成</li>
+        </ul>
+      </div>
+      <div>
+        <div style="font-size:11px;color:var(--green);letter-spacing:2px;margin-bottom:10px;">キャリサポ稼働</div>
+        <ul class="bullet-list" style="font-size:13px;">
+          <li>紹介導線をThreads/noteに組み込む</li>
+          <li>「退職・AI講座」関連コンテンツ発信</li>
+          <li>月5件紹介 → ¥35〜50万の試算</li>
+          <li>LINE公式アカウント整備</li>
+          <li>相談入口を一本化する</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="highlight-box">
+      <table class="data-table" style="font-size:12px;">
+        <thead>
+          <tr>
+            <th>収益源</th>
+            <th>単価</th>
+            <th>件数/月</th>
+            <th>小計</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Webページ制作（ライト）</td><td>¥130,000</td><td>1件</td><td>¥130,000</td></tr>
+          <tr><td>キャリサポ：AI講座紹介</td><td>¥100,000</td><td>1件</td><td>¥100,000</td></tr>
+          <tr><td>キャリサポ：退職紹介</td><td>¥70,000</td><td>1件</td><td>¥70,000</td></tr>
+          <tr><td>note記事販売</td><td>¥1,500平均</td><td>50件</td><td>¥75,000</td></tr>
+          <tr class="total-row"><td colspan="3">Phase 1 月商目標</td><td>¥375,000〜</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ========== SLIDE 7: PHASE 2 ========== -->
+  <div class="slide section-divider">
+    <div class="slide-num">07 / 18</div>
+    <span class="slide-label" style="color:var(--gold);">Phase 2 ｜ 2026年7〜12月</span>
+    <div style="font-size:48px;font-weight:900;color:var(--white);margin:12px 0 8px;">実績積み上げフェーズ</div>
+    <div style="font-size:20px;color:rgba(255,255,255,0.6);">目標：月商 ¥50〜100万｜紹介が紹介を呼ぶ仕組みを作る</div>
+    <div style="margin-top:24px;display:flex;gap:12px;">
+      <span class="tag badge-gold">実績ページ強化</span>
+      <span class="tag badge-green">セミナー開催</span>
+      <span class="tag badge-blue">キャリサポ月10件</span>
+      <span class="tag badge-purple">保守プラン標準化</span>
+    </div>
+    <div class="section-number">02</div>
+  </div>
+
+  <!-- ========== SLIDE 8: PHASE 2 詳細 ========== -->
+  <div class="slide">
+    <div class="slide-num">08 / 18</div>
+    <div class="slide-header" style="margin-bottom:20px;">
+      <span class="slide-label" style="color:var(--gold);">Phase 2 Action Plan</span>
+      <div class="slide-title" style="font-size:28px;">7〜12月：<span>実績を可視化して成約率を上げる</span></div>
+    </div>
+
+    <div class="two-col" style="margin-bottom:16px;">
+      <div>
+        <div style="font-size:11px;color:var(--gold);letter-spacing:2px;margin-bottom:10px;">重点施策</div>
+        <ul class="bullet-list" style="font-size:13px;">
+          <li>Before/After 数値付き実績ページ公開</li>
+          <li>AI搭載サポートの料金を明示</li>
+          <li>仙台事業者向けセミナー（無料）開催</li>
+          <li>YouTube 動画3本以上（デモ・制作裏側）</li>
+          <li>Threads フォロワー2,000人目標</li>
+          <li>既存顧客への保守プラン提案</li>
+        </ul>
+      </div>
+      <div>
+        <div style="font-size:11px;color:var(--accent);letter-spacing:2px;margin-bottom:10px;">キャリサポ月10件達成の鍵</div>
+        <ul class="bullet-list" style="font-size:13px;">
+          <li>「AIリスキリング講座」特化コンテンツ量産</li>
+          <li>note で「退職・給付金活用」シリーズ発信</li>
+          <li>Threads：相談事例の匿名共有</li>
+          <li>紹介報酬シミュレーション公開</li>
+          <li>LINE公式で相談獲得フロー確立</li>
+        </ul>
+      </div>
+    </div>
+
+    <table class="data-table" style="font-size:12px;">
+      <thead>
+        <tr><th>収益源</th><th>単価</th><th>件数/月</th><th>小計</th><th>種別</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Webページ（スタンダード）</td><td>¥280,000</td><td>1件</td><td>¥280,000</td><td><span class="badge badge-red">フロー</span></td></tr>
+        <tr><td>キャリサポ：AI講座紹介</td><td>¥100,000</td><td>5件</td><td>¥500,000</td><td><span class="badge badge-gold">紹介</span></td></tr>
+        <tr><td>キャリサポ：退職紹介</td><td>¥70,000</td><td>3件</td><td>¥210,000</td><td><span class="badge badge-gold">紹介</span></td></tr>
+        <tr><td>保守プラン（累積）</td><td>¥10,000/月</td><td>3件</td><td>¥30,000</td><td><span class="badge badge-green">ストック</span></td></tr>
+        <tr><td>note マガジン</td><td>¥500/月</td><td>50人</td><td>¥25,000</td><td><span class="badge badge-green">ストック</span></td></tr>
+        <tr class="total-row"><td colspan="3">Phase 2 月商目標</td><td>¥1,045,000</td><td></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ========== SLIDE 9: PHASE 3 ========== -->
+  <div class="slide section-divider">
+    <div class="slide-num">09 / 18</div>
+    <span class="slide-label" style="color:var(--blue);">Phase 3 ｜ 2027年</span>
+    <div style="font-size:48px;font-weight:900;color:var(--white);margin:12px 0 8px;">スケールアップフェーズ</div>
+    <div style="font-size:20px;color:rgba(255,255,255,0.6);">目標：月商 ¥100〜300万｜外注チーム化＋オンラインスクール</div>
+    <div style="margin-top:24px;display:flex;gap:12px;">
+      <span class="tag badge-blue">外注パートナー獲得</span>
+      <span class="tag badge-gold">スクール立ち上げ</span>
+      <span class="tag badge-green">コミュニティ運営</span>
+      <span class="tag badge-red">法人化検討</span>
+    </div>
+    <div class="section-number">03</div>
+  </div>
+
+  <!-- ========== SLIDE 10: PHASE 3 詳細 ========== -->
+  <div class="slide">
+    <div class="slide-num">10 / 18</div>
+    <div class="slide-header" style="margin-bottom:16px;">
+      <span class="slide-label" style="color:var(--blue);">Phase 3 Revenue Model</span>
+      <div class="slide-title" style="font-size:28px;">2027年：<span>1人から「仕組み」へ転換する</span></div>
+    </div>
+
+    <div class="grid-3" style="margin-bottom:16px;">
+      <div class="card card-blue">
+        <div style="font-size:11px;color:var(--blue);letter-spacing:2px;margin-bottom:8px;">外注チーム化</div>
+        <ul class="bullet-list" style="font-size:12px;">
+          <li>コーダー・ライター2〜3名と業務委託</li>
+          <li>自分は設計・営業・品質管理に集中</li>
+          <li>月5〜8件受託を実現（従来の2倍以上）</li>
+          <li>1案件あたりの外注コスト：¥3〜5万</li>
+        </ul>
+      </div>
+      <div class="card card-gold">
+        <div style="font-size:11px;color:var(--gold);letter-spacing:2px;margin-bottom:8px;">AI搭載スクール（グループ版）</div>
+        <ul class="bullet-list" style="font-size:12px;">
+          <li>月額¥3,000〜¥5,000のコミュニティ型</li>
+          <li>東北のAI活用コミュニティを立ち上げ</li>
+          <li>100名参加 → 月¥30〜50万</li>
+          <li>教材・動画をアセット化して自動化</li>
+        </ul>
+      </div>
+      <div class="card card-green">
+        <div style="font-size:11px;color:var(--green);letter-spacing:2px;margin-bottom:8px;">キャリサポ月20件体制</div>
+        <ul class="bullet-list" style="font-size:12px;">
+          <li>AI講座紹介：15件 × ¥10万 = ¥150万</li>
+          <li>退職サポート：5件 × ¥7万 = ¥35万</li>
+          <li>学習サポート継続：15名 → 月¥30万</li>
+          <li>キャリサポ単体で月¥200万超え</li>
+        </ul>
+      </div>
+    </div>
+
+    <table class="data-table" style="font-size:12px;">
+      <thead>
+        <tr><th>収益エンジン</th><th>月商</th><th>達成条件</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>受託制作（外注チーム）</td><td>¥600,000〜800,000</td><td>月6件×スタンダードプラン</td></tr>
+        <tr><td>キャリサポ紹介報酬</td><td>¥1,500,000〜2,000,000</td><td>月20件紹介体制の確立</td></tr>
+        <tr><td>スクール・コミュニティ</td><td>¥300,000〜500,000</td><td>100〜150名メンバー</td></tr>
+        <tr><td>ストック（保守・マガジン）</td><td>¥200,000〜</td><td>累積20件の保守契約</td></tr>
+        <tr class="total-row"><td>Phase 3 月商目標</td><td>¥2,600,000〜3,300,000</td><td>外注チーム×キャリサポが核</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ========== SLIDE 11: PHASE 4 & 5 ========== -->
+  <div class="slide section-divider">
+    <div class="slide-num">11 / 18</div>
+    <span class="slide-label" style="color:#9b59b6;">Phase 4〜5 ｜ 2028〜2029年</span>
+    <div style="font-size:44px;font-weight:900;color:var(--white);margin:12px 0 8px;">メディア化・自動化フェーズ</div>
+    <div style="font-size:20px;color:rgba(255,255,255,0.6);">目標：¥300〜600万（2028）→ <strong style="color:var(--gold);">¥1,000万（2029）</strong></div>
+    <div style="margin-top:24px;display:flex;gap:12px;">
+      <span class="tag badge-purple">メディア運営</span>
+      <span class="tag badge-gold">BtoB展開</span>
+      <span class="tag badge-red">自治体DX支援</span>
+      <span class="tag badge-green">組織化・法人化</span>
+    </div>
+    <div class="section-number">04-05</div>
+  </div>
+
+  <!-- ========== SLIDE 12: Phase 4/5 詳細 ========== -->
+  <div class="slide">
+    <div class="slide-num">12 / 18</div>
+    <div class="slide-header" style="margin-bottom:16px;">
+      <span class="slide-label">Phase 4〜5 Blueprint</span>
+      <div class="slide-title" style="font-size:28px;">月商<span>1,000万円</span>の全体設計図</div>
+    </div>
+
+    <div class="grid-2" style="margin-bottom:16px;">
+      <div>
+        <div style="font-size:11px;color:#9b59b6;letter-spacing:2px;margin-bottom:10px;">Phase 4（2028年）¥300〜600万</div>
+        <ul class="bullet-list" style="font-size:13px;">
+          <li>YouTubeチャンネル収益化（広告＋案件）</li>
+          <li>東北AI活用メディアとして認知確立</li>
+          <li>法人化 → 中小企業DX支援に参入</li>
+          <li>オンラインスクール受講者500名突破</li>
+          <li>キャリサポ紹介：月30件体制</li>
+          <li>外注チーム5〜8名（内部化を検討）</li>
+        </ul>
+      </div>
+      <div>
+        <div style="font-size:11px;color:var(--gold);letter-spacing:2px;margin-bottom:10px;">Phase 5（2029年）¥1,000万達成</div>
+        <ul class="bullet-list" style="font-size:13px;">
+          <li>地方自治体DX支援：月¥200〜300万</li>
+          <li>AI搭載スクール1,000名 → 月¥500万</li>
+          <li>キャリサポ×自社メディアで月¥300万</li>
+          <li>受託（チーム）：月¥200万</li>
+          <li>YouTube・note収益：月¥50万</li>
+          <li>ストック収益（保守・継続）：月¥100万</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="highlight-box">
+      <div style="font-size:13px;font-weight:700;color:var(--gold);margin-bottom:12px;">月商1,000万円の収益内訳シミュレーション（2029年）</div>
+      <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:8px;text-align:center;">
+        <div style="background:rgba(233,69,96,0.15);border-radius:8px;padding:10px 6px;">
+          <div style="font-size:11px;color:rgba(255,255,255,0.5);margin-bottom:4px;">受託制作</div>
+          <div style="font-size:16px;font-weight:800;color:var(--accent);">¥200万</div>
+        </div>
+        <div style="background:rgba(245,166,35,0.15);border-radius:8px;padding:10px 6px;">
+          <div style="font-size:11px;color:rgba(255,255,255,0.5);margin-bottom:4px;">キャリサポ</div>
+          <div style="font-size:16px;font-weight:800;color:var(--gold);">¥300万</div>
+        </div>
+        <div style="background:rgba(39,174,96,0.15);border-radius:8px;padding:10px 6px;">
+          <div style="font-size:11px;color:rgba(255,255,255,0.5);margin-bottom:4px;">スクール</div>
+          <div style="font-size:16px;font-weight:800;color:var(--green);">¥300万</div>
+        </div>
+        <div style="background:rgba(41,128,185,0.15);border-radius:8px;padding:10px 6px;">
+          <div style="font-size:11px;color:rgba(255,255,255,0.5);margin-bottom:4px;">BtoB/自治体</div>
+          <div style="font-size:16px;font-weight:800;color:var(--blue);">¥100万</div>
+        </div>
+        <div style="background:rgba(142,68,173,0.15);border-radius:8px;padding:10px 6px;">
+          <div style="font-size:11px;color:rgba(255,255,255,0.5);margin-bottom:4px;">ストック</div>
+          <div style="font-size:16px;font-weight:800;color:#9b59b6;">¥50万</div>
+        </div>
+        <div style="background:rgba(245,166,35,0.2);border:1px solid var(--gold);border-radius:8px;padding:10px 6px;">
+          <div style="font-size:11px;color:rgba(255,255,255,0.7);margin-bottom:4px;">合計</div>
+          <div style="font-size:18px;font-weight:900;background:linear-gradient(90deg,var(--accent),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">¥1,000万</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== SLIDE 13: キャリサポ戦略 ========== -->
+  <div class="slide">
+    <div class="slide-num">13 / 18</div>
+    <div class="slide-header">
+      <span class="slide-label">Key Revenue Driver</span>
+      <div class="slide-title">キャリサポ紹介戦略｜<span>最大の収益レバー</span></div>
+    </div>
+
+    <div class="grid-2">
+      <div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.4);letter-spacing:2px;margin-bottom:12px;">報酬シミュレーション（月次）</div>
+        <table class="data-table" style="font-size:12px;margin-bottom:16px;">
+          <thead>
+            <tr><th>領域</th><th>単価</th><th>件数/月</th><th>月収益</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>AI講座リスキリング</td><td>¥100,000</td><td>20件</td><td style="color:var(--gold);font-weight:700;">¥2,000,000</td></tr>
+            <tr><td>退職サポート</td><td>¥70,000</td><td>10件</td><td style="color:var(--gold);font-weight:700;">¥700,000</td></tr>
+            <tr><td>転職サポート（成果）</td><td>¥150,000</td><td>5件</td><td style="color:var(--gold);font-weight:700;">¥750,000</td></tr>
+            <tr><td>学習サポート継続</td><td>¥20,000</td><td>15名</td><td style="color:var(--green);font-weight:700;">¥300,000（毎月）</td></tr>
+            <tr class="total-row"><td colspan="3">最大値</td><td>¥3,750,000/月</td></tr>
+          </tbody>
+        </table>
+
+        <div class="card" style="background:rgba(245,166,35,0.08);border-color:var(--gold);">
+          <div style="font-size:12px;color:var(--gold);margin-bottom:6px;">キャリサポ単独で¥300万の達成条件</div>
+          <div style="font-size:13px;color:rgba(255,255,255,0.8);line-height:1.7;">
+            AI講座紹介<strong style="color:var(--white);">15件</strong>（¥150万）<br>
+            + 退職紹介<strong style="color:var(--white);">10件</strong>（¥70万）<br>
+            + 学習継続<strong style="color:var(--white);">15名</strong>（¥30万）<br>
+            + 転職<strong style="color:var(--white);">3件</strong>（¥45万）
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.4);letter-spacing:2px;margin-bottom:12px;">集客ファネル設計</div>
+        <div class="flow-row" style="flex-direction:column;gap:6px;">
+          <div class="flow-item" style="text-align:left;padding:10px 14px;">
+            <span style="color:var(--gold);font-weight:700;">認知</span>
+            <span style="color:rgba(255,255,255,0.6);font-size:12px;margin-left:8px;">Threads・note・YouTube でAI/転職コンテンツ発信</span>
+          </div>
+          <div style="text-align:center;font-size:16px;color:var(--gold);">↓</div>
+          <div class="flow-item" style="text-align:left;padding:10px 14px;">
+            <span style="color:var(--blue);font-weight:700;">興味</span>
+            <span style="color:rgba(255,255,255,0.6);font-size:12px;margin-left:8px;">「AIリスキリングで国の補助金が使える」記事・投稿</span>
+          </div>
+          <div style="text-align:center;font-size:16px;color:var(--gold);">↓</div>
+          <div class="flow-item" style="text-align:left;padding:10px 14px;">
+            <span style="color:var(--green);font-weight:700;">相談</span>
+            <span style="color:rgba(255,255,255,0.6);font-size:12px;margin-left:8px;">LINE公式 → 無料相談 → ヒアリング</span>
+          </div>
+          <div style="text-align:center;font-size:16px;color:var(--gold);">↓</div>
+          <div class="flow-item" style="text-align:left;padding:10px 14px;border-color:var(--gold);background:rgba(245,166,35,0.08);">
+            <span style="color:var(--gold);font-weight:700;">紹介成立</span>
+            <span style="color:rgba(255,255,255,0.6);font-size:12px;margin-left:8px;">最適なサービスに接続 → 報酬発生</span>
+          </div>
+        </div>
+
+        <div style="margin-top:12px;font-size:12px;color:rgba(255,255,255,0.5);">
+          ポイント：杜の都工房の「AI搭載サポート」訴求と<br>
+          キャリサポのAIリスキリング紹介は完全に親和性が高い
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== SLIDE 14: コンテンツ×集客 ========== -->
+  <div class="slide">
+    <div class="slide-num">14 / 18</div>
+    <div class="slide-header">
+      <span class="slide-label">Content × Growth Strategy</span>
+      <div class="slide-title">コンテンツ戦略｜<span>SNSが集客エンジンになるまで</span></div>
+    </div>
+
+    <div class="grid-3" style="margin-bottom:16px;">
+      <div class="card">
+        <div style="font-size:11px;color:var(--accent);letter-spacing:2px;margin-bottom:8px;">Threads（日次）</div>
+        <div style="font-size:13px;font-weight:700;color:var(--white);margin-bottom:8px;">目標：フォロワー1万人</div>
+        <ul class="bullet-list" style="font-size:12px;">
+          <li>Before/After数値投稿（爆速くん等）</li>
+          <li>「今日AIで10分解決したこと」</li>
+          <li>キャリサポ活用事例の匿名共有</li>
+          <li>仙台移住・コーギーの日常</li>
+        </ul>
+        <div style="font-size:11px;color:rgba(255,255,255,0.4);margin-top:10px;">週7投稿 → 月300〜1,000フォロワー増</div>
+      </div>
+      <div class="card">
+        <div style="font-size:11px;color:var(--gold);letter-spacing:2px;margin-bottom:8px;">note（週1〜2本）</div>
+        <div style="font-size:13px;font-weight:700;color:var(--white);margin-bottom:8px;">目標：月額マガジン500人</div>
+        <ul class="bullet-list" style="font-size:12px;">
+          <li>「AIリスキリングで補助金が使える話」</li>
+          <li>爆速くん制作の全工程（¥1,500）</li>
+          <li>ChatGPT×Claude使い分けガイド</li>
+          <li>仙台でAI事業を始めた理由（無料）</li>
+        </ul>
+        <div style="font-size:11px;color:rgba(255,255,255,0.4);margin-top:10px;">マガジン500人 × ¥500 = 月¥25万</div>
+      </div>
+      <div class="card">
+        <div style="font-size:11px;color:var(--blue);letter-spacing:2px;margin-bottom:8px;">YouTube（月2〜4本）</div>
+        <div style="font-size:13px;font-weight:700;color:var(--white);margin-bottom:8px;">目標：登録者1万人</div>
+        <ul class="bullet-list" style="font-size:12px;">
+          <li>爆速くん実演：書類1分制作デモ</li>
+          <li>AI秘書の動作を実際に見せる</li>
+          <li>WebサイトをAIで作る全工程ライブ</li>
+          <li>初心者向けChatGPT実務活用</li>
+        </ul>
+        <div style="font-size:11px;color:rgba(255,255,255,0.4);margin-top:10px;">SEO×デモ動画 → キャリサポ導線に接続</div>
+      </div>
+    </div>
+
+    <div class="highlight-box">
+      <div style="font-size:13px;color:rgba(255,255,255,0.9);line-height:1.8;">
+        <strong style="color:var(--gold);">コンテンツの最重要テーマ：</strong>
+        「地方（仙台）でAIを使って稼いでいる当事者」としての発信。
+        東京の大手との差別化は<strong style="color:var(--white);">「地方×AI×人間らしさ」</strong>の組み合わせ。
+        数字（60分→1分、¥13万→¥0）で語ることで、拡散力と信頼を同時に獲得する。
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== SLIDE 15: チーム化・外注 ========== -->
+  <div class="slide">
+    <div class="slide-num">15 / 18</div>
+    <div class="slide-header">
+      <span class="slide-label">Team Building Strategy</span>
+      <div class="slide-title">チーム化設計｜<span>1人の壁を突破する</span></div>
+    </div>
+
+    <div class="two-col">
+      <div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.4);letter-spacing:2px;margin-bottom:12px;">1人 → チームへの段階的移行</div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <div style="display:flex;align-items:center;gap:12px;padding:10px 14px;background:rgba(233,69,96,0.1);border-radius:8px;border-left:3px solid var(--accent);">
+            <span style="font-size:11px;color:var(--accent);width:60px;flex-shrink:0;">Phase 1-2</span>
+            <span style="font-size:13px;">おがさわら1人で全てこなす（月50万上限）</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;padding:10px 14px;background:rgba(245,166,35,0.1);border-radius:8px;border-left:3px solid var(--gold);">
+            <span style="font-size:11px;color:var(--gold);width:60px;flex-shrink:0;">Phase 3</span>
+            <span style="font-size:13px;">コーダー・ライター業務委託2〜3名（月上限¥150万→¥300万）</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;padding:10px 14px;background:rgba(41,128,185,0.1);border-radius:8px;border-left:3px solid var(--blue);">
+            <span style="font-size:11px;color:var(--blue);width:60px;flex-shrink:0;">Phase 4</span>
+            <span style="font-size:13px;">法人化＋専属チーム5名（営業/制作/コミュニティ管理）</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;padding:10px 14px;background:rgba(245,166,35,0.15);border-radius:8px;border-left:3px solid var(--gold);">
+            <span style="font-size:11px;color:var(--gold);width:60px;flex-shrink:0;">Phase 5</span>
+            <span style="font-size:13px;">代表はビジョン設計・メディア・BtoB営業に特化</span>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.4);letter-spacing:2px;margin-bottom:12px;">外注で何を任せるか</div>
+        <table class="data-table" style="font-size:12px;">
+          <thead>
+            <tr><th>タスク</th><th>外注先</th><th>月コスト目安</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>コーディング（実装）</td><td>フリーランスエンジニア</td><td>¥3〜5万/案件</td></tr>
+            <tr><td>note・ブログ記事</td><td>AIライター</td><td>¥5,000〜/本</td></tr>
+            <tr><td>Threads・SNS運用</td><td>SNS代行</td><td>¥3〜5万/月</td></tr>
+            <tr><td>動画編集（YouTube）</td><td>動画編集者</td><td>¥5,000〜/本</td></tr>
+            <tr><td>CS（問い合わせ対応）</td><td>オンラインアシスタント</td><td>¥3〜5万/月</td></tr>
+          </tbody>
+        </table>
+
+        <div style="margin-top:12px;font-size:12px;color:rgba(255,255,255,0.5);line-height:1.7;">
+          おがさわら自身が担う領域：<br>
+          <strong style="color:var(--white);">戦略設計・ヒアリング・品質チェック・ビジョン発信・BtoB営業</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== SLIDE 16: ストック収益 ========== -->
+  <div class="slide">
+    <div class="slide-num">16 / 18</div>
+    <div class="slide-header">
+      <span class="slide-label">Stock Income Strategy</span>
+      <div class="slide-title">ストック収益設計｜<span>寝ていても入る仕組み</span></div>
+    </div>
+
+    <div class="grid-3" style="margin-bottom:16px;">
+      <div class="card card-green">
+        <span class="card-label" style="color:var(--green);">保守プラン（累積型）</span>
+        <div class="card-value" style="font-size:22px;color:var(--green);">¥10,000/月</div>
+        <div class="card-desc" style="margin-top:8px;line-height:1.7;">
+          AI秘書・アプリ・Webページの<br>保守契約を全案件に標準化。<br>
+          累積30件 → 月<strong style="color:var(--white);">¥30万</strong>の安定収入
+        </div>
+        <div class="progress-track"><div class="progress-fill" style="width:30%;background:var(--green);"></div></div>
+        <div style="font-size:10px;color:rgba(255,255,255,0.3);margin-top:4px;">現在0件 → 目標30件</div>
+      </div>
+      <div class="card card-gold">
+        <span class="card-label" style="color:var(--gold);">noteマガジン（月額購読）</span>
+        <div class="card-value" style="font-size:22px;color:var(--gold);">¥500/月</div>
+        <div class="card-desc" style="margin-top:8px;line-height:1.7;">
+          AI活用・地方移住・事業設計の<br>月額マガジン。<br>
+          1,000人 → 月<strong style="color:var(--white);">¥50万</strong>
+        </div>
+        <div class="progress-track"><div class="progress-fill" style="width:10%;"></div></div>
+        <div style="font-size:10px;color:rgba(255,255,255,0.3);margin-top:4px;">現在開設前 → 目標1,000人</div>
+      </div>
+      <div class="card card-blue">
+        <span class="card-label" style="color:var(--blue);">スクール・コミュニティ</span>
+        <div class="card-value" style="font-size:22px;color:var(--blue);">¥3,000〜5,000/月</div>
+        <div class="card-desc" style="margin-top:8px;line-height:1.7;">
+          AI搭載サポートのグループ版。<br>東北のAI共創コミュニティ。<br>
+          1,000人 → 月<strong style="color:var(--white);">¥300万</strong>
+        </div>
+        <div class="progress-track"><div class="progress-fill" style="width:5%;background:var(--blue);"></div></div>
+        <div style="font-size:10px;color:rgba(255,255,255,0.3);margin-top:4px;">構想段階 → 目標1,000人</div>
+      </div>
+    </div>
+
+    <div style="background:rgba(255,255,255,0.03);border-radius:10px;padding:16px 20px;">
+      <div style="font-size:12px;color:rgba(255,255,255,0.4);letter-spacing:2px;margin-bottom:12px;">ストック収益の積み上げシミュレーション</div>
+      <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:8px;text-align:center;">
+        <div style="padding:8px;border-right:1px solid rgba(255,255,255,0.06);">
+          <div style="font-size:11px;color:rgba(255,255,255,0.4);">2026年6月</div>
+          <div style="font-size:18px;font-weight:800;color:var(--accent);">¥5万</div>
+          <div style="font-size:10px;color:rgba(255,255,255,0.3);">保守3件</div>
+        </div>
+        <div style="padding:8px;border-right:1px solid rgba(255,255,255,0.06);">
+          <div style="font-size:11px;color:rgba(255,255,255,0.4);">2026年12月</div>
+          <div style="font-size:18px;font-weight:800;color:var(--gold);">¥30万</div>
+          <div style="font-size:10px;color:rgba(255,255,255,0.3);">保守10件+マガジン200人</div>
+        </div>
+        <div style="padding:8px;border-right:1px solid rgba(255,255,255,0.06);">
+          <div style="font-size:11px;color:rgba(255,255,255,0.4);">2027年</div>
+          <div style="font-size:18px;font-weight:800;color:var(--blue);">¥100万</div>
+          <div style="font-size:10px;color:rgba(255,255,255,0.3);">スクール100人+保守20件</div>
+        </div>
+        <div style="padding:8px;border-right:1px solid rgba(255,255,255,0.06);">
+          <div style="font-size:11px;color:rgba(255,255,255,0.4);">2028年</div>
+          <div style="font-size:18px;font-weight:800;color:#9b59b6;">¥300万</div>
+          <div style="font-size:10px;color:rgba(255,255,255,0.3);">スクール500人+継続</div>
+        </div>
+        <div style="padding:8px;">
+          <div style="font-size:11px;color:rgba(255,255,255,0.4);">2029年</div>
+          <div style="font-size:20px;font-weight:900;color:var(--gold);">¥500万</div>
+          <div style="font-size:10px;color:rgba(255,255,255,0.3);">スクール1,000人+全保守</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== SLIDE 17: KPI・マイルストーン ========== -->
+  <div class="slide">
+    <div class="slide-num">17 / 18</div>
+    <div class="slide-header">
+      <span class="slide-label">KPI & Milestones</span>
+      <div class="slide-title">管理すべき<span>KPI一覧</span></div>
+    </div>
+
+    <div class="grid-2">
+      <div>
+        <div style="font-size:11px;color:rgba(255,255,255,0.4);letter-spacing:2px;margin-bottom:10px;">集客・認知KPI</div>
+        <table class="data-table" style="font-size:12px;">
+          <thead><tr><th>指標</th><th>2026年末</th><th>2027年末</th><th>2029年</th></tr></thead>
+          <tbody>
+            <tr><td>Threadsフォロワー</td><td>2,000</td><td>10,000</td><td>50,000</td></tr>
+            <tr><td>note購読者（無料）</td><td>500</td><td>3,000</td><td>15,000</td></tr>
+            <tr><td>noteマガジン（有料）</td><td>100</td><td>500</td><td>2,000</td></tr>
+            <tr><td>YouTube登録者</td><td>500</td><td>3,000</td><td>30,000</td></tr>
+            <tr><td>LINE公式登録者</td><td>200</td><td>1,000</td><td>5,000</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <div style="font-size:11px;color:rgba(255,255,255,0.4);letter-spacing:2px;margin-bottom:10px;">収益KPI</div>
+        <table class="data-table" style="font-size:12px;">
+          <thead><tr><th>指標</th><th>2026年末</th><th>2027年末</th><th>2029年</th></tr></thead>
+          <tbody>
+            <tr><td>月商</td><td>¥100万</td><td>¥300万</td><td style="color:var(--gold);font-weight:700;">¥1,000万</td></tr>
+            <tr><td>キャリサポ月間紹介</td><td>10件</td><td>25件</td><td>50件</td></tr>
+            <tr><td>受託案件/月</td><td>3件</td><td>8件</td><td>15件</td></tr>
+            <tr><td>スクール会員数</td><td>—</td><td>200人</td><td>1,500人</td></tr>
+            <tr><td>ストック収益/月</td><td>¥30万</td><td>¥100万</td><td>¥500万</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div style="margin-top:16px;display:flex;gap:10px;">
+      <div class="card" style="flex:1;padding:14px;text-align:center;">
+        <div style="font-size:11px;color:rgba(255,255,255,0.4);margin-bottom:4px;">最初の大きな壁</div>
+        <div style="font-size:16px;font-weight:800;color:var(--accent);">月商¥100万</div>
+        <div style="font-size:11px;color:rgba(255,255,255,0.5);margin-top:4px;">2026年7〜9月を目標に</div>
+      </div>
+      <div class="card" style="flex:1;padding:14px;text-align:center;">
+        <div style="font-size:11px;color:rgba(255,255,255,0.4);margin-bottom:4px;">チーム化の壁</div>
+        <div style="font-size:16px;font-weight:800;color:var(--blue);">月商¥300万</div>
+        <div style="font-size:11px;color:rgba(255,255,255,0.5);margin-top:4px;">2027年前半に外注体制確立</div>
+      </div>
+      <div class="card" style="flex:1;padding:14px;text-align:center;">
+        <div style="font-size:11px;color:rgba(255,255,255,0.4);margin-bottom:4px;">自動化の壁</div>
+        <div style="font-size:16px;font-weight:800;color:#9b59b6;">月商¥600万</div>
+        <div style="font-size:11px;color:rgba(255,255,255,0.5);margin-top:4px;">2028年にスクール×メディア確立</div>
+      </div>
+      <div class="card card-gold" style="flex:1;padding:14px;text-align:center;">
+        <div style="font-size:11px;color:rgba(255,255,255,0.4);margin-bottom:4px;">最終ゴール</div>
+        <div style="font-size:16px;font-weight:800;color:var(--gold);">月商¥1,000万</div>
+        <div style="font-size:11px;color:rgba(255,255,255,0.5);margin-top:4px;">2029年、東北から共創の社会へ</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== SLIDE 18: まとめ・今日からの行動 ========== -->
+  <div class="slide slide-cover" style="text-align:left;align-items:flex-start;">
+    <div class="cover-grid"></div>
+    <div class="slide-num" style="color:rgba(255,255,255,0.2);">18 / 18</div>
+    <span class="cover-label" style="text-align:left;">Summary & First Action</span>
+    <div style="font-size:42px;font-weight:900;color:var(--white);line-height:1.3;margin-bottom:24px;">
+      今日から動く<br><span style="background:linear-gradient(90deg,var(--accent),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">7つのアクション</span>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;width:100%;">
+      <div style="display:flex;align-items:center;gap:12px;padding:10px 16px;background:rgba(255,255,255,0.05);border-radius:8px;border-left:3px solid var(--accent);">
+        <span style="font-size:20px;font-weight:900;color:var(--accent);width:24px;flex-shrink:0;">1</span>
+        <div>
+          <div style="font-size:13px;font-weight:700;color:var(--white);">Threads 毎日1投稿を今日から開始</div>
+          <div style="font-size:11px;color:rgba(255,255,255,0.4);">Before/After数値 or AIで解決した話</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;padding:10px 16px;background:rgba(255,255,255,0.05);border-radius:8px;border-left:3px solid var(--gold);">
+        <span style="font-size:20px;font-weight:900;color:var(--gold);width:24px;flex-shrink:0;">2</span>
+        <div>
+          <div style="font-size:13px;font-weight:700;color:var(--white);">noteマガジンを今月中に開設</div>
+          <div style="font-size:11px;color:rgba(255,255,255,0.4);">月額¥500のAI活用系マガジン</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;padding:10px 16px;background:rgba(255,255,255,0.05);border-radius:8px;border-left:3px solid var(--green);">
+        <span style="font-size:20px;font-weight:900;color:var(--green);width:24px;flex-shrink:0;">3</span>
+        <div>
+          <div style="font-size:13px;font-weight:700;color:var(--white);">キャリサポの紹介導線をHPとSNSに設置</div>
+          <div style="font-size:11px;color:rgba(255,255,255,0.4);">AIリスキリング訴求コンテンツを1本投稿</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;padding:10px 16px;background:rgba(255,255,255,0.05);border-radius:8px;border-left:3px solid var(--blue);">
+        <span style="font-size:20px;font-weight:900;color:var(--blue);width:24px;flex-shrink:0;">4</span>
+        <div>
+          <div style="font-size:13px;font-weight:700;color:var(--white);">無料相談フォームを今週中に設置</div>
+          <div style="font-size:11px;color:rgba(255,255,255,0.4);">Google Forms → LINE接続</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;padding:10px 16px;background:rgba(255,255,255,0.05);border-radius:8px;border-left:3px solid #9b59b6;">
+        <span style="font-size:20px;font-weight:900;color:#9b59b6;width:24px;flex-shrink:0;">5</span>
+        <div>
+          <div style="font-size:13px;font-weight:700;color:var(--white);">顧客の声を1件 Worksに追加</div>
+          <div style="font-size:11px;color:rgba(255,255,255,0.4);">社会的証明 → 成約率アップ</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;padding:10px 16px;background:rgba(255,255,255,0.05);border-radius:8px;border-left:3px solid var(--accent);">
+        <span style="font-size:20px;font-weight:900;color:var(--accent);width:24px;flex-shrink:0;">6</span>
+        <div>
+          <div style="font-size:13px;font-weight:700;color:var(--white);">全受託案件に保守プランを標準提案</div>
+          <div style="font-size:11px;color:rgba(255,255,255,0.4);">月¥10,000〜のストック収益化</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:16px;width:100%;padding:12px 20px;background:linear-gradient(90deg,rgba(233,69,96,0.15),rgba(245,166,35,0.15));border-radius:10px;border:1px solid rgba(245,166,35,0.3);">
+      <span style="font-size:14px;color:var(--gold);font-weight:700;">
+        「古き良き × 最先端」— 仙台から、共創の社会をつくる。月商¥1,000万はその手段。
+      </span>
+    </div>
+  </div>
+
+  <div class="nav-hint">杜の都工房｜月商1000万円ロードマップ｜2026〜2029</div>
+
+</div>
+</body>
+</html>

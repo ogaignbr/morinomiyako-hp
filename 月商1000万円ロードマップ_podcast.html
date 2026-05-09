@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>月商1000万円ロードマップ Podcast｜杜の都工房</title>
+<style>
+  :root {
+    --primary: #0a0a0a;
+    --surface: #141414;
+    --card: #1c1c1c;
+    --accent: #e94560;
+    --gold: #f5a623;
+    --green: #27ae60;
+    --blue: #2980b9;
+    --text: #e8e8e8;
+    --muted: rgba(255,255,255,0.45);
+    --border: rgba(255,255,255,0.07);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Noto Sans JP', sans-serif;
+    background: var(--primary);
+    color: var(--text);
+    min-height: 100vh;
+  }
+
+  /* ===== PLAYER HEADER ===== */
+  .player-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(10,10,10,0.95);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 24px;
+  }
+
+  .player-inner {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 16px 0;
+  }
+
+  .player-title-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 14px;
+  }
+
+  .cover-art {
+    width: 52px;
+    height: 52px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, var(--accent), var(--gold));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    flex-shrink: 0;
+  }
+
+  .player-meta { flex: 1; }
+
+  .player-name {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.3;
+  }
+
+  .player-sub {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+
+  /* progress */
+  .progress-area {
+    margin-bottom: 12px;
+  }
+
+  .progress-track {
+    width: 100%;
+    height: 4px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 2px;
+    overflow: hidden;
+    cursor: pointer;
+    margin-bottom: 6px;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent), var(--gold));
+    border-radius: 2px;
+    transition: width 0.3s ease;
+    width: 0%;
+  }
+
+  .time-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    color: var(--muted);
+  }
+
+  /* controls */
+  .controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.2s;
+    padding: 0;
+  }
+
+  .btn:hover { opacity: 0.7; }
+
+  .btn-play {
+    width: 44px;
+    height: 44px;
+    background: linear-gradient(135deg, var(--accent), var(--gold));
+    color: white;
+    font-size: 16px;
+  }
+
+  .btn-nav {
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
+    color: var(--muted);
+  }
+
+  .btn-nav:hover { color: var(--text); }
+
+  .speed-btn {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 4px 10px;
+    font-size: 12px;
+    color: var(--muted);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .speed-btn:hover, .speed-btn.active { background: rgba(245,166,35,0.15); color: var(--gold); border-color: var(--gold); }
+
+  .chapter-name {
+    flex: 1;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--gold);
+    text-align: center;
+  }
+
+  /* ===== CHAPTER LIST ===== */
+  .content-area {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 24px;
+  }
+
+  .section-title {
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .chapter-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 40px;
+  }
+
+  .chapter-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 14px 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.2s;
+    border: 1px solid transparent;
+  }
+
+  .chapter-item:hover {
+    background: rgba(255,255,255,0.04);
+  }
+
+  .chapter-item.active {
+    background: rgba(233, 69, 96, 0.08);
+    border-color: rgba(233, 69, 96, 0.25);
+  }
+
+  .chapter-item.playing {
+    background: rgba(245, 166, 35, 0.07);
+    border-color: rgba(245, 166, 35, 0.2);
+  }
+
+  .ch-num {
+    font-size: 11px;
+    color: var(--muted);
+    width: 28px;
+    flex-shrink: 0;
+    margin-top: 2px;
+    font-weight: 600;
+  }
+
+  .ch-info { flex: 1; }
+
+  .ch-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 4px;
+    line-height: 1.3;
+  }
+
+  .ch-desc {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  .ch-duration {
+    font-size: 11px;
+    color: var(--muted);
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .playing-indicator {
+    display: none;
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    margin-top: 2px;
+    align-items: center;
+    gap: 2px;
+  }
+
+  .playing-indicator span {
+    display: block;
+    width: 3px;
+    background: var(--gold);
+    border-radius: 2px;
+    animation: eq 0.8s ease-in-out infinite;
+  }
+
+  .playing-indicator span:nth-child(1) { height: 8px; animation-delay: 0s; }
+  .playing-indicator span:nth-child(2) { height: 14px; animation-delay: 0.15s; }
+  .playing-indicator span:nth-child(3) { height: 6px; animation-delay: 0.3s; }
+
+  @keyframes eq {
+    0%, 100% { transform: scaleY(0.5); opacity: 0.5; }
+    50% { transform: scaleY(1); opacity: 1; }
+  }
+
+  .chapter-item.playing .playing-indicator {
+    display: flex;
+  }
+
+  /* ===== TRANSCRIPT ===== */
+  .transcript-section {
+    margin-top: 40px;
+  }
+
+  .transcript-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 16px;
+    cursor: pointer;
+    transition: border-color 0.2s;
+  }
+
+  .transcript-card:hover {
+    border-color: rgba(255,255,255,0.15);
+  }
+
+  .transcript-card.active {
+    border-color: var(--gold);
+    background: rgba(245, 166, 35, 0.04);
+  }
+
+  .tc-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .tc-badge {
+    font-size: 10px;
+    letter-spacing: 2px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-weight: 700;
+  }
+
+  .tc-title {
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--text);
+    flex: 1;
+  }
+
+  .tc-body {
+    font-size: 14px;
+    line-height: 2;
+    color: rgba(255,255,255,0.75);
+  }
+
+  .tc-body p { margin-bottom: 12px; }
+  .tc-body p:last-child { margin-bottom: 0; }
+
+  .tc-body strong { color: var(--white); font-weight: 700; }
+  .tc-body .highlight { color: var(--gold); font-weight: 600; }
+  .tc-body .red { color: var(--accent); font-weight: 600; }
+
+  /* ===== FOOTER ===== */
+  .footer {
+    text-align: center;
+    padding: 32px 24px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.2);
+    border-top: 1px solid var(--border);
+    letter-spacing: 2px;
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== STICKY PLAYER ===== -->
+<div class="player-header">
+  <div class="player-inner">
+    <div class="player-title-row">
+      <div class="cover-art">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round">
+          <path d="M3 18v-6a9 9 0 0 1 18 0v6"/>
+          <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3z"/>
+          <path d="M3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/>
+        </svg>
+      </div>
+      <div class="player-meta">
+        <div class="player-name">月商1,000万円ロードマップ</div>
+        <div class="player-sub">杜の都工房 Podcast ｜ 全18チャプター</div>
+      </div>
+    </div>
+
+    <div class="progress-area">
+      <div class="progress-track" id="progressTrack" onclick="seekToPosition(event)">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+      <div class="time-row">
+        <span id="currentTime">0:00</span>
+        <span id="currentChapterName" style="font-size:11px;color:var(--gold);">チャプターを選択してください</span>
+        <span id="totalTime">--:--</span>
+      </div>
+    </div>
+
+    <div class="controls">
+      <button class="btn btn-nav" onclick="prevChapter()" title="前へ">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M6 6h2v12H6zm3.5 6 8.5 6V6z"/></svg>
+      </button>
+      <button class="btn btn-play" id="playBtn" onclick="togglePlay()">
+        <svg id="playIcon" width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
+        <svg id="pauseIcon" width="18" height="18" viewBox="0 0 24 24" fill="white" style="display:none;"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+      </button>
+      <button class="btn btn-nav" onclick="nextChapter()" title="次へ">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M6 18l8.5-6L6 6v12zm2-8.14 5.28 2.14L8 14.14V9.86zM16 6h2v12h-2z"/></svg>
+      </button>
+      <span style="flex:1;"></span>
+      <button class="speed-btn active" id="speed1" onclick="setSpeed(1, this)">1x</button>
+      <button class="speed-btn" id="speed15" onclick="setSpeed(1.5, this)">1.5x</button>
+      <button class="speed-btn" id="speed2" onclick="setSpeed(2, this)">2x</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== MAIN CONTENT ===== -->
+<div class="content-area">
+
+  <div class="section-title">チャプター一覧</div>
+
+  <div class="chapter-list" id="chapterList">
+    <!-- JS generated -->
+  </div>
+
+  <div class="transcript-section">
+    <div class="section-title">スクリプト全文</div>
+    <div id="transcriptContainer">
+      <!-- JS generated -->
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">杜の都工房 ｜ 古き良き × 最先端 ｜ 共育・共創・共助</div>
+
+<script>
+const chapters = [
+  {
+    id: 1,
+    badge: "イントロ",
+    badgeColor: "#e94560",
+    title: "月商1,000万円というゴールについて",
+    desc: "このポッドキャストの目的と全体像を解説",
+    duration: "3:00",
+    seconds: 180,
+    script: `
+<p>こんにちは。杜の都工房、おがさわらともひろです。</p>
+<p>今日は、杜の都工房が<span class="highlight">月商1,000万円</span>を達成するための、詳細なロードマップをお話しします。</p>
+<p>最初に一つだけ伝えたいことがあります。月商1,000万円は、ぼくにとっての「ゴール」ではありません。<strong>「地方から共創の社会をつくる」というビジョンを実現するための手段</strong>です。</p>
+<p>そのことを頭に置きながら聴いてもらえると、このロードマップが単なる売上計画ではなく、生き方の設計として聞こえてくると思います。</p>
+<p>このポッドキャストはスライド資料と一緒に使うことを想定しています。スライドを見ながら、この音声で補足を聴くという形が一番頭に入りやすいと思います。</p>
+<p>全部で18のチャプターに分かれています。通しで聴いても良いですし、気になるチャプターだけ選んでもOKです。では早速始めましょう。</p>
+    `
+  },
+  {
+    id: 2,
+    badge: "現在地",
+    badgeColor: "#e94560",
+    title: "現在地の確認｜強みと課題を正直に見る",
+    desc: "今どこにいるか。強みと改善余地を整理",
+    duration: "4:00",
+    seconds: 240,
+    script: `
+<p>まず現在地を確認します。</p>
+<p>杜の都工房は今、月商¥30万を目標にしているフェーズ1にいます。月商1,000万円という目標から見ると、<span class="highlight">33倍</span>というギャップがあります。</p>
+<p>でもこれは、焦る数字じゃなくて、<strong>「旅のスタート地点を明確にする」</strong>数字です。</p>
+<p>強みを整理します。ReactやViteを使ったフロントエンド技術は星4.5。AIと手動を組み合わせたハイブリッド制作で、通常2ヶ月かかる制作を2週間に短縮できる。キャリサポという紹介型の収益モデルも持っている。「古き良き×最先端」という唯一無二のブランドもある。</p>
+<p>一方で課題もあります。<strong>SNSのフォロワーがまだ少ない。実績・顧客の声の公開が少ない。ストック収益がほぼゼロ。</strong></p>
+<p>この課題は全部、時間と行動で埋められるものです。特にSNSは、毎日1投稿というルーティンさえ守れば、確実にフォロワーは伸びていきます。</p>
+<p>大切なのは、現在地を正直に見ること。過小評価も過大評価もしない。ここから積み上げていくということです。</p>
+    `
+  },
+  {
+    id: 3,
+    badge: "全体図",
+    badgeColor: "#f5a623",
+    title: "5フェーズ全体ロードマップ",
+    desc: "2026〜2029年の5つのフェーズを一望する",
+    duration: "4:30",
+    seconds: 270,
+    script: `
+<p>ロードマップは5つのフェーズで設計しています。</p>
+<p><span class="highlight">フェーズ1</span>は今から2026年6月まで。月商¥30〜50万。「基盤を作る」フェーズです。SNS発信を習慣化して、キャリサポの紹介も動かし始めます。</p>
+<p><span class="highlight">フェーズ2</span>は2026年7月から12月。月商¥50〜100万。実績を可視化して、紹介が紹介を呼ぶ仕組みを作ります。ここで初めて月商¥100万の壁を越えることを目指します。</p>
+<p><span class="highlight">フェーズ3</span>が2027年。月商¥100〜300万。ここが最初の大きな転換点です。外注チームを作り、自分一人のキャパシティの壁を突破します。</p>
+<p><span class="highlight">フェーズ4</span>は2028年。月商¥300〜600万。YouTube・noteを使ったメディア化と、法人として中小企業・自治体のDX支援に参入します。</p>
+<p>そして<span class="highlight">フェーズ5</span>が2029年。<span class="red">月商¥1,000万</span>の達成です。受託・キャリサポ・スクール・BtoBという複数の柱が揃って、初めて届く数字です。</p>
+<p>重要なのは、各フェーズで「やること」が明確に違うということ。フェーズ1でいきなりスクール運営しようとしても上手くいかない。今のフェーズで正しいことを正しく積み上げる、それだけです。</p>
+    `
+  },
+  {
+    id: 4,
+    badge: "収益設計",
+    badgeColor: "#f5a623",
+    title: "月商1,000万円を支える5つの収益エンジン",
+    desc: "受託・キャリサポ・ストック・デジタル・BtoBの設計",
+    duration: "5:00",
+    seconds: 300,
+    script: `
+<p>月商1,000万円を達成するには、1つの収益源に頼るのは危険です。5つのエンジンを組み合わせます。</p>
+<p><strong>エンジンA：受託制作</strong>。Web・アプリ・AI秘書。今の主力。チームができれば月¥200万以上を狙えます。</p>
+<p><strong>エンジンB：キャリサポ紹介報酬</strong>。これが実は最大のレバーです。AIリスキリング1件¥10万、退職サポート1件¥7万、転職成約1件¥15〜30万。月30件紹介できれば、それだけで¥300万超えます。</p>
+<p><strong>エンジンC：ストック収益</strong>。保守プラン・noteマガジン・継続サポート。これを積み上げることで、受託が入らない月でも土台が崩れない安定基盤になります。</p>
+<p><strong>エンジンD：デジタル商品</strong>。noteの有料記事・スクール・オンライン動画。一度作れば何度でも販売できる。スケールのしやすさが一番高いです。</p>
+<p><strong>エンジンE：法人・BtoB</strong>。自治体DX支援や中小企業向け研修。単価が高く、信頼が積み上がれば自然と紹介が来るようになります。</p>
+<p>最終的な方程式はこうです。<span class="highlight">受託¥200万＋キャリサポ¥300万＋ストック¥200万＋デジタル¥150万＋BtoB¥150万＝¥1,000万</span>。</p>
+<p>どれか1つだけで¥1,000万じゃなくて、5本の柱が組み合わさって初めて届く数字です。</p>
+    `
+  },
+  {
+    id: 5,
+    badge: "Phase 1",
+    badgeColor: "#e94560",
+    title: "フェーズ1の全体像｜基盤構築",
+    desc: "〜2026年6月。今月から動く種まきの期間",
+    duration: "3:00",
+    seconds: 180,
+    script: `
+<p>フェーズ1は「基盤を作る」フェーズです。</p>
+<p>このフェーズで一番大切なのは、<strong>「実績をゼロから脱出すること」</strong>。顧客の声が1件でもある状態、SNSで発信が習慣化している状態、キャリサポの紹介が動き始めている状態、この3つを作ることです。</p>
+<p>重点施策は4つ。SNS毎日投稿の習慣化。noteマガジンの開設。無料相談フォームの設置。そしてキャリサポの紹介導線をSNSとHPに組み込むこと。</p>
+<p>「完璧に整えてから発信する」という考え方は捨ててください。今の状態で動き始めることが、フェーズ1の成功条件です。</p>
+    `
+  },
+  {
+    id: 6,
+    badge: "Phase 1",
+    badgeColor: "#e94560",
+    title: "フェーズ1の行動計画と収益シミュレーション",
+    desc: "今月〜来月でやること。¥37.5万達成の道筋",
+    duration: "5:30",
+    seconds: 330,
+    script: `
+<p>フェーズ1の具体的な行動計画と収益シミュレーションをお話しします。</p>
+<p>SNS発信については、Threadsで毎日1投稿。テーマは「今日AIで10分解決したこと」「爆速くんのBefore/After数値」「キャリサポ活用事例の匿名共有」など。<strong>数字を必ず入れること</strong>が拡散のポイントです。</p>
+<p>集客・問い合わせについては、今週中にGoogleフォームで無料相談フォームを作る。問い合わせのハードルをとにかく下げます。ついでに問い合わせメールも正式なアドレスに切り替えましょう。</p>
+<p>キャリサポについては、紹介導線をThreadsとHPのどこかに設置します。「AIリスキリング講座、国の補助金で実質0円になる可能性があります」という一行があるだけで、問い合わせが来ます。</p>
+<p>収益シミュレーションです。Webページ制作ライト1件で¥13万、キャリサポAI講座紹介1件で¥10万、退職紹介1件で¥7万、note記事50件販売で¥7.5万。<span class="highlight">合計¥37.5万</span>。</p>
+<p>月商¥50万を目指すなら、もう1件受託かキャリサポ紹介を増やすだけで達成できます。</p>
+<p>大切なのは、この数字が現実的であることです。決して無理な目標じゃない。今月から全力で種をまいていきましょう。</p>
+    `
+  },
+  {
+    id: 7,
+    badge: "Phase 2",
+    badgeColor: "#f5a623",
+    title: "フェーズ2の全体像｜実績積み上げ",
+    desc: "2026年7〜12月。紹介が紹介を呼ぶ仕組みを作る",
+    duration: "3:00",
+    seconds: 180,
+    script: `
+<p>フェーズ2は「実績を可視化して信頼を作る」フェーズです。</p>
+<p>フェーズ1で種をまいた後、フェーズ2ではその種を育てます。具体的には、Before/After数値付きの実績ページ公開、仙台の事業者向けセミナー開催、キャリサポを月10件以上の紹介体制にすること。</p>
+<p>このフェーズで初めて<span class="highlight">月商¥100万の壁を越える</span>ことを目指します。ここを越えると、フリーランスとしての自信が全く変わります。</p>
+<p>「紹介が紹介を呼ぶ」状態を作るために、顧客の声と数値実績を積極的に公開していきましょう。</p>
+    `
+  },
+  {
+    id: 8,
+    badge: "Phase 2",
+    badgeColor: "#f5a623",
+    title: "フェーズ2の行動計画と収益シミュレーション",
+    desc: "月商¥100万達成への具体的な道筋",
+    duration: "5:00",
+    seconds: 300,
+    script: `
+<p>フェーズ2の行動計画です。</p>
+<p>まず、実績ページをBefore/After形式で作り直します。「爆速くん導入で書類作成が60分から1分になった」「問い合わせが月3件から15件に増えた」という具体的な数字を全面に出す。これが成約率を大きく上げます。</p>
+<p>仙台の事業者向けセミナーを無料で開催します。テーマは「AIを使って業務効率化した話」。参加者が見込み客になります。</p>
+<p>キャリサポについては月10件の紹介体制を目指します。noteで「退職・給付金活用」シリーズを書く。Threads で相談事例を匿名で共有する。これだけで問い合わせが増えていきます。</p>
+<p>収益シミュレーションです。Webページスタンダード2件で¥56万。キャリサポAI講座紹介5件で¥50万。退職紹介3件で¥21万。保守プラン3件積み上がって¥3万。noteマガジン50人で¥2.5万。<span class="highlight">合計¥132.5万</span>。</p>
+<p>これはフェーズ2の後半、10〜12月頃のシミュレーションです。7月は¥50〜70万からスタートして、じわじわと伸ばしていく。</p>
+<p>このフェーズが軌道に乗ると、フェーズ3以降が圧倒的にやりやすくなります。</p>
+    `
+  },
+  {
+    id: 9,
+    badge: "Phase 3",
+    badgeColor: "#2980b9",
+    title: "フェーズ3の全体像｜スケールアップ",
+    desc: "2027年。外注チーム×スクール×キャリサポ月20件",
+    duration: "3:30",
+    seconds: 210,
+    script: `
+<p>フェーズ3は、最初の大きな転換点です。</p>
+<p><strong>「1人の壁を突破する」</strong>フェーズです。</p>
+<p>フリーランスが月商を増やそうとすると、必ず1人のキャパシティという壁に当たります。1日は24時間しかない。寝なければいけない。フェーズ3はここを外注チームで突破します。</p>
+<p>コーダーやライターと業務委託契約を結んで、自分は設計・営業・品質管理に集中する。そうすれば月5〜8件受託できるようになります。</p>
+<p>さらにAI搭載サポートをグループ版コミュニティとして展開します。個別伴走ではなくコミュニティ型にすることで、1件¥50,000ではなく月額¥5,000×100人という形に変えていきます。</p>
+<p>キャリサポは月20件体制を目指します。これだけでキャリサポ単体で月¥200万を超えます。</p>
+    `
+  },
+  {
+    id: 10,
+    badge: "Phase 3",
+    badgeColor: "#2980b9",
+    title: "フェーズ3の収益モデル詳細",
+    desc: "外注チームとキャリサポで月商¥260〜330万を狙う",
+    duration: "4:30",
+    seconds: 270,
+    script: `
+<p>フェーズ3の収益モデルを詳しく見ていきます。</p>
+<p>受託制作に外注チームが加わると、月¥60〜80万の受託が現実的になります。スタンダードプランを月6件こなせれば、それだけで¥168万。外注コストを引いても¥100〜120万の粗利です。</p>
+<p>キャリサポは月20件体制です。AI講座¥10万×15件で¥150万。退職サポート¥7万×5件で¥35万。学習継続サポート15名で月¥30万。この3つで月¥215万。</p>
+<p>スクール・コミュニティは100〜150人規模で月¥30〜50万。</p>
+<p>ストックは保守プランが累積20件になって月¥20万。</p>
+<p>全部合わせると月¥260〜330万。<span class="highlight">年商3,000万の射程圏内</span>です。</p>
+<p>ここで一つ重要なことを言います。フェーズ3の収益をドライブする最大の要因は、<strong>キャリサポの紹介件数</strong>です。受託は物理的な制限があるけど、キャリサポはコンテンツと仕組みで件数を増やせる。ここへの投資を惜しまないでください。</p>
+    `
+  },
+  {
+    id: 11,
+    badge: "Phase 4〜5",
+    badgeColor: "#8e44ad",
+    title: "フェーズ4〜5｜メディア化・自動化・月商¥1,000万",
+    desc: "2028〜2029年。全ての柱が揃う最終形",
+    duration: "5:00",
+    seconds: 300,
+    script: `
+<p>フェーズ4は2028年。目標は月商¥300〜600万です。</p>
+<p>このフェーズで一番大きな変化は<strong>「法人化」</strong>と<strong>「メディア化」</strong>です。</p>
+<p>法人化することで、自治体や中小企業からのBtoB案件を取りやすくなります。仙台市・宮城県のDX支援事業に提案できるようになる。これは高単価かつ継続契約になりやすい。</p>
+<p>YouTube・noteが本格的なメディアになっていると、このフェーズで収益化が加速します。チャンネル登録者1万人になれば、広告収益だけで月¥10〜20万。さらにキャリサポへの導線が太くなります。</p>
+<p>フェーズ5は2029年。<span class="red">月商¥1,000万達成</span>です。</p>
+<p>内訳は、受託¥200万、キャリサポ¥300万、スクール¥300万、BtoB¥100万、ストック¥50万、その他¥50万。</p>
+<p>この段階では、おがさわら自身は現場制作ではなく、<strong>ビジョン設計・メディア発信・BtoB営業・チームマネジメント</strong>に集中している状態になっています。</p>
+<p>東北のAI活用の第一人者として認知され、仙台から共創の社会をつくるというビジョンが形になっているフェーズです。</p>
+    `
+  },
+  {
+    id: 12,
+    badge: "月商1000万",
+    badgeColor: "#f5a623",
+    title: "月商1,000万円の全体設計図",
+    desc: "5つの収益源の詳細内訳と達成条件",
+    duration: "4:00",
+    seconds: 240,
+    script: `
+<p>月商1,000万円の全体設計図をまとめます。</p>
+<p>受託制作は¥200万。外注チーム込みで月15件前後。1件平均¥13〜15万なら届く数字です。</p>
+<p>キャリサポは¥300万。月30件以上の紹介体制。AI講座・退職・転職・学習継続を組み合わせます。</p>
+<p>スクールは¥300万。1,000人×¥3,000=¥300万。東北AI活用コミュニティとして認知されていれば現実的です。</p>
+<p>BtoB・自治体DX支援が¥100万。法人化後に1〜2件の継続契約で達成できます。</p>
+<p>ストックが¥50万。保守プラン30件×¥10,000=¥30万、マガジン400人×¥500=¥20万。</p>
+<p>合計¥1,000万。</p>
+<p>大切な視点を一つ。<span class="highlight">スクール単体でも¥300万取れるモデルを作れれば、受託は¥200万で止めておける</span>。つまり、受託に縛られず、もっと自由に仕事を選べるようになる。月商¥1,000万は売上目標ではなく、自由の設計図です。</p>
+    `
+  },
+  {
+    id: 13,
+    badge: "キャリサポ戦略",
+    badgeColor: "#27ae60",
+    title: "キャリサポ紹介戦略｜最大の収益レバー",
+    desc: "報酬シミュレーションと集客ファネルの設計",
+    duration: "6:00",
+    seconds: 360,
+    script: `
+<p>キャリサポの紹介戦略を深掘りします。これが月商¥1,000万への最大のレバーです。</p>
+<p>まず報酬を確認します。AIリスキリング講座の紹介は1件¥10万。退職サポートは1件¥7万。転職サポートの成果報酬は1件¥10〜30万。学習サポートの継続は月¥2万。</p>
+<p>AIリスキリング1件¥10万というのは破格の報酬です。月20件紹介できれば、それだけで¥200万。しかも、この紹介は<strong>国の補助金で講座費用が実質0円</strong>になるという訴求ができるから、受け取る側のハードルが低い。</p>
+<p>集客ファネルを設計します。</p>
+<p>まず<strong>認知</strong>。Threads・note・YouTubeで「AIリスキリングで国の補助金が使える」「退職後に失業保険を最大限活用する方法」というコンテンツを発信します。</p>
+<p>次に<strong>興味喚起</strong>。「経済産業省認定AIリスキリング講座が実質0円になる可能性がある」という具体的な数字で興味を持たせる。</p>
+<p>そして<strong>相談</strong>。LINE公式アカウントに誘導して、無料相談でヒアリング。</p>
+<p>最後に<strong>紹介成立</strong>。最適なサービスに接続して報酬発生。</p>
+<p>ここで大事なポイントがあります。杜の都工房の「AI搭載サポート」という訴求と、キャリサポの「AIリスキリング講座」は<span class="highlight">完全に親和性が高い</span>。つまり、AIに興味がある層がそのままキャリサポの見込み客になる。同じコンテンツで両方を獲得できます。</p>
+<p>これがキャリサポを最大の収益レバーと呼ぶ理由です。</p>
+    `
+  },
+  {
+    id: 14,
+    badge: "コンテンツ戦略",
+    badgeColor: "#2980b9",
+    title: "コンテンツ×集客戦略",
+    desc: "Threads・note・YouTubeの使い分けと目標数値",
+    duration: "5:30",
+    seconds: 330,
+    script: `
+<p>コンテンツ戦略についてお話しします。</p>
+<p>SNSが集客エンジンになるまで育てること。これが長期的な資産になります。</p>
+<p><strong>Threads</strong>は日次投稿で、目標フォロワー1万人。テーマは4つ。Before/After数値投稿。「今日AIで10分解決したこと」。キャリサポ活用事例の匿名共有。仙台移住・コーギーとの日常。特にBefore/After数値は拡散されやすい。「書類作成60分→1分」「月人件費¥13万→¥0」は完璧な数字です。</p>
+<p><strong>note</strong>は週1〜2本。目標は月額マガジン500人。無料記事でアクセスを集めて、有料マガジンに誘導する流れを作ります。キャリサポへの誘導も記事内に自然に入れる。</p>
+<p><strong>YouTube</strong>は月2〜4本。目標は登録者1万人。爆速くんの実演動画は絶対に作るべきコンテンツです。「書類作成が本当に1分になる様子を見る」という体験は、百の説明より強い。</p>
+<p>コンテンツ全体を通じた最重要テーマは、<span class="highlight">「地方（仙台）でAIを使って稼いでいる当事者」</span>としての発信です。東京の大手AIコンサルとの差別化は「地方×AI×人間らしさ」。これを軸に発信し続ければ、唯一無二のポジションが生まれます。</p>
+    `
+  },
+  {
+    id: 15,
+    badge: "チーム化",
+    badgeColor: "#8e44ad",
+    title: "チーム化設計｜1人の壁を突破する",
+    desc: "外注戦略と代表が担う役割の変化",
+    duration: "5:00",
+    seconds: 300,
+    script: `
+<p>チーム化の設計についてお話しします。これが月商¥300万以上への必須条件です。</p>
+<p>フェーズ1〜2はおがさわら1人で全てこなします。月商¥30〜50万が現実的な上限です。</p>
+<p>フェーズ3でコーダーやライターと業務委託契約を結びます。2〜3名のパートナーがいれば、月商の上限が¥150万〜¥300万に拡大します。</p>
+<p>フェーズ4では法人化して専属チーム5名。営業・制作・コミュニティ管理という役割分担ができます。</p>
+<p>フェーズ5では、代表は現場から離れます。ビジョン設計、メディア出演、BtoB営業、投資家・自治体との交渉。これが代表の主な仕事になります。</p>
+<p>外注で任せるものは明確です。コーディング実装、note記事の下書き、SNS運用代行、YouTube動画編集、問い合わせ対応。<strong>「自分じゃなくてもできること」は外注する。自分にしかできないことに集中する。</strong></p>
+<p>自分にしかできないことは5つです。お客さんとのヒアリング、戦略設計、ビジョン発信、AI活用の最前線を実践すること、そして「おがさわらともひろ」というキャラクターを活かした発信。</p>
+<p>これらは外注できない。だから、これ以外は全部手放していく計画を立てます。</p>
+    `
+  },
+  {
+    id: 16,
+    badge: "ストック収益",
+    badgeColor: "#27ae60",
+    title: "ストック収益設計｜寝ていても入る仕組み",
+    desc: "保守プラン・マガジン・スクールの積み上げ計画",
+    duration: "4:30",
+    seconds: 270,
+    script: `
+<p>ストック収益について話します。これが事業の「安定剤」です。</p>
+<p>受託は月によって波があります。繁忙期と閑散期がある。でもストック収益があれば、たとえ受託が入らない月があっても事業が回ります。</p>
+<p><strong>保守プラン</strong>。制作した全案件に月¥10,000の保守プランを標準提案します。「納品して終わり」ではなく「継続サポートも込みのパッケージ」という位置づけで。累積30件になれば月¥30万の安定収入です。</p>
+<p><strong>noteマガジン</strong>。月額¥500の購読型。1,000人で月¥50万。これは現実的に狙える数字です。Threadsフォロワーが1万人いれば、購読転換率5%で500人達成できます。</p>
+<p><strong>スクール・コミュニティ</strong>。月額¥3,000〜5,000。1,000人で月¥300万。これが最大のストック収益になります。2027年に100人から始めて、2029年に1,000人という段階的な設計です。</p>
+<p>ストック収益の積み上げシミュレーションです。2026年6月は¥5万。12月は¥30万。2027年末は¥100万。2028年は¥300万。2029年には¥500万。</p>
+<p><span class="highlight">ストック¥500万＋受託¥200万＋その他¥300万</span>で月商¥1,000万という組み立てです。</p>
+    `
+  },
+  {
+    id: 17,
+    badge: "KPI管理",
+    badgeColor: "#2980b9",
+    title: "管理すべきKPI一覧",
+    desc: "集客・収益・ストックの数値目標一覧",
+    duration: "4:00",
+    seconds: 240,
+    script: `
+<p>KPIの管理についてお話しします。目標を達成するには、何を測るかを決めることが大切です。</p>
+<p>集客・認知のKPIです。Threadsフォロワーは2026年末2,000人、2027年末10,000人、2029年50,000人。noteの有料マガジン購読者は2026年末100人、2027年末500人、2029年2,000人。YouTube登録者は2026年末500人、2027年末3,000人、2029年30,000人。</p>
+<p>収益のKPIです。月商は2026年末¥100万、2027年末¥300万、2029年¥1,000万。キャリサポ月間紹介件数は2026年末10件、2027年末25件、2029年50件。受託案件は月3件から8件、最終15件へ。スクール会員は2027年から200人、2029年に1,500人。</p>
+<p>大きな壁が3つあります。<span class="red">月商¥100万</span>の壁。2026年7〜9月が勝負です。<span class="highlight">月商¥300万</span>の壁。2027年前半に外注体制を確立できるかどうか。月商¥600万の壁。2028年にスクールとメディアが機能しているかどうか。</p>
+<p>これらの壁を1つずつ越えていけば、2029年に月商¥1,000万は現実になります。</p>
+<p>数字を毎月レビューする習慣が大切です。SNSのフォロワー数、問い合わせ数、成約率、キャリサポ紹介件数。これらを週次でチェックする仕組みを作りましょう。</p>
+    `
+  },
+  {
+    id: 18,
+    badge: "まとめ",
+    badgeColor: "#f5a623",
+    title: "今日から動く7つのアクション",
+    desc: "このロードマップを机上の空論にしないために",
+    duration: "5:30",
+    seconds: 330,
+    script: `
+<p>最後にまとめです。このロードマップを机上の空論にしないために、今日から動く7つのアクションをお伝えします。</p>
+<p><strong>1つ目。Threadsの毎日1投稿を今日から開始する。</strong>「準備ができたら始める」ではなく、今日始める。Before/After数値かAIで解決した話を1つ投稿してください。</p>
+<p><strong>2つ目。noteマガジンを今月中に開設する。</strong>月額¥500のAI活用系マガジン。まず3本記事を書いてから開設ではなく、開設してから書く。</p>
+<p><strong>3つ目。キャリサポの紹介導線をHPとSNSに設置する。</strong>「AIリスキリング講座、国の補助金で実質0円になる可能性があります」という一文をどこかに入れる。</p>
+<p><strong>4つ目。無料相談フォームを今週中に設置する。</strong>Googleフォームで30分あれば作れます。LINEとも連携させる。</p>
+<p><strong>5つ目。顧客の声を1件Worksに追加する。</strong>「実績ページがない制作者は信頼されない」という課題を今月中に解消する。</p>
+<p><strong>6つ目。全受託案件に保守プランを標準提案する。</strong>月¥10,000のストック収益化。今後の全案件にデフォルトで組み込む。</p>
+<p>そして<strong>7つ目。このロードマップを来月また見直す。</strong>ロードマップは一度作ったら終わりじゃない。現状に合わせて更新し続けるものです。</p>
+<p>最後に一言。</p>
+<p><span class="highlight">「古き良き×最先端。仙台から共創の社会をつくる。」</span></p>
+<p>月商¥1,000万はその手段です。1日1日の積み上げが、3年後の景色を変えます。一緒に進んでいきましょう。ありがとうございました。</p>
+    `
+  }
+];
+
+// --- State ---
+let currentIndex = 0;
+let isPlaying = false;
+let speechUtterance = null;
+let playbackRate = 1;
+let chapterElapsed = 0;
+let timerInterval = null;
+
+// --- Build UI ---
+function buildChapterList() {
+  const list = document.getElementById('chapterList');
+  chapters.forEach((ch, i) => {
+    const div = document.createElement('div');
+    div.className = 'chapter-item' + (i === 0 ? ' active' : '');
+    div.id = 'ch-' + i;
+    div.innerHTML = `
+      <span class="ch-num">${String(ch.id).padStart(2,'0')}</span>
+      <div class="ch-info">
+        <div class="ch-title">${ch.title}</div>
+        <div class="ch-desc">${ch.desc}</div>
+      </div>
+      <div class="playing-indicator"><span></span><span></span><span></span></div>
+      <span class="ch-duration">${ch.duration}</span>
+    `;
+    div.addEventListener('click', () => {
+      selectChapter(i);
+    });
+    list.appendChild(div);
+  });
+}
+
+function buildTranscripts() {
+  const container = document.getElementById('transcriptContainer');
+  chapters.forEach((ch, i) => {
+    const div = document.createElement('div');
+    div.className = 'transcript-card' + (i === 0 ? ' active' : '');
+    div.id = 'tc-' + i;
+    div.innerHTML = `
+      <div class="tc-header">
+        <span class="tc-badge" style="background:${ch.badgeColor}22;color:${ch.badgeColor};">${ch.badge}</span>
+        <span class="tc-title">${ch.title}</span>
+        <span style="font-size:12px;color:var(--muted);">${ch.duration}</span>
+      </div>
+      <div class="tc-body">${ch.script}</div>
+    `;
+    div.addEventListener('click', () => selectChapter(i));
+    container.appendChild(div);
+  });
+}
+
+// --- Select Chapter ---
+function selectChapter(index) {
+  stopSpeech();
+  clearInterval(timerInterval);
+  currentIndex = index;
+  chapterElapsed = 0;
+
+  // Update chapter list
+  document.querySelectorAll('.chapter-item').forEach((el, i) => {
+    el.classList.toggle('active', i === index);
+    el.classList.remove('playing');
+  });
+  document.querySelectorAll('.transcript-card').forEach((el, i) => {
+    el.classList.toggle('active', i === index);
+  });
+
+  // Update player
+  const ch = chapters[index];
+  document.getElementById('currentChapterName').textContent = ch.title;
+  document.getElementById('totalTime').textContent = ch.duration;
+  document.getElementById('currentTime').textContent = '0:00';
+  document.getElementById('progressFill').style.width = '0%';
+
+  // Scroll transcript into view
+  const tc = document.getElementById('tc-' + index);
+  if (tc) tc.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+  if (isPlaying) {
+    playCurrent();
+  }
+}
+
+// --- Play/Pause ---
+function togglePlay() {
+  if (isPlaying) {
+    pauseSpeech();
+  } else {
+    playCurrent();
+  }
+}
+
+function playCurrent() {
+  if (!('speechSynthesis' in window)) {
+    alert('このブラウザはテキスト読み上げに対応していません。\nChromeまたはEdgeをお使いください。');
+    return;
+  }
+
+  stopSpeech();
+
+  const ch = chapters[currentIndex];
+  const text = ch.script.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
+
+  speechUtterance = new SpeechSynthesisUtterance(text);
+  speechUtterance.lang = 'ja-JP';
+  speechUtterance.rate = playbackRate;
+  speechUtterance.pitch = 1;
+
+  // Try to get Japanese voice
+  const voices = window.speechSynthesis.getVoices();
+  const jaVoice = voices.find(v => v.lang === 'ja-JP' && v.localService)
+    || voices.find(v => v.lang === 'ja-JP')
+    || voices.find(v => v.lang.startsWith('ja'));
+  if (jaVoice) speechUtterance.voice = jaVoice;
+
+  speechUtterance.onend = () => {
+    clearInterval(timerInterval);
+    isPlaying = false;
+    updatePlayIcon();
+    document.getElementById('ch-' + currentIndex).classList.remove('playing');
+    document.getElementById('progressFill').style.width = '100%';
+    chapterElapsed = ch.seconds;
+    updateTime(chapterElapsed, ch.seconds);
+    // Auto-advance
+    if (currentIndex < chapters.length - 1) {
+      setTimeout(() => {
+        selectChapter(currentIndex + 1);
+        playCurrent();
+      }, 800);
+    }
+  };
+
+  speechUtterance.onerror = () => {
+    isPlaying = false;
+    updatePlayIcon();
+    clearInterval(timerInterval);
+  };
+
+  window.speechSynthesis.speak(speechUtterance);
+  isPlaying = true;
+  updatePlayIcon();
+
+  document.getElementById('ch-' + currentIndex).classList.add('playing');
+
+  // Timer
+  const totalSec = ch.seconds;
+  clearInterval(timerInterval);
+  timerInterval = setInterval(() => {
+    chapterElapsed += 1 * playbackRate;
+    if (chapterElapsed > totalSec) chapterElapsed = totalSec;
+    const pct = Math.min((chapterElapsed / totalSec) * 100, 100);
+    document.getElementById('progressFill').style.width = pct + '%';
+    updateTime(chapterElapsed, totalSec);
+  }, 1000);
+}
+
+function pauseSpeech() {
+  if (window.speechSynthesis.speaking && !window.speechSynthesis.paused) {
+    window.speechSynthesis.pause();
+    isPlaying = false;
+    updatePlayIcon();
+    clearInterval(timerInterval);
+    document.getElementById('ch-' + currentIndex).classList.remove('playing');
+  } else if (window.speechSynthesis.paused) {
+    window.speechSynthesis.resume();
+    isPlaying = true;
+    updatePlayIcon();
+    document.getElementById('ch-' + currentIndex).classList.add('playing');
+    const ch = chapters[currentIndex];
+    const totalSec = ch.seconds;
+    timerInterval = setInterval(() => {
+      chapterElapsed += 1 * playbackRate;
+      if (chapterElapsed > totalSec) chapterElapsed = totalSec;
+      const pct = Math.min((chapterElapsed / totalSec) * 100, 100);
+      document.getElementById('progressFill').style.width = pct + '%';
+      updateTime(chapterElapsed, totalSec);
+    }, 1000);
+  }
+}
+
+function stopSpeech() {
+  if ('speechSynthesis' in window) {
+    window.speechSynthesis.cancel();
+  }
+  isPlaying = false;
+  updatePlayIcon();
+  clearInterval(timerInterval);
+  if (currentIndex < chapters.length) {
+    document.getElementById('ch-' + currentIndex).classList.remove('playing');
+  }
+}
+
+function prevChapter() {
+  if (currentIndex > 0) selectChapter(currentIndex - 1);
+}
+
+function nextChapter() {
+  if (currentIndex < chapters.length - 1) selectChapter(currentIndex + 1);
+}
+
+function setSpeed(rate, btn) {
+  playbackRate = rate;
+  document.querySelectorAll('.speed-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  if (speechUtterance) speechUtterance.rate = rate;
+  if (isPlaying) {
+    // Restart with new rate
+    const idx = currentIndex;
+    stopSpeech();
+    currentIndex = idx;
+    playCurrent();
+  }
+}
+
+function seekToPosition(event) {
+  const track = document.getElementById('progressTrack');
+  const rect = track.getBoundingClientRect();
+  const pct = (event.clientX - rect.left) / rect.width;
+  const ch = chapters[currentIndex];
+  chapterElapsed = pct * ch.seconds;
+  document.getElementById('progressFill').style.width = (pct * 100) + '%';
+  updateTime(chapterElapsed, ch.seconds);
+}
+
+function updatePlayIcon() {
+  document.getElementById('playIcon').style.display = isPlaying ? 'none' : 'block';
+  document.getElementById('pauseIcon').style.display = isPlaying ? 'block' : 'none';
+}
+
+function updateTime(elapsed, total) {
+  document.getElementById('currentTime').textContent = formatTime(Math.floor(elapsed));
+  document.getElementById('totalTime').textContent = formatTime(Math.floor(total));
+}
+
+function formatTime(sec) {
+  const m = Math.floor(sec / 60);
+  const s = sec % 60;
+  return m + ':' + String(s).padStart(2, '0');
+}
+
+// Load voices on page load
+if ('speechSynthesis' in window) {
+  window.speechSynthesis.onvoiceschanged = () => {};
+  window.speechSynthesis.getVoices();
+}
+
+// Init
+buildChapterList();
+buildTranscripts();
+selectChapter(0);
+</script>
+</body>
+</html>

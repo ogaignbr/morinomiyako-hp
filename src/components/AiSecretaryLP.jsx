@@ -3,27 +3,6 @@ import FloatingSymbols from './FloatingSymbols'
 
 const B = import.meta.env.BASE_URL
 
-const flow = [
-  {
-    number: '01',
-    title: 'ヒアリング',
-    description:
-      'どのシステムを、どのタイミングでチェックしたいか。困っている通知の取りこぼしや、理想の運用スタイルをじっくりお伺いします。',
-  },
-  {
-    number: '02',
-    title: '設計・テスト運用',
-    description:
-      '対象のサイト・アプリへAIが自動ログインし、新着情報を取得・整形してLINEへ送る仕組みを構築。数日のテスト運用で精度を見ながら調整します。',
-  },
-  {
-    number: '03',
-    title: '本稼働・運用サポート',
-    description:
-      '本番稼働スタート。毎日決まった時間にAIが点検し、必要な情報だけをLINEへ通知。仕様変更があっても柔軟に改修対応します。',
-  },
-]
-
 const examples = [
   {
     title: '会員サイトの新着メッセージ通知',
@@ -77,43 +56,6 @@ const examples = [
   },
 ]
 
-const plans = [
-  {
-    name: 'ライト',
-    price: '¥80,000〜',
-    desc: '1サイト・1通知を自動化',
-    features: [
-      '巡回対象：1サービス',
-      '1日1〜2回の定時チェック',
-      '個人LINEへ通知',
-      '導入後1ヶ月の微調整込み',
-    ],
-  },
-  {
-    name: 'スタンダード',
-    price: '¥180,000〜',
-    desc: '複数サービスをまとめて一本化',
-    features: [
-      '巡回対象：3サービスまで',
-      '時間帯・頻度を柔軟に設定',
-      'グループLINE＋公式LINE対応',
-      '運用サポート3ヶ月込み',
-    ],
-    popular: true,
-  },
-  {
-    name: 'オーダーメイド',
-    price: '要見積もり',
-    desc: '社内業務をまるごと代行',
-    features: [
-      '巡回対象：無制限・API連携',
-      '複雑な条件分岐・要約処理',
-      '複数LINEグループへ配信',
-      '保守・改修プランあり',
-    ],
-  },
-]
-
 export default function AiSecretaryLP() {
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -135,10 +77,10 @@ export default function AiSecretaryLP() {
                   AI秘書
                 </a>
                 <a
-                  href="#pricing"
+                  href="#secretary-cta"
                   className="rounded-full bg-metallic-pink px-5 py-2 text-xs font-semibold text-white no-underline transition-all hover:shadow-lg md:text-sm"
                 >
-                  料金を見る
+                  相談する
                 </a>
               </div>
             </div>
@@ -170,10 +112,10 @@ export default function AiSecretaryLP() {
 
               <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center sm:gap-4">
                 <a
-                  href="#pricing"
+                  href="#secretary-cta"
                   className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-metallic-pink px-8 py-4 text-sm font-semibold text-white no-underline shadow-lg transition-all hover:shadow-xl sm:w-auto"
                 >
-                  料金プランを見る
+                  無料で相談する
                 </a>
                 <a
                   href="#examples"
@@ -321,131 +263,11 @@ export default function AiSecretaryLP() {
                   </div>
                 ))}
               </div>
-
-              <p className="mt-10 text-center text-sm text-bluegray-600">
-                上記はほんの一例です。「これもできる？」というご相談、お気軽にどうぞ。
-              </p>
-            </div>
-          </section>
-
-          {/* ── Flow ── */}
-          <section className="py-16 md:py-24">
-            <div className="section-padding mx-auto max-w-4xl">
-              <div className="mb-14 text-center">
-                <span className="mb-3 inline-block text-xs font-semibold tracking-[0.15em] text-bluegray-400 uppercase">
-                  Flow
-                </span>
-                <h2 className="mb-4 text-2xl font-bold text-bluegray-800 md:text-3xl">
-                  導入の流れ
-                </h2>
-              </div>
-
-              <div className="space-y-5 md:space-y-6">
-                {flow.map((step, i) => (
-                  <div
-                    key={i}
-                    className="glass-card-elevated flex flex-col gap-4 rounded-2xl p-6 md:flex-row md:items-start md:gap-8 md:p-8"
-                  >
-                    <div className="bg-metallic-pink flex h-12 w-12 shrink-0 items-center justify-center rounded-full text-sm font-bold text-white">
-                      {step.number}
-                    </div>
-                    <div>
-                      <h3 className="mb-2 text-lg font-bold text-bluegray-800">{step.title}</h3>
-                      <p className="text-sm leading-relaxed text-bluegray-600">
-                        {step.description}
-                      </p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </section>
-
-          {/* ── Pricing ── */}
-          <section id="pricing" className="bg-slate-25 py-16 md:py-24">
-            <div className="section-padding mx-auto max-w-5xl">
-              <div className="mb-14 text-center">
-                <span className="mb-3 inline-block text-xs font-semibold tracking-[0.15em] text-bluegray-400 uppercase">
-                  Pricing
-                </span>
-                <h2 className="mb-4 text-2xl font-bold text-bluegray-800 md:text-3xl">
-                  料金プラン
-                </h2>
-                <p className="mx-auto max-w-lg text-sm text-bluegray-600">
-                  小さな1業務から始めて、
-                  <strong className="font-bold">取りこぼしゼロ</strong>の運用へ。
-                </p>
-              </div>
-
-              <div className="grid grid-cols-3 gap-2 sm:gap-4 md:gap-6">
-                {plans.map((plan, i) => (
-                  <div
-                    key={i}
-                    className={`relative overflow-hidden rounded-xl border p-3 sm:p-5 md:p-8 ${
-                      plan.popular
-                        ? 'border-pink-300 bg-white shadow-xl'
-                        : 'border-bluegray-100 bg-white'
-                    }`}
-                  >
-                    {plan.popular && (
-                      <div className="bg-metallic-pink absolute top-0 right-0 rounded-bl-lg px-1.5 py-0.5 text-[8px] font-bold text-white sm:px-3 sm:py-1 sm:text-[10px]">
-                        おすすめ
-                      </div>
-                    )}
-                    <h3 className="mb-1 text-xs font-bold text-bluegray-800 sm:text-base md:text-lg">
-                      {plan.name}
-                    </h3>
-                    <p className="mb-2 text-[10px] leading-snug text-bluegray-500 sm:mb-4 sm:text-xs">
-                      {plan.desc}
-                    </p>
-                    <div className="text-metallic-pink mb-3 text-sm font-bold sm:mb-6 sm:text-xl md:text-2xl">
-                      {plan.price}
-                    </div>
-                    <ul className="mb-3 space-y-1 sm:mb-6 sm:space-y-2">
-                      {plan.features.map((f, j) => (
-                        <li
-                          key={j}
-                          className="flex items-start gap-1 text-[10px] leading-snug text-bluegray-600 sm:items-center sm:gap-2 sm:text-sm"
-                        >
-                          <svg
-                            className="mt-0.5 h-2.5 w-2.5 shrink-0 text-pink-500 sm:mt-0 sm:h-4 sm:w-4"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                            strokeWidth={2}
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              d="M5 13l4 4L19 7"
-                            />
-                          </svg>
-                          {f}
-                        </li>
-                      ))}
-                    </ul>
-                    <a
-                      href="mailto:hello@example.com"
-                      className={`block rounded-full py-1.5 text-center text-[10px] font-semibold no-underline transition-all sm:py-2.5 sm:text-xs md:py-3 md:text-sm ${
-                        plan.popular
-                          ? 'bg-metallic-pink text-white hover:shadow-lg'
-                          : 'bg-bluegray-50 text-bluegray-700 hover:bg-bluegray-100'
-                      }`}
-                    >
-                      お問い合わせ
-                    </a>
-                  </div>
-                ))}
-              </div>
-
-              <p className="mt-8 text-center text-xs text-bluegray-400">
-                ※ 対象サイトの仕様や巡回頻度によって金額が変わります。まずは無料相談でお見積もりをご案内します。
-              </p>
             </div>
           </section>
 
           {/* ── Final CTA ── */}
-          <section className="py-16 md:py-24">
+          <section id="secretary-cta" className="py-16 md:py-24">
             <div className="section-padding mx-auto max-w-3xl text-center">
               <h2 className="mb-4 text-2xl font-bold text-bluegray-800 md:text-3xl">
                 通知に振り回される毎日を、卒業しませんか？

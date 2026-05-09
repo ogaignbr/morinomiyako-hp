@@ -6,7 +6,6 @@ import About from './components/About'
 import Representative from './components/Representative'
 import Note from './components/Note'
 import Links from './components/Links'
-import Footer from './components/Footer'
 import AppHomeScreen from './components/AppHomeScreen'
 import AppBottomTabs from './components/AppBottomTabs'
 import FloatingContactButton from './components/FloatingContactButton'
@@ -16,8 +15,7 @@ import AiUpdateLP from './components/AiUpdateLP'
 import AiSecretaryLP from './components/AiSecretaryLP'
 import WebDesignLP from './components/WebDesignLP'
 
-const aboutHeaderImage = new URL('../HP画像/自己紹介.png', import.meta.url).href
-const noteHeaderImage = new URL('../HP画像/note.png', import.meta.url).href
+const aboutHeaderImage = new URL('../HP画像/自己紹介ヘッダー新.png', import.meta.url).href
 
 const PLAN_DETAIL_IDS = ['light', 'standard', 'premium', 'option']
 
@@ -98,7 +96,7 @@ function App() {
       >
         {page === 'about' && (
           <main>
-            <img src={aboutHeaderImage} alt="自己紹介ヘッダー" className="h-36 w-full object-cover" />
+            <img src={aboutHeaderImage} alt="自己紹介ヘッダー" className="h-48 w-full bg-white object-contain" />
             <About />
             <Representative />
           </main>
@@ -119,16 +117,14 @@ function App() {
 
         {page === 'note' && (
           <main>
-            <img src={noteHeaderImage} alt="noteヘッダー" className="h-36 w-full object-cover" />
             <Note />
           </main>
         )}
 
         {page === 'contact' && (
           <main>
-            <Links />
             <Diagnosis />
-            <Footer />
+            <Links />
           </main>
         )}
 
@@ -157,3 +153,4 @@ function getPage() {
 }
 
 export default App
+

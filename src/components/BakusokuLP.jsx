@@ -3,27 +3,6 @@ import FloatingSymbols from './FloatingSymbols'
 
 const B = import.meta.env.BASE_URL
 
-const flow = [
-  {
-    number: '01',
-    title: 'ヒアリング',
-    description:
-      'どんな業務を、どうしたいか。まずは1時間のオンライン打ち合わせで、困りごとや理想の状態を丁寧にお聞きします。',
-  },
-  {
-    number: '02',
-    title: '設計・試作',
-    description:
-      'AIと人の手を組み合わせて、最短3日で試作版をお渡し。実際に触っていただきながら、ご一緒にブラッシュアップしていきます。',
-  },
-  {
-    number: '03',
-    title: '本制作・導入',
-    description:
-      '仕上がった試作をもとに本番アプリを制作。使い方レクチャーと、導入後のアフターサポートまで一貫して伴走します。',
-  },
-]
-
 const examples = [
   {
     title: '履歴書・職務経歴書の自動生成',
@@ -67,43 +46,6 @@ const examples = [
   },
 ]
 
-const plans = [
-  {
-    name: 'ライト',
-    price: '¥50,000〜',
-    desc: '1機能・小規模な自動化から',
-    features: [
-      '業務を1つだけ自動化',
-      '簡易UI付き',
-      '制作期間：2週間〜',
-      '導入レクチャー1回',
-    ],
-  },
-  {
-    name: 'スタンダード',
-    price: '¥150,000〜',
-    desc: '複数機能を備えた業務アプリに',
-    features: [
-      '複数機能を組み合わせ',
-      'ログイン・データ保存対応',
-      '制作期間：3〜5週間',
-      '導入後1ヶ月の無料サポート',
-    ],
-    popular: true,
-  },
-  {
-    name: 'オーダーメイド',
-    price: '要見積もり',
-    desc: '本格的な業務システムに',
-    features: [
-      '自社業務に合わせたフル設計',
-      '既存システムとの連携',
-      'チーム展開まで伴走',
-      '保守・改修プランあり',
-    ],
-  },
-]
-
 export default function BakusokuLP() {
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -125,10 +67,10 @@ export default function BakusokuLP() {
                   オリジナルアプリ制作
                 </a>
                 <a
-                  href="#pricing"
+                  href="#bakusoku-cta"
                   className="rounded-full bg-metallic-green px-5 py-2 text-xs font-semibold text-white no-underline transition-all hover:shadow-lg md:text-sm"
                 >
-                  料金を見る
+                  相談する
                 </a>
               </div>
             </div>
@@ -160,10 +102,10 @@ export default function BakusokuLP() {
 
               <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center sm:gap-4">
                 <a
-                  href="#pricing"
+                  href="#bakusoku-cta"
                   className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-metallic-green px-8 py-4 text-sm font-semibold text-white no-underline shadow-lg transition-all hover:shadow-xl sm:w-auto"
                 >
-                  料金プランを見る
+                  無料で相談する
                 </a>
                 <a
                   href="#examples"
@@ -310,141 +252,11 @@ export default function BakusokuLP() {
                   </div>
                 ))}
               </div>
-
-              <p className="mt-10 text-center text-sm text-bluegray-600">
-                上記はほんの一例です。「これもできる？」というご相談、お気軽にどうぞ。
-              </p>
-
-              <div className="mx-auto mt-10 max-w-3xl overflow-hidden rounded-2xl border border-bluegray-100 bg-white shadow-xl md:mt-14">
-                <img
-                  src={`${B}images/works/business-improvement.png`}
-                  alt="1日30分の積み重ねが生む、年間・人数別の時間換算"
-                  className="w-full object-contain"
-                />
-              </div>
-            </div>
-          </section>
-
-          {/* ── Flow ── */}
-          <section className="py-16 md:py-24">
-            <div className="section-padding mx-auto max-w-4xl">
-              <div className="mb-14 text-center">
-                <span className="mb-3 inline-block text-xs font-semibold tracking-[0.15em] text-bluegray-400 uppercase">
-                  Flow
-                </span>
-                <h2 className="mb-4 text-2xl font-bold text-bluegray-800 md:text-3xl">
-                  制作の流れ
-                </h2>
-              </div>
-
-              <div className="space-y-5 md:space-y-6">
-                {flow.map((step, i) => (
-                  <div
-                    key={i}
-                    className="glass-card-elevated flex flex-col gap-4 rounded-2xl p-6 md:flex-row md:items-start md:gap-8 md:p-8"
-                  >
-                    <div className="bg-metallic-green flex h-12 w-12 shrink-0 items-center justify-center rounded-full text-sm font-bold text-white">
-                      {step.number}
-                    </div>
-                    <div>
-                      <h3 className="mb-2 text-lg font-bold text-bluegray-800">
-                        {step.title}
-                      </h3>
-                      <p className="text-sm leading-relaxed text-bluegray-600">
-                        {step.description}
-                      </p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </section>
-
-          {/* ── Pricing ── */}
-          <section id="pricing" className="bg-slate-25 py-16 md:py-24">
-            <div className="section-padding mx-auto max-w-5xl">
-              <div className="mb-14 text-center">
-                <span className="mb-3 inline-block text-xs font-semibold tracking-[0.15em] text-bluegray-400 uppercase">
-                  Pricing
-                </span>
-                <h2 className="mb-4 text-2xl font-bold text-bluegray-800 md:text-3xl">
-                  料金プラン
-                </h2>
-                <p className="mx-auto max-w-lg text-sm text-bluegray-600">
-                  まずは<strong className="font-bold">5万円から</strong>。
-                  小さく始めて、効果を見ながら拡張していけます。
-                </p>
-              </div>
-
-              <div className="grid grid-cols-3 gap-2 sm:gap-4 md:gap-6">
-                {plans.map((plan, i) => (
-                  <div
-                    key={i}
-                    className={`relative overflow-hidden rounded-xl border p-3 sm:p-5 md:p-8 ${
-                      plan.popular
-                        ? 'border-green-300 bg-white shadow-xl'
-                        : 'border-bluegray-100 bg-white'
-                    }`}
-                  >
-                    {plan.popular && (
-                      <div className="bg-metallic-green absolute top-0 right-0 rounded-bl-lg px-1.5 py-0.5 text-[8px] font-bold text-white sm:px-3 sm:py-1 sm:text-[10px]">
-                        おすすめ
-                      </div>
-                    )}
-                    <h3 className="mb-1 text-xs font-bold text-bluegray-800 sm:text-base md:text-lg">
-                      {plan.name}
-                    </h3>
-                    <p className="mb-2 text-[10px] leading-snug text-bluegray-500 sm:mb-4 sm:text-xs">
-                      {plan.desc}
-                    </p>
-                    <div className="text-metallic mb-3 text-sm font-bold sm:mb-6 sm:text-xl md:text-2xl">
-                      {plan.price}
-                    </div>
-                    <ul className="mb-3 space-y-1 sm:mb-6 sm:space-y-2">
-                      {plan.features.map((f, j) => (
-                        <li
-                          key={j}
-                          className="flex items-start gap-1 text-[10px] leading-snug text-bluegray-600 sm:items-center sm:gap-2 sm:text-sm"
-                        >
-                          <svg
-                            className="mt-0.5 h-2.5 w-2.5 shrink-0 text-green-500 sm:mt-0 sm:h-4 sm:w-4"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                            strokeWidth={2}
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              d="M5 13l4 4L19 7"
-                            />
-                          </svg>
-                          {f}
-                        </li>
-                      ))}
-                    </ul>
-                    <a
-                      href="mailto:hello@example.com"
-                      className={`block rounded-full py-1.5 text-center text-[10px] font-semibold no-underline transition-all sm:py-2.5 sm:text-xs md:py-3 md:text-sm ${
-                        plan.popular
-                          ? 'bg-metallic-green text-white hover:shadow-lg'
-                          : 'bg-bluegray-50 text-bluegray-700 hover:bg-bluegray-100'
-                      }`}
-                    >
-                      お問い合わせ
-                    </a>
-                  </div>
-                ))}
-              </div>
-
-              <p className="mt-8 text-center text-xs text-bluegray-400">
-                ※ 機能や要件によって金額は前後します。まずは無料相談でお見積もりをご案内します。
-              </p>
             </div>
           </section>
 
           {/* ── Final CTA ── */}
-          <section className="py-16 md:py-24">
+          <section id="bakusoku-cta" className="py-16 md:py-24">
             <div className="section-padding mx-auto max-w-3xl text-center">
               <h2 className="mb-4 text-2xl font-bold text-bluegray-800 md:text-3xl">
                 あなたの業務にも、専用アプリを。
