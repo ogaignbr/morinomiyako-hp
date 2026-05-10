@@ -274,34 +274,34 @@ export default function Diagnosis() {
           <div className="grid grid-cols-2 gap-3">
             <button
               onClick={handleStart}
-              className="flex flex-col items-center rounded-2xl border border-mint-200 bg-gradient-to-b from-mint-50 to-white p-4 text-center shadow-sm transition hover:-translate-y-0.5 hover:shadow-md active:scale-[0.98]"
+              className="cta-glint flex flex-col items-center rounded-2xl bg-[linear-gradient(145deg,#1b6f43_0%,#2ea565_45%,#165937_100%)] p-5 text-center shadow-[0_10px_24px_rgba(10,30,18,0.35),inset_0_1px_0_rgba(255,255,255,0.4),inset_0_-4px_10px_rgba(0,0,0,0.2)] ring-1 ring-white/25 transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_14px_30px_rgba(10,30,18,0.45),inset_0_1px_0_rgba(255,255,255,0.4),inset_0_-4px_10px_rgba(0,0,0,0.2)] active:translate-y-0.5 active:shadow-[0_4px_10px_rgba(10,30,18,0.3),inset_0_1px_0_rgba(255,255,255,0.3),inset_0_-2px_6px_rgba(0,0,0,0.25)]"
             >
-              <div className="mb-2 flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-mint-500 to-mint-600 text-white shadow">
+              <div className="mb-2 flex h-11 w-11 items-center justify-center rounded-full bg-white/20 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.3)]">
                 <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
                 </svg>
               </div>
-              <span className="font-serif text-[14px] font-bold tracking-[0.04em] text-bluegray-800">
+              <span className="font-serif text-[15px] font-bold tracking-[0.06em] text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.3)]">
                 診断する
               </span>
-              <p className="mt-1.5 text-[10.5px] leading-relaxed text-bluegray-500">
+              <p className="mt-1.5 text-[10.5px] leading-relaxed text-white/80">
                 質問に答えて最適なプランを見つける
               </p>
             </button>
 
             <button
               onClick={() => setConsultationMode(true)}
-              className="flex flex-col items-center rounded-2xl border border-mint-200 bg-gradient-to-b from-mint-50 to-white p-4 text-center shadow-sm transition hover:-translate-y-0.5 hover:shadow-md active:scale-[0.98]"
+              className="cta-glint flex flex-col items-center rounded-2xl bg-[linear-gradient(145deg,#1b6f43_0%,#2ea565_45%,#165937_100%)] p-5 text-center shadow-[0_10px_24px_rgba(10,30,18,0.35),inset_0_1px_0_rgba(255,255,255,0.4),inset_0_-4px_10px_rgba(0,0,0,0.2)] ring-1 ring-white/25 transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_14px_30px_rgba(10,30,18,0.45),inset_0_1px_0_rgba(255,255,255,0.4),inset_0_-4px_10px_rgba(0,0,0,0.2)] active:translate-y-0.5 active:shadow-[0_4px_10px_rgba(10,30,18,0.3),inset_0_1px_0_rgba(255,255,255,0.3),inset_0_-2px_6px_rgba(0,0,0,0.25)]"
             >
-              <div className="mb-2 flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-mint-500 to-mint-600 text-white shadow">
+              <div className="mb-2 flex h-11 w-11 items-center justify-center rounded-full bg-white/20 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.3)]">
                 <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
               </div>
-              <span className="font-serif text-[14px] font-bold tracking-[0.04em] text-bluegray-800">
+              <span className="font-serif text-[15px] font-bold tracking-[0.06em] text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.3)]">
                 相談する
               </span>
-              <p className="mt-1.5 text-[10.5px] leading-relaxed text-bluegray-500">
+              <p className="mt-1.5 text-[10.5px] leading-relaxed text-white/80">
                 質問に答えてお気軽にご相談
               </p>
             </button>

@@ -87,13 +87,13 @@ function App() {
         {page === 'note' && (
           <main>
             <Note />
+            <Links />
           </main>
         )}
 
         {page === 'contact' && (
           <main>
             <Diagnosis />
-            <Links />
             <Footer />
           </main>
         )}
